@@ -45,7 +45,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         ref={ref}
         onMouseMove={handleMove}
         onMouseLeave={reset}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        style={{ rotateX, rotateY }}
         className="group flex h-full flex-col overflow-hidden rounded-3xl border border-carbon/10 bg-white shadow-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-carbon/10"
       >
         {/* Visual */}
@@ -78,7 +78,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         )}
 
         {/* Contenido */}
-        <div className="flex flex-1 flex-col p-6" style={{ transform: "translateZ(40px)" }}>
+        <div className="flex flex-1 flex-col p-6">
           <h3 className="font-display text-xl font-semibold tracking-tight">
             {service.title}
           </h3>

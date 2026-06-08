@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
 import Grain from "@/components/Grain";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
@@ -71,7 +70,6 @@ export default function RootLayout({
     >
       <body>
         <Grain />
-        <CustomCursor />
         <SmoothScroll>{children}</SmoothScroll>
         <WhatsAppFloat />
       </body>

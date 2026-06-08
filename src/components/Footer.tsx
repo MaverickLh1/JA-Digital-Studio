@@ -30,8 +30,9 @@ export default function Footer() {
                 className="block text-crema/45 transition-colors hover:text-coral"
               >
                 <span
-                  className="platform-icon h-5 w-14"
+                  className="platform-icon h-5"
                   style={{
+                    aspectRatio: p.ratio,
                     WebkitMaskImage: `url(${p.icon})`,
                     maskImage: `url(${p.icon})`,
                   }}

@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import ScrambleText from "@/components/ScrambleText";
-import MagneticButton from "@/components/MagneticButton";
 
 const fade = {
   hidden: { opacity: 0, y: 24 },
@@ -81,18 +80,18 @@ export default function Hero() {
           animate="visible"
           className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <MagneticButton
+          <a
             href="#servicios"
-            className="shimmer relative inline-flex items-center overflow-hidden rounded-full bg-coral px-7 py-3.5 text-sm font-semibold text-carbon"
+            className="shimmer relative inline-flex items-center overflow-hidden rounded-full bg-coral px-7 py-3.5 text-sm font-semibold text-carbon transition-transform hover:scale-[1.03]"
           >
             Ver lo que hago
-          </MagneticButton>
-          <MagneticButton
+          </a>
+          <a
             href="#contacto"
             className="inline-flex items-center rounded-full border border-crema/25 px-7 py-3.5 text-sm font-semibold text-crema transition-colors hover:border-crema/60"
           >
             Hablemos
-          </MagneticButton>
+          </a>
         </motion.div>
       </div>
 

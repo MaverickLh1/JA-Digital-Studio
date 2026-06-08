@@ -35,7 +35,7 @@ export default function Platforms() {
           Estoy en las principales. Elige la que prefieras.
         </motion.p>
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3">
           {platforms.map((p, i) => (
             <motion.a
               key={p.name}
@@ -47,16 +47,15 @@ export default function Platforms() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group flex aspect-[3/2] flex-col items-center justify-center gap-2 rounded-2xl border border-crema/10 bg-crema/[0.03] text-crema/55 transition-all duration-300 hover:-translate-y-1 hover:border-coral/40 hover:bg-crema/[0.06] hover:text-coral"
+              className="group flex items-center justify-center overflow-hidden rounded-2xl border border-crema/10 bg-crema/[0.03] px-7 py-8 text-crema/55 transition-all duration-300 hover:-translate-y-1 hover:border-coral/40 hover:bg-crema/[0.06] hover:text-coral"
             >
               <span
-                className="platform-icon h-7 w-20 transition-transform duration-300 group-hover:scale-110"
+                className="platform-icon h-12 w-full transition-transform duration-300 group-hover:scale-105"
                 style={{
                   WebkitMaskImage: `url(${p.icon})`,
                   maskImage: `url(${p.icon})`,
                 }}
               />
-              <span className="text-xs font-medium">{p.name}</span>
             </motion.a>
           ))}
         </div>

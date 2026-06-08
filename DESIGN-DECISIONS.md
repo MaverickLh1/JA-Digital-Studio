@@ -113,7 +113,7 @@ Un solo coral en logo + botones + acentos = marca unificada.
 | 3 | **Textura de grano (grain)** | SVG feTurbulence + CSS mix-blend-mode, 3-5% opacidad | Señal #1 de "hecho a mano"; presente en webs Awwwards, ausente en templates |
 | 4 | **Aurora animada en Hero** | CSS radial-gradients + blur + mix-blend-mode, sin JS | Manchas de color difuminadas moviéndose detrás del texto hero |
 | 5 | **Reveal de secciones con clip-path** | clip-path: inset() animado con scroll (Framer Motion useScroll) | Secciones se revelan progresivamente, sensación narrativa |
-| 6 | **Botones magnéticos + cursor personalizado** | Framer Motion spring physics + mix-blend-mode: difference | Cursor que cambia de tamaño + botones que atraen al cursor |
+| 6 | ~~Botones magnéticos + cursor personalizado~~ | — | **DESCARTADO** por José Antonio (no convencía). Cursor normal del sistema, botones con hover/escala clásicos. |
 | 7 | **Micro-interacciones en tarjetas** | CSS transform perspective + rotateX/Y + scale + box-shadow | Tarjetas que se inclinan siguiendo el ratón, efecto tilt 3D |
 
 ### Lo que NO se incluye (decisión deliberada)

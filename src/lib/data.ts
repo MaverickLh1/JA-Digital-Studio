@@ -89,16 +89,19 @@ export type Platform = {
   name: string;
   icon: string;
   url: string;
+  ratio: number; // ancho/alto del lienzo recortado → para ancho natural a altura fija
 };
 
 // Las URLs se actualizarán cuando José Antonio pase sus perfiles.
+// ?v=N fuerza recarga del SVG cuando se edita su lienzo (evita caché del navegador).
+const v = "?v=6";
 export const platforms: Platform[] = [
-  { name: "Fiverr", icon: "/plataforma-fiverr.svg", url: "#" },
-  { name: "Malt", icon: "/plataforma-malt.svg", url: "#" },
-  { name: "Upwork", icon: "/plataforma-upwork.svg", url: "#" },
-  { name: "Freelancer", icon: "/plataforma-freelancer.svg", url: "#" },
-  { name: "Workana", icon: "/plataforma-workana.svg", url: "#" },
-  { name: "SoyFreelancer", icon: "/plataforma-soyfreelancer.svg", url: "#" },
+  { name: "Fiverr", icon: `/plataforma-fiverr.svg${v}`, url: "#", ratio: 3.17 },
+  { name: "Malt", icon: `/plataforma-malt.svg${v}`, url: "#", ratio: 3.31 },
+  { name: "Upwork", icon: `/plataforma-upwork.svg${v}`, url: "#", ratio: 3.35 },
+  { name: "Freelancer", icon: `/plataforma-freelancer.svg${v}`, url: "#", ratio: 4.14 },
+  { name: "Workana", icon: `/plataforma-workana.svg${v}`, url: "#", ratio: 6.19 },
+  { name: "SoyFreelancer", icon: `/plataforma-soyfreelancer.svg${v}`, url: "#", ratio: 8.67 },
 ];
 
 export const contact = {
