@@ -79,13 +79,24 @@ export default function Contact() {
             Escríbeme por WhatsApp
           </a>
 
-          <div className="text-center text-sm text-crema/50">o</div>
-
           <a
             href={`mailto:${contact.email}`}
-            className="link-underline mx-auto text-sm font-medium text-crema/80 hover:text-crema"
+            className="flex items-center justify-center gap-2 rounded-full border border-crema/20 px-6 py-3.5 text-sm font-semibold text-crema transition-colors hover:border-coral hover:text-coral"
           >
-            {contact.email}
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.8}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+              <path d="M3 7l9 6 9-6" />
+            </svg>
+            Escríbeme un email
           </a>
         </motion.div>
       </div>
