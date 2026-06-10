@@ -70,8 +70,8 @@ export default function Hero() {
           className="mt-8 max-w-xl text-base leading-relaxed text-crema/70 sm:text-lg"
         >
           Ayudo a negocios y marcas a crecer en internet: diseño web, tiendas
-          online y Shopify, imágenes de producto e inteligencia artificial
-          aplicada.
+          Shopify, imágenes de producto, identidad de marca e inteligencia
+          artificial aplicada.
         </motion.p>
 
         <motion.div
