@@ -2,30 +2,27 @@
 
 import { motion } from "motion/react";
 import { platforms } from "@/lib/data";
-import { fadeUp } from "@/lib/motion";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Platforms() {
   return (
-    <section id="plataformas" className="bg-carbon px-5 py-24 text-crema sm:py-28">
+    // Inicio del bloque oscuro final: entra como una lámina con esquinas
+    // redondeadas sobre el crema (el fondo del body asoma en las esquinas).
+    <section
+      id="plataformas"
+      className="rounded-t-[2.5rem] bg-carbon px-5 pb-24 pt-20 text-crema sm:rounded-t-[3.5rem] sm:pb-28 sm:pt-24"
+    >
       <div className="mx-auto max-w-6xl text-center">
-        <motion.p
-          {...fadeUp(0, { y: 16, duration: 0.5 })}
-          className="kicker mb-4 text-coral"
-        >
-          Encuéntrame también en
-        </motion.p>
-        <motion.h2
-          {...fadeUp(0.05)}
-          className="mx-auto max-w-xl font-display text-2xl font-bold tracking-tight sm:text-4xl"
-        >
-          ¿Prefieres contratar a través de una plataforma?
-        </motion.h2>
-        <motion.p
-          {...fadeUp(0.1)}
-          className="mx-auto mt-4 max-w-md text-crema/60"
-        >
-          Estoy en las principales. Elige la que prefieras.
-        </motion.p>
+        <SectionHeader
+          index="04"
+          kicker="Encuéntrame también en"
+          title="¿Prefieres contratar a través de una plataforma?"
+          description="Estoy en las principales. Elige la que prefieras."
+          dark
+          center
+          dot={false}
+          titleClassName="max-w-xl text-2xl sm:text-4xl"
+        />
 
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3">
           {platforms.map((p, i) => (

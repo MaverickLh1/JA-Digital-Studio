@@ -4,12 +4,13 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { easeOut, fadeUp } from "@/lib/motion";
 import { aboutChips } from "@/lib/data";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function About() {
   return (
     <section id="sobre-mi" className="bg-crema-dim px-5 py-24 sm:py-32">
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Foto */}
+        {/* Foto con marco coral desplazado (efecto impresión fuera de registro) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -17,32 +18,35 @@ export default function About() {
           transition={{ duration: 0.7, ease: easeOut }}
           className="relative mx-auto w-full max-w-md"
         >
-          <div className="absolute -inset-3 -z-10 rounded-3xl bg-coral/20" />
-          <div className="absolute -bottom-4 -right-4 -z-10 h-32 w-32 rounded-3xl bg-coral" />
-          <Image
-            src="/foto-perfil.webp"
-            alt="José Antonio, freelance digital"
-            width={1200}
-            height={1200}
-            sizes="(max-width: 1024px) 100vw, 448px"
-            className="rounded-3xl object-cover shadow-xl"
-          />
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border-2 border-coral"
+            />
+            <Image
+              src="/foto-perfil.webp"
+              alt="José Antonio, freelance digital"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 1024px) 100vw, 448px"
+              className="relative rounded-3xl object-cover shadow-xl"
+            />
+          </div>
+          <p className="mt-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-carbon/45">
+            <span>La Haba, Badajoz — ES</span>
+            <span className="text-coral-dark">38°55′N · 5°57′O</span>
+          </p>
         </motion.div>
 
         {/* Texto */}
         <div>
-          <motion.p
-            {...fadeUp(0, { y: 16, duration: 0.5 })}
-            className="kicker mb-4 text-coral-dark"
-          >
-            Sobre mí
-          </motion.p>
-          <motion.h2
-            {...fadeUp(0.05)}
-            className="font-display text-3xl font-bold tracking-tight sm:text-4xl"
-          >
-            Hola, soy José Antonio 👋
-          </motion.h2>
+          <SectionHeader
+            index="02"
+            kicker="Sobre mí"
+            title="Hola, soy José Antonio 👋"
+            dot={false}
+            titleClassName="text-3xl sm:text-4xl"
+          />
 
           <motion.div
             {...fadeUp(0.12)}

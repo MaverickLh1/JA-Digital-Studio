@@ -4,6 +4,8 @@ import { motion } from "motion/react";
 import ContactForm from "@/components/ContactForm";
 import { contact, whatsappHref } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/icons";
+import SectionHeader from "@/components/SectionHeader";
+import { StatusDot } from "@/components/decor";
 import { fadeUp } from "@/lib/motion";
 
 export default function Contact() {
@@ -13,18 +15,13 @@ export default function Contact() {
 
       <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>
-          <motion.p
-            {...fadeUp(0, { y: 16, duration: 0.5 })}
-            className="kicker mb-4 text-coral"
-          >
-            Contacto
-          </motion.p>
-          <motion.h2
-            {...fadeUp(0.05)}
-            className="font-display text-3xl font-bold tracking-tight sm:text-5xl"
-          >
-            ¿Hablamos de tu proyecto?
-          </motion.h2>
+          <SectionHeader
+            index="05"
+            kicker="Contacto"
+            title="¿Hablamos de tu proyecto?"
+            dark
+            dot={false}
+          />
           <motion.p {...fadeUp(0.1)} className="mt-4 max-w-md text-crema/65">
             Cuéntame qué necesitas y te respondo lo antes posible. Sin
             compromiso.
@@ -38,8 +35,13 @@ export default function Contact() {
         {/* Alternativas directas */}
         <motion.div
           {...fadeUp(0.2)}
-          className="flex flex-col justify-center gap-5 rounded-3xl border border-crema/10 bg-crema/[0.03] p-7"
+          className="flex flex-col justify-center gap-5 rounded-3xl border border-crema/10 bg-crema/[0.03] p-7 sm:p-8"
         >
+          <p className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-crema/55">
+            <StatusDot />
+            Disponible para nuevos proyectos
+          </p>
+
           <h3 className="font-display text-xl font-semibold">
             ¿Prefieres algo más directo?
           </h3>
@@ -73,6 +75,10 @@ export default function Contact() {
             </svg>
             Escríbeme un email
           </a>
+
+          <p className="border-t border-crema/10 pt-4 text-center font-mono text-[11px] uppercase tracking-[0.15em] text-crema/40">
+            Respuesta en menos de 24 h · España (CET)
+          </p>
         </motion.div>
       </div>
     </section>

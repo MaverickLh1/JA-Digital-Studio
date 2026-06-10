@@ -77,6 +77,16 @@ export default function Footer() {
 
         <p>© {new Date().getFullYear()} JA Digital Studio</p>
       </div>
+
+      {/* Marca de agua: el nombre del estudio recortado por el borde inferior */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none -mb-12 mt-10 select-none overflow-hidden"
+      >
+        <p className="text-outline-crema translate-y-[22%] whitespace-nowrap text-center font-display text-[9.5vw] font-extrabold uppercase leading-[0.85] tracking-tight">
+          JA Digital Studio
+        </p>
+      </div>
     </footer>
   );
 }

@@ -1,27 +1,23 @@
 "use client";
 
 import { motion } from "motion/react";
-import { easeOut, fadeUp } from "@/lib/motion";
+import { easeOut } from "@/lib/motion";
 import { processSteps } from "@/lib/data";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function Process() {
   return (
     <section className="bg-crema px-5 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
-        <motion.h2
-          {...fadeUp()}
-          className="mb-16 max-w-2xl font-display text-3xl font-bold tracking-tight sm:text-5xl"
-        >
-          Trabajar conmigo es fácil
-        </motion.h2>
-
-        <div className="relative grid gap-10 md:grid-cols-3 md:gap-8">
-          {/* Línea de conexión */}
-          <div
-            className="absolute left-0 right-0 top-7 hidden h-px bg-carbon/15 md:block"
-            aria-hidden="true"
+        <div className="mb-16 max-w-2xl">
+          <SectionHeader
+            index="03"
+            kicker="Proceso"
+            title="Trabajar conmigo es fácil"
           />
+        </div>
 
+        <div className="grid gap-12 md:grid-cols-3 md:gap-8">
           {processSteps.map((step, i) => (
             <motion.div
               key={step.n}
@@ -29,11 +25,14 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.15, ease: easeOut }}
-              className="relative"
+              className="border-t border-carbon/15 pt-8 transition-colors hover:border-coral/60"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-coral bg-crema font-mono text-sm font-bold text-coral-dark">
+              <span
+                aria-hidden="true"
+                className="text-outline block font-display text-7xl font-extrabold leading-none sm:text-8xl"
+              >
                 {step.n}
-              </div>
+              </span>
               <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight">
                 {step.title}
               </h3>

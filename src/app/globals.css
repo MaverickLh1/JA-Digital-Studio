@@ -8,6 +8,7 @@
   --color-carbon-soft: #201e1c;
   --color-coral: #ff6f61;
   --color-coral-dark: #f25444;
+  --color-paper: #fffcf6;
 
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
@@ -149,6 +150,26 @@ body {
   line-height: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;
+}
+
+/* ===== Numerales gigantes contorneados (sección proceso) ===== */
+.text-outline {
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--color-carbon) 30%, transparent);
+  color: transparent;
+}
+.text-outline-crema {
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--color-crema) 14%, transparent);
+  color: transparent;
+}
+
+/* ===== Marquesina (banda coral hero → servicios) ===== */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
 }
 
 /* ===== Línea animada bajo enlaces ===== */

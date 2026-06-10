@@ -12,9 +12,16 @@ import {
 import type { Service } from "@/lib/data";
 import { easeOut } from "@/lib/motion";
 
-export default function ServiceCard({ service }: { service: Service }) {
+export default function ServiceCard({
+  service,
+  index,
+}: {
+  service: Service;
+  index: number;
+}) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const dark = Boolean(service.featured);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -47,11 +54,15 @@ export default function ServiceCard({ service }: { service: Service }) {
         onMouseMove={handleMove}
         onMouseLeave={reset}
         style={{ rotateX, rotateY }}
-        className="group flex h-full flex-col overflow-hidden rounded-3xl border border-carbon/10 bg-white shadow-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-carbon/10"
+        className={`group flex h-full flex-col overflow-hidden rounded-3xl border transition-[box-shadow,border-color] duration-300 ${
+          dark
+            ? "border-carbon bg-carbon text-crema shadow-lg shadow-carbon/20 hover:border-coral/50 hover:shadow-xl hover:shadow-coral/10"
+            : "border-carbon/10 bg-paper shadow-sm hover:border-coral/35 hover:shadow-xl hover:shadow-carbon/10"
+        }`}
       >
         {/* Visual */}
         {service.image ? (
-          <div className="relative aspect-[16/10] overflow-hidden bg-carbon">
+          <div className="relative aspect-[16/10] overflow-hidden border-b border-carbon/10 bg-carbon">
             <Image
               src={service.image}
               alt={`Ejemplo de trabajo: ${service.title}`}
@@ -61,7 +72,7 @@ export default function ServiceCard({ service }: { service: Service }) {
             />
           </div>
         ) : (
-          <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-carbon">
+          <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-crema/10 bg-carbon">
             <div className="aurora opacity-70" aria-hidden="true" />
             <svg
               viewBox="0 0 24 24"
@@ -75,15 +86,36 @@ export default function ServiceCard({ service }: { service: Service }) {
               <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" />
               <circle cx="12" cy="12" r="3.4" />
             </svg>
+            <p
+              aria-hidden="true"
+              className="absolute bottom-4 left-5 font-mono text-[11px] tracking-wide text-crema/45"
+            >
+              ~$ ia --aplicada-a-tu-negocio
+              <span className="animate-pulse text-coral">▌</span>
+            </p>
           </div>
         )}
 
         {/* Contenido */}
         <div className="flex flex-1 flex-col p-6">
-          <h3 className="font-display text-xl font-semibold tracking-tight">
-            {service.title}
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-carbon/65">
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="font-display text-xl font-semibold tracking-tight">
+              {service.title}
+            </h3>
+            <span
+              aria-hidden="true"
+              className={`mt-1 shrink-0 font-mono text-xs tracking-[0.15em] ${
+                dark ? "text-crema/35" : "text-carbon/30"
+              }`}
+            >
+              /{String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+          <p
+            className={`mt-2 text-sm leading-relaxed ${
+              dark ? "text-crema/65" : "text-carbon/65"
+            }`}
+          >
             {service.tagline}
           </p>
 
@@ -99,7 +131,9 @@ export default function ServiceCard({ service }: { service: Service }) {
                 {service.bullets.map((b) => (
                   <li
                     key={b}
-                    className="flex items-start gap-2 text-sm text-carbon/80"
+                    className={`flex items-start gap-2 text-sm ${
+                      dark ? "text-crema/80" : "text-carbon/80"
+                    }`}
                   >
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-coral" />
                     {b}
@@ -113,7 +147,9 @@ export default function ServiceCard({ service }: { service: Service }) {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            className="mt-5 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-coral-dark"
+            className={`mt-5 inline-flex w-fit items-center gap-1.5 text-sm font-semibold ${
+              dark ? "text-coral" : "text-coral-dark"
+            }`}
           >
             {open ? "Ver menos" : "Ver más"}
             <motion.span animate={{ rotate: open ? 45 : 0 }} className="text-lg leading-none">

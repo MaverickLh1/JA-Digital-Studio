@@ -5,6 +5,7 @@ export type Service = {
   bullets: string[];
   image: string | null;
   span: string; // clases de columnas para el bento (lg)
+  featured?: boolean; // tarjeta oscura focal del bento
 };
 
 export const services: Service[] = [
@@ -22,6 +23,7 @@ export const services: Service[] = [
     ],
     image: null,
     span: "lg:col-span-2",
+    featured: true,
   },
   {
     id: "shopify",
@@ -114,6 +116,15 @@ export const contact = {
 export const whatsappHref = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
   "¡Hola José Antonio! Quería comentarte un proyecto."
 )}`;
+
+// Rótulos de la marquesina (banda coral entre hero y servicios).
+export const marqueeItems = [
+  "Diseño web",
+  "Tiendas Shopify",
+  "Imágenes de producto",
+  "Branding",
+  "IA aplicada",
+] as const;
 
 // Páginas legales (footer principal y layout de páginas legales).
 export const legalLinks = [
