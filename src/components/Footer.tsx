@@ -1,5 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import { platforms, contact } from "@/lib/data";
+
+const legalLinks = [
+  { href: "/aviso-legal", label: "Aviso legal" },
+  { href: "/privacidad", label: "Privacidad" },
+  { href: "/cookies", label: "Cookies" },
+];
 
 export default function Footer() {
   return (
@@ -43,10 +50,19 @@ export default function Footer() {
         </ul>
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center justify-between gap-2 border-t border-crema/10 pt-6 text-sm text-crema/45 sm:flex-row">
+      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-crema/10 pt-6 text-sm text-crema/45 sm:flex-row">
         <a href={`mailto:${contact.email}`} className="link-underline hover:text-crema">
           {contact.email}
         </a>
+
+        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          {legalLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="transition-colors hover:text-crema">
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
         <p>© {new Date().getFullYear()} JA Digital Studio</p>
       </div>
     </footer>
