@@ -106,7 +106,8 @@ export const contact = {
   email: "joseantonio@jadigitalstudio.com",
   whatsapp: "34623462851",
   // Perfil de LinkedIn. Déjalo vacío ("") para ocultar el botón social.
-  linkedin: "",
+  // URL con tildes codificadas (é→%C3%A9, á→%C3%A1) para máxima compatibilidad.
+  linkedin: "https://www.linkedin.com/in/jos%C3%A9-antonio-gonz%C3%A1lez-moreno-96b60a415",
 };
 
 export type ContactState = {
