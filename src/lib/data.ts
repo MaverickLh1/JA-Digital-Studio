@@ -92,16 +92,14 @@ export type Platform = {
   ratio: number; // ancho/alto del lienzo recortado → para ancho natural a altura fija
 };
 
-// Las URLs se actualizarán cuando José Antonio pase sus perfiles.
 // ?v=N fuerza recarga del SVG cuando se edita su lienzo (evita caché del navegador).
+// Solo se muestran las plataformas con perfil activo. Upwork, Workana y
+// SoyFreelancer quedan ocultas: reactivar añadiendo su objeto con la url real.
 const v = "?v=6";
 export const platforms: Platform[] = [
-  { name: "Fiverr", icon: `/plataforma-fiverr.svg${v}`, url: "#", ratio: 3.17 },
-  { name: "Malt", icon: `/plataforma-malt.svg${v}`, url: "#", ratio: 3.31 },
-  { name: "Upwork", icon: `/plataforma-upwork.svg${v}`, url: "#", ratio: 3.35 },
-  { name: "Freelancer", icon: `/plataforma-freelancer.svg${v}`, url: "#", ratio: 4.14 },
-  { name: "Workana", icon: `/plataforma-workana.svg${v}`, url: "#", ratio: 6.19 },
-  { name: "SoyFreelancer", icon: `/plataforma-soyfreelancer.svg${v}`, url: "#", ratio: 8.67 },
+  { name: "Fiverr", icon: `/plataforma-fiverr.svg${v}`, url: "https://es.fiverr.com/sellers/joseantoniog692/", ratio: 3.17 },
+  { name: "Malt", icon: `/plataforma-malt.svg${v}`, url: "https://www.malt.es/profile/joseantoniogonzalezmoreno", ratio: 3.31 },
+  { name: "Freelancer", icon: `/plataforma-freelancer.svg${v}`, url: "https://www.freelancer.es/u/joseantoniog56", ratio: 4.14 },
 ];
 
 export const contact = {
