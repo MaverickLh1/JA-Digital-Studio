@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import SmoothScroll from "@/components/SmoothScroll";
 import Grain from "@/components/Grain";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -72,6 +73,7 @@ export default function RootLayout({
         <Grain />
         <SmoothScroll>{children}</SmoothScroll>
         <WhatsAppFloat />
+        <Analytics />
       </body>
     </html>
   );
