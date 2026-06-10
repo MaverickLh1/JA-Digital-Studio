@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Política de privacidad — JA Digital Studio",
   description:
     "Cómo se tratan tus datos personales en jadigitalstudio.com conforme al RGPD y la LOPDGDD.",
+  alternates: { canonical: "/privacidad" },
 };
 
 export default function Privacidad() {

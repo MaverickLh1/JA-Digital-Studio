@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Aviso legal — JA Digital Studio",
   description:
     "Información legal y datos identificativos del titular de jadigitalstudio.com conforme a la LSSI-CE.",
+  alternates: { canonical: "/aviso-legal" },
 };
 
 export default function AvisoLegal() {

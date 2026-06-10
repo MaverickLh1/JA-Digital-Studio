@@ -40,6 +40,12 @@ body {
   color: var(--color-carbon);
 }
 
+/* Foco visible de marca (navegación por teclado) */
+:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 3px;
+}
+
 /* ===== Grano (textura "hecho a mano") ===== */
 .grain-overlay {
   position: fixed;

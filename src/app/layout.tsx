@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import SmoothScroll from "@/components/SmoothScroll";
 import Grain from "@/components/Grain";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import { contact, platforms } from "@/lib/data";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -59,6 +60,28 @@ export const metadata: Metadata = {
   },
 };
 
+// Datos estructurados: le dicen a Google que esto es un servicio profesional
+// y enlazan los perfiles verificados (Fiverr, Malt, Freelancer, LinkedIn).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "JA Digital Studio",
+  url: siteUrl,
+  email: contact.email,
+  description:
+    "Diseño web, tiendas Shopify, imágenes de producto e inteligencia artificial aplicada para negocios y marcas.",
+  founder: {
+    "@type": "Person",
+    name: "José Antonio González Moreno",
+  },
+  areaServed: "ES",
+  knowsLanguage: "es",
+  sameAs: [
+    ...platforms.map((p) => p.url),
+    contact.linkedin,
+  ].filter((u) => u && u !== "#"),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,9 +93,15 @@ export default function RootLayout({
       className={`${bricolage.variable} ${geist.variable} ${geistMono.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Grain />
-        <SmoothScroll>{children}</SmoothScroll>
-        <WhatsAppFloat />
+        <SmoothScroll>
+          {children}
+          <WhatsAppFloat />
+        </SmoothScroll>
         <Analytics />
       </body>
     </html>

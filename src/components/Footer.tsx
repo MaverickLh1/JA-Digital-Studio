@@ -17,7 +17,7 @@ export default function Footer() {
           />
           <div>
             <p className="font-display font-semibold">JA Digital Studio</p>
-            <p className="text-sm text-crema/50">José Antonio · Freelance digital</p>
+            <p className="text-sm text-crema/65">José Antonio · Freelance digital</p>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-crema/10 pt-6 text-sm text-crema/45 sm:flex-row">
+      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-crema/10 pt-6 text-sm text-crema/60 sm:flex-row">
         <a href={`mailto:${contact.email}`} className="link-underline hover:text-crema">
           {contact.email}
         </a>

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Política de cookies — JA Digital Studio",
   description:
     "Información sobre el uso de cookies en jadigitalstudio.com.",
+  alternates: { canonical: "/cookies" },
 };
 
 export default function Cookies() {
