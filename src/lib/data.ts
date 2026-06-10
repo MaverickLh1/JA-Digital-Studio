@@ -105,6 +105,8 @@ export const platforms: Platform[] = [
 export const contact = {
   email: "joseantonio@jadigitalstudio.com",
   whatsapp: "34623462851",
+  // Perfil de LinkedIn. Déjalo vacío ("") para ocultar el botón social.
+  linkedin: "",
 };
 
 export type ContactState = {

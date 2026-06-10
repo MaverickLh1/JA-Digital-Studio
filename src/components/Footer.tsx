@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { platforms, contact } from "@/lib/data";
+import { LinkedInIcon } from "@/components/icons";
 
 const legalLinks = [
   { href: "/aviso-legal", label: "Aviso legal" },
@@ -26,28 +27,45 @@ export default function Footer() {
           </div>
         </div>
 
-        <ul className="flex flex-wrap items-center justify-center gap-4">
-          {platforms.map((p) => (
-            <li key={p.name}>
+        <div className="flex items-center gap-5">
+          <ul className="flex flex-wrap items-center justify-center gap-4">
+            {platforms.map((p) => (
+              <li key={p.name}>
+                <a
+                  href={p.url}
+                  target={p.url === "#" ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  aria-label={p.name}
+                  className="block text-crema/45 transition-colors hover:text-coral"
+                >
+                  <span
+                    className="platform-icon h-5"
+                    style={{
+                      aspectRatio: p.ratio,
+                      WebkitMaskImage: `url(${p.icon})`,
+                      maskImage: `url(${p.icon})`,
+                    }}
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {contact.linkedin && (
+            <>
+              <span className="h-6 w-px bg-crema/15" aria-hidden="true" />
               <a
-                href={p.url}
-                target={p.url === "#" ? undefined : "_blank"}
+                href={contact.linkedin}
+                target="_blank"
                 rel="noopener noreferrer"
-                aria-label={p.name}
-                className="block text-crema/45 transition-colors hover:text-coral"
+                aria-label="LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-crema/15 text-crema/55 transition-colors hover:border-coral hover:text-coral"
               >
-                <span
-                  className="platform-icon h-5"
-                  style={{
-                    aspectRatio: p.ratio,
-                    WebkitMaskImage: `url(${p.icon})`,
-                    maskImage: `url(${p.icon})`,
-                  }}
-                />
+                <LinkedInIcon className="h-5 w-5" />
               </a>
-            </li>
-          ))}
-        </ul>
+            </>
+          )}
+        </div>
       </div>
 
       <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-crema/10 pt-6 text-sm text-crema/45 sm:flex-row">
