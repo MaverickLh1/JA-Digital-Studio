@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { services } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
-import { easeOut } from "@/lib/motion";
+import { easeOut, fadeUp } from "@/lib/motion";
 
 export default function Services() {
   return (
@@ -11,30 +11,18 @@ export default function Services() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 max-w-2xl">
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-coral-dark"
+            {...fadeUp(0, { y: 16, duration: 0.5 })}
+            className="kicker mb-4 text-coral-dark"
           >
             Lo que puedo hacer por ti
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+            {...fadeUp(0.05)}
             className="font-display text-3xl font-bold tracking-tight sm:text-5xl"
           >
             Todo lo que tu negocio necesita para destacar online
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 text-lg text-carbon/60"
-          >
+          <motion.p {...fadeUp(0.1)} className="mt-4 text-lg text-carbon/60">
             Cinco áreas, un objetivo: que funcione y que venda. Con mano
             especial para el e-commerce.
           </motion.p>

@@ -27,7 +27,7 @@ export default function Hero() {
           variants={fade}
           initial="hidden"
           animate="visible"
-          className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-coral"
+          className="kicker mb-6 text-coral"
         >
           José Antonio — Freelance digital · España
         </motion.p>

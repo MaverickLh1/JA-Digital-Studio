@@ -2,8 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { sendContact } from "@/app/actions";
-import type { ContactState } from "@/lib/data";
+import { sendContact, type ContactState } from "@/app/actions";
 
 const initial: ContactState = { ok: false, message: "" };
 

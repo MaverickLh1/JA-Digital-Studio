@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import ContactForm from "@/components/ContactForm";
 import { contact, whatsappHref } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/icons";
+import { fadeUp } from "@/lib/motion";
 
 export default function Contact() {
   return (
@@ -13,51 +14,30 @@ export default function Contact() {
       <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-coral"
+            {...fadeUp(0, { y: 16, duration: 0.5 })}
+            className="kicker mb-4 text-coral"
           >
             Contacto
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+            {...fadeUp(0.05)}
             className="font-display text-3xl font-bold tracking-tight sm:text-5xl"
           >
             ¿Hablamos de tu proyecto?
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 max-w-md text-crema/65"
-          >
+          <motion.p {...fadeUp(0.1)} className="mt-4 max-w-md text-crema/65">
             Cuéntame qué necesitas y te respondo lo antes posible. Sin
             compromiso.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-8"
-          >
+          <motion.div {...fadeUp(0.15)} className="mt-8">
             <ContactForm />
           </motion.div>
         </div>
 
         {/* Alternativas directas */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          {...fadeUp(0.2)}
           className="flex flex-col justify-center gap-5 rounded-3xl border border-crema/10 bg-crema/[0.03] p-7"
         >
           <h3 className="font-display text-xl font-semibold">

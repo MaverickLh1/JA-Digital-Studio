@@ -1,35 +1,15 @@
 "use client";
 
 import { motion } from "motion/react";
-import { easeOut } from "@/lib/motion";
-
-const steps = [
-  {
-    n: "01",
-    title: "Cuéntame",
-    text: "Me escribes y me explicas qué necesitas. Te respondo rápido y sin compromiso.",
-  },
-  {
-    n: "02",
-    title: "Lo definimos",
-    text: "Acordamos alcance, plazo y precio. Todo claro desde el principio, sin sorpresas.",
-  },
-  {
-    n: "03",
-    title: "Lo entrego",
-    text: "Hago el trabajo y te lo entrego listo para usar. Con revisiones si hace falta.",
-  },
-];
+import { easeOut, fadeUp } from "@/lib/motion";
+import { processSteps } from "@/lib/data";
 
 export default function Process() {
   return (
     <section className="bg-crema px-5 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          {...fadeUp()}
           className="mb-16 max-w-2xl font-display text-3xl font-bold tracking-tight sm:text-5xl"
         >
           Trabajar conmigo es fácil
@@ -42,7 +22,7 @@ export default function Process() {
             aria-hidden="true"
           />
 
-          {steps.map((step, i) => (
+          {processSteps.map((step, i) => (
             <motion.div
               key={step.n}
               initial={{ opacity: 0, y: 30 }}

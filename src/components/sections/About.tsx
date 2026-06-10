@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { easeOut } from "@/lib/motion";
-
-const chips = ["📍 España", "Trato directo conmigo", "Respuesta rápida"];
+import { easeOut, fadeUp } from "@/lib/motion";
+import { aboutChips } from "@/lib/data";
 
 export default function About() {
   return (
@@ -33,29 +32,20 @@ export default function About() {
         {/* Texto */}
         <div>
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-coral-dark"
+            {...fadeUp(0, { y: 16, duration: 0.5 })}
+            className="kicker mb-4 text-coral-dark"
           >
             Sobre mí
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+            {...fadeUp(0.05)}
             className="font-display text-3xl font-bold tracking-tight sm:text-4xl"
           >
             Hola, soy José Antonio 👋
           </motion.h2>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.12 }}
+            {...fadeUp(0.12)}
             className="mt-5 space-y-4 text-base leading-relaxed text-carbon/75 sm:text-lg"
           >
             <p>
@@ -76,14 +66,8 @@ export default function About() {
             </p>
           </motion.div>
 
-          <motion.ul
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.18 }}
-            className="mt-7 flex flex-wrap gap-3"
-          >
-            {chips.map((c) => (
+          <motion.ul {...fadeUp(0.18)} className="mt-7 flex flex-wrap gap-3">
+            {aboutChips.map((c) => (
               <li
                 key={c}
                 className="rounded-full border border-carbon/15 bg-crema px-4 py-2 text-sm font-medium"

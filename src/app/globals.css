@@ -136,6 +136,15 @@ body {
   mask-position: center;
 }
 
+/* ===== Rótulo de sección (kicker) ===== */
+@utility kicker {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
 /* ===== Línea animada bajo enlaces ===== */
 .link-underline {
   background-image: linear-gradient(var(--color-coral), var(--color-coral));

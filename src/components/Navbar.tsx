@@ -2,13 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
-const links = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Sobre mí", href: "#sobre-mi" },
-  { label: "Plataformas", href: "#plataformas" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { navLinks } from "@/lib/data";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -48,7 +42,7 @@ export default function Navbar() {
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
-          {links.map((l) => (
+          {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}

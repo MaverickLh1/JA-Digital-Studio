@@ -122,7 +122,37 @@ export const legalLinks = [
   { href: "/cookies", label: "Cookies" },
 ] as const;
 
-export type ContactState = {
-  ok: boolean;
-  message: string;
-};
+// Navegación principal (anclas de la home).
+export const navLinks = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Sobre mí", href: "#sobre-mi" },
+  { label: "Plataformas", href: "#plataformas" },
+  { label: "Contacto", href: "#contacto" },
+] as const;
+
+// Chips de confianza de la sección "Sobre mí".
+export const aboutChips = [
+  "📍 España",
+  "Trato directo conmigo",
+  "Respuesta rápida",
+] as const;
+
+// Pasos de la sección "Trabajar conmigo es fácil".
+export const processSteps = [
+  {
+    n: "01",
+    title: "Cuéntame",
+    text: "Me escribes y me explicas qué necesitas. Te respondo rápido y sin compromiso.",
+  },
+  {
+    n: "02",
+    title: "Lo definimos",
+    text: "Acordamos alcance, plazo y precio. Todo claro desde el principio, sin sorpresas.",
+  },
+  {
+    n: "03",
+    title: "Lo entrego",
+    text: "Hago el trabajo y te lo entrego listo para usar. Con revisiones si hace falta.",
+  },
+] as const;
+

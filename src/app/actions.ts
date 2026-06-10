@@ -1,7 +1,13 @@
 "use server";
 
 import { Resend } from "resend";
-import { contact, type ContactState } from "@/lib/data";
+import { contact } from "@/lib/data";
+
+// Estado que devuelve la acción al formulario (useActionState).
+export type ContactState = {
+  ok: boolean;
+  message: string;
+};
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
