@@ -2,13 +2,14 @@
 
 import { motion } from "motion/react";
 import ScrambleText from "@/components/ScrambleText";
+import { easeOut } from "@/lib/motion";
 
 const fade = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.7, delay: 0.2 + i * 0.12, ease: easeOut },
   }),
 };
 

@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { platforms, contact } from "@/lib/data";
+import { platforms, contact, legalLinks } from "@/lib/data";
 import { LinkedInIcon } from "@/components/icons";
-
-const legalLinks = [
-  { href: "/aviso-legal", label: "Aviso legal" },
-  { href: "/privacidad", label: "Privacidad" },
-  { href: "/cookies", label: "Cookies" },
-];
 
 export default function Footer() {
   return (

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { services } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
+import { easeOut } from "@/lib/motion";
 
 export default function Services() {
   return (
@@ -47,7 +48,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: [0.22, 1, 0.36, 1] as const }}
+              transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: easeOut }}
             >
               <ServiceCard service={service} />
             </motion.div>

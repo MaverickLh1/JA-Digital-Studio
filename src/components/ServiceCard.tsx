@@ -10,6 +10,7 @@ import {
   useTransform,
 } from "motion/react";
 import type { Service } from "@/lib/data";
+import { easeOut } from "@/lib/motion";
 
 export default function ServiceCard({ service }: { service: Service }) {
   const [open, setOpen] = useState(false);
@@ -92,7 +93,7 @@ export default function ServiceCard({ service }: { service: Service }) {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as const }}
+                transition={{ duration: 0.35, ease: easeOut }}
                 className="mt-4 space-y-2 overflow-hidden"
               >
                 {service.bullets.map((b) => (
@@ -109,7 +110,9 @@ export default function ServiceCard({ service }: { service: Service }) {
           </AnimatePresence>
 
           <button
+            type="button"
             onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
             className="mt-5 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-coral-dark"
           >
             {open ? "Ver menos" : "Ver más"}

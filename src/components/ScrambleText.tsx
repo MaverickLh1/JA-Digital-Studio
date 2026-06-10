@@ -16,7 +16,6 @@ export default function ScrambleText({
   revealDelay?: number;
 }) {
   const [display, setDisplay] = useState(text);
-  const frame = useRef(0);
   const raf = useRef<number | null>(null);
 
   useEffect(() => {
@@ -24,12 +23,15 @@ export default function ScrambleText({
       "(prefers-reduced-motion: reduce)"
     ).matches;
     if (prefersReduced) {
-      setDisplay(text);
-      return;
+      // Sin animación: mostrar el texto final (vía rAF para no hacer
+      // setState síncrono dentro del effect).
+      raf.current = requestAnimationFrame(() => setDisplay(text));
+      return () => {
+        if (raf.current) cancelAnimationFrame(raf.current);
+      };
     }
 
     let revealed = 0;
-    frame.current = 0;
     const start = performance.now();
 
     const tick = (now: number) => {

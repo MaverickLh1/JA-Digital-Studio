@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
+import { easeOut } from "@/lib/motion";
 
 const chips = ["📍 España", "Trato directo conmigo", "Respuesta rápida"];
 
@@ -14,7 +15,7 @@ export default function About() {
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
+          transition={{ duration: 0.7, ease: easeOut }}
           className="relative mx-auto w-full max-w-md"
         >
           <div className="absolute -inset-3 -z-10 rounded-3xl bg-coral/20" />

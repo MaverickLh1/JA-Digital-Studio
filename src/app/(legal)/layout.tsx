@@ -1,11 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-const legalPages = [
-  { href: "/aviso-legal", label: "Aviso legal" },
-  { href: "/privacidad", label: "Privacidad" },
-  { href: "/cookies", label: "Cookies" },
-];
+import { legalLinks } from "@/lib/data";
 
 export default function LegalLayout({
   children,
@@ -52,7 +47,7 @@ export default function LegalLayout({
 
       <footer className="border-t border-crema/10 px-5 py-8">
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-crema/45">
-          {legalPages.map((p) => (
+          {legalLinks.map((p) => (
             <Link
               key={p.href}
               href={p.href}

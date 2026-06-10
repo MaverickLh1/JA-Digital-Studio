@@ -110,6 +110,18 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/jos%C3%A9-antonio-gonz%C3%A1lez-moreno-96b60a415",
 };
 
+// Enlace de WhatsApp con mensaje precargado (botón flotante y sección contacto).
+export const whatsappHref = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
+  "¡Hola José Antonio! Quería comentarte un proyecto."
+)}`;
+
+// Páginas legales (footer principal y layout de páginas legales).
+export const legalLinks = [
+  { href: "/aviso-legal", label: "Aviso legal" },
+  { href: "/privacidad", label: "Privacidad" },
+  { href: "/cookies", label: "Cookies" },
+] as const;
+
 export type ContactState = {
   ok: boolean;
   message: string;

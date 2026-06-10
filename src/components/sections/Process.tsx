@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { easeOut } from "@/lib/motion";
 
 const steps = [
   {
@@ -47,7 +48,7 @@ export default function Process() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as const }}
+              transition={{ duration: 0.6, delay: i * 0.15, ease: easeOut }}
               className="relative"
             >
               <div className="flex h-14 w-14 items-center justify-center rounded-full border border-coral bg-crema font-mono text-sm font-bold text-coral-dark">
