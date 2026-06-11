@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import ScrambleText from "@/components/ScrambleText";
-import { StatusDot } from "@/components/decor";
 import { easeOut } from "@/lib/motion";
 
 const fade = {
@@ -111,17 +110,6 @@ export default function Hero() {
             Hablemos
           </a>
         </motion.div>
-
-        <motion.p
-          custom={6}
-          variants={fade}
-          initial="hidden"
-          animate="visible"
-          className="mt-12 flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-crema/45"
-        >
-          <StatusDot />
-          Disponible para nuevos proyectos
-        </motion.p>
       </div>
 
       <motion.div

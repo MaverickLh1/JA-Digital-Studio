@@ -142,7 +142,7 @@ export default function Navbar() {
                   Hablemos de tu proyecto
                 </a>
                 <p className="text-center font-mono text-xs font-bold uppercase tracking-[0.3em] text-carbon/55">
-                  WEB/ ECOM/ <span className="text-coral-dark">IA/</span>
+                  WEB/ ECOM/ <span className="text-coral-dark">BRAND/</span>
                 </p>
               </motion.div>
             </nav>

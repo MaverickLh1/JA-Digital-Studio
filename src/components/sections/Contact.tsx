@@ -5,7 +5,6 @@ import ContactForm from "@/components/ContactForm";
 import { contact, whatsappHref } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/icons";
 import SectionHeader from "@/components/SectionHeader";
-import { StatusDot } from "@/components/decor";
 import { fadeUp } from "@/lib/motion";
 
 export default function Contact() {
@@ -37,11 +36,6 @@ export default function Contact() {
           {...fadeUp(0.2)}
           className="flex flex-col justify-center gap-5 rounded-3xl border border-crema/10 bg-crema/[0.03] p-7 sm:p-8"
         >
-          <p className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-crema/55">
-            <StatusDot />
-            Disponible para nuevos proyectos
-          </p>
-
           <h3 className="font-display text-xl font-semibold">
             ¿Prefieres algo más directo?
           </h3>

@@ -12,14 +12,3 @@ export function Crosshair({ className = "" }: { className?: string }) {
     </span>
   );
 }
-
-// Punto de estado pulsante (disponibilidad). El ping se desactiva solo
-// con prefers-reduced-motion vía la regla global de globals.css.
-export function StatusDot({ className = "" }: { className?: string }) {
-  return (
-    <span className={`relative flex h-2 w-2 ${className}`} aria-hidden="true">
-      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-60" />
-      <span className="relative inline-flex h-2 w-2 rounded-full bg-[#25D366]" />
-    </span>
-  );
-}
