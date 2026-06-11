@@ -93,8 +93,15 @@ export default function Services() {
             Dossier de servicios y tarifas
           </a>
           <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/50">
-            PDF · 6 págs
+            PDF · 6 págs ·
           </span>
+          <a
+            href={dossierHref}
+            download="dossier-josea-gonzalez.pdf"
+            className="font-mono text-[11px] uppercase tracking-[0.15em] text-coral-dark underline underline-offset-4 transition-colors hover:text-coral"
+          >
+            Descargar ↓
+          </a>
         </motion.p>
       </div>
     </section>
