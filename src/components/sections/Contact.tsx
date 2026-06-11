@@ -16,7 +16,7 @@ export default function Contact() {
       <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>
           <SectionHeader
-            index="05"
+            index="06"
             kicker="Contacto"
             title="¿Hablamos de tu proyecto?"
             dark

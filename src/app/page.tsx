@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Marquee from "@/components/Marquee";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
+import Work from "@/components/sections/Work";
 import About from "@/components/sections/About";
 import Process from "@/components/sections/Process";
 import Platforms from "@/components/sections/Platforms";
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Services />
+        <Work />
         <About />
         <Process />
         <Platforms />

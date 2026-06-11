@@ -41,7 +41,7 @@ export default function About() {
         {/* Texto */}
         <div>
           <SectionHeader
-            index="02"
+            index="03"
             kicker="Sobre mí"
             title="Hola, soy José Antonio 👋"
             dot={false}

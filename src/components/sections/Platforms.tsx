@@ -14,7 +14,7 @@ export default function Platforms() {
     >
       <div className="mx-auto max-w-6xl text-center">
         <SectionHeader
-          index="04"
+          index="05"
           kicker="Encuéntrame también en"
           title="¿Prefieres contratar a través de una plataforma?"
           description="Estoy en las principales. Elige la que prefieras."

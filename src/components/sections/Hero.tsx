@@ -80,9 +80,9 @@ export default function Hero() {
           animate="visible"
           className="mt-8 max-w-xl text-base leading-relaxed text-crema/70 sm:text-lg"
         >
-          Ayudo a negocios y marcas a crecer en internet: diseño web, tiendas
-          Shopify, imágenes de producto, branding e inteligencia artificial
-          aplicada.
+          Ayudo a negocios y marcas a crecer en internet: tiendas Shopify y
+          diseño web, con imágenes de producto y branding para rematar. Y la
+          IA bien aplicada en cada proyecto.
         </motion.p>
 
         <motion.div

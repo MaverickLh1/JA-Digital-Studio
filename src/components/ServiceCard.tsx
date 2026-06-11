@@ -22,6 +22,7 @@ export default function ServiceCard({
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const dark = Boolean(service.featured);
+  const extra = Boolean(service.extra);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -62,7 +63,11 @@ export default function ServiceCard({
       >
         {/* Visual */}
         {service.image ? (
-          <div className="relative aspect-[16/10] overflow-hidden border-b border-carbon/10 bg-carbon">
+          <div
+            className={`relative overflow-hidden border-b bg-carbon ${
+              extra ? "aspect-[16/7]" : "aspect-[16/10]"
+            } ${dark ? "border-crema/10" : "border-carbon/10"}`}
+          >
             <Image
               src={service.image}
               alt={`Ejemplo de trabajo: ${service.title}`}
@@ -98,8 +103,15 @@ export default function ServiceCard({
 
         {/* Contenido */}
         <div className="flex flex-1 flex-col p-6">
+          {extra && (
+            <p className="kicker mb-2 text-[10px] text-carbon/40">Complemento</p>
+          )}
           <div className="flex items-start justify-between gap-3">
-            <h3 className="font-display text-xl font-semibold tracking-tight">
+            <h3
+              className={`font-display font-bold tracking-tight ${
+                extra ? "text-lg" : "text-xl"
+              }`}
+            >
               {service.title}
             </h3>
             <span

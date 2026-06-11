@@ -4,27 +4,13 @@ export type Service = {
   tagline: string;
   bullets: string[];
   image: string | null;
-  span: string; // clases de columnas para el bento (lg)
   featured?: boolean; // tarjeta oscura focal del bento
+  extra?: boolean; // complemento (jerarquía menor que las especialidades)
 };
 
+// El servicio "IA aplicada a tu negocio" se retiró del catálogo (jun 2026);
+// si vuelve, recuperar el objeto desde el historial de git.
 export const services: Service[] = [
-  {
-    id: "ia",
-    title: "IA aplicada a tu negocio",
-    tagline:
-      "La inteligencia artificial bien usada y adaptada a tu marca. Prompts, asistentes a medida y automatizaciones que te ahorran horas.",
-    bullets: [
-      "Prompts para e-commerce",
-      "Humanización de textos IA",
-      "GPTs y proyectos de Claude a medida",
-      "Fórmulas IA para Google Sheets",
-      "Guías para Midjourney / Ideogram",
-    ],
-    image: null,
-    span: "lg:col-span-2",
-    featured: true,
-  },
   {
     id: "shopify",
     title: "Optimización en Shopify",
@@ -38,7 +24,7 @@ export const services: Service[] = [
       "Reseñas y badges de confianza",
     ],
     image: "/mockup-shopify.webp",
-    span: "lg:col-span-2",
+    featured: true,
   },
   {
     id: "web",
@@ -53,7 +39,6 @@ export const services: Service[] = [
       "Páginas legales",
     ],
     image: "/mockup-web.webp",
-    span: "lg:col-span-2",
   },
   {
     id: "imagenes",
@@ -68,7 +53,7 @@ export const services: Service[] = [
       "Adaptación a Amazon, Etsy y Shopify",
     ],
     image: "/mockup-imagenes.webp",
-    span: "lg:col-span-3",
+    extra: true,
   },
   {
     id: "branding",
@@ -83,7 +68,45 @@ export const services: Service[] = [
       "Favicon y cabeceras",
     ],
     image: "/mockup-branding.webp",
-    span: "lg:col-span-3",
+    extra: true,
+  },
+];
+
+export type Project = {
+  id: string;
+  name: string;
+  type: string; // rótulo corto: "Tienda Shopify", "E-commerce + Marca"…
+  description: string;
+  image: string;
+  url?: string; // enlace público; omitir para mostrar estado "en construcción"
+  status: "live" | "soon";
+  services: string[]; // chips de lo aplicado en el proyecto
+  quote?: { text: string; author: string }; // testimonio real (cuando llegue)
+};
+
+// REVISAR: descripciones provisionales — ajustar al papel real en cada
+// proyecto y añadir las otras dos tiendas Shopify cuando haya URL.
+export const projects: Project[] = [
+  {
+    id: "tazamagica",
+    name: "Taza Mágica",
+    type: "Tienda Shopify",
+    description:
+      "Tienda de tazas y regalos personalizados. Montaje en Shopify, catálogo con personalización de producto e imágenes listas para vender.",
+    image: "/work/tazamagica.png",
+    url: "https://tazamagica.com",
+    status: "live",
+    services: ["Shopify", "Catálogo", "Imágenes de producto"],
+  },
+  {
+    id: "wemaker",
+    name: "Wemaker",
+    type: "E-commerce + Marca",
+    description:
+      "Proyecto propio de e-commerce construido de cero: identidad de marca, diseño web y catálogo. Lanzamiento en camino.",
+    image: "/mockup-web.webp",
+    status: "soon",
+    services: ["Branding", "Diseño web", "Shopify"],
   },
 ];
 
@@ -119,11 +142,10 @@ export const whatsappHref = `https://wa.me/${contact.whatsapp}?text=${encodeURIC
 
 // Rótulos de la marquesina (banda coral entre hero y servicios).
 export const marqueeItems = [
-  "Diseño web",
   "Tiendas Shopify",
+  "Diseño web",
   "Imágenes de producto",
   "Branding",
-  "IA aplicada",
 ] as const;
 
 // Páginas legales (footer principal y layout de páginas legales).
@@ -136,6 +158,7 @@ export const legalLinks = [
 // Navegación principal (anclas de la home).
 export const navLinks = [
   { label: "Servicios", href: "#servicios" },
+  { label: "Trabajos", href: "#trabajos" },
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Plataformas", href: "#plataformas" },
   { label: "Contacto", href: "#contacto" },

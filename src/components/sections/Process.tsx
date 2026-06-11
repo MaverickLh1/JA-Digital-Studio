@@ -11,7 +11,7 @@ export default function Process() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 max-w-2xl">
           <SectionHeader
-            index="03"
+            index="04"
             kicker="Proceso"
             title="Trabajar conmigo es fácil"
           />

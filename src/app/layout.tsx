@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Josea González — Web, e-commerce e IA para tu negocio",
   description:
-    "Soy José Antonio González, freelance digital. Llevo tu negocio al siguiente nivel: diseño web, tiendas Shopify, imágenes de producto, branding e inteligencia artificial aplicada.",
+    "Soy José Antonio González, freelance digital. Llevo tu negocio al siguiente nivel: tiendas Shopify, diseño web, imágenes de producto y branding, con IA aplicada en el proceso.",
   keywords: [
     "freelance digital",
     "diseño web",
@@ -73,7 +73,7 @@ const jsonLd = {
   url: siteUrl,
   email: contact.email,
   description:
-    "Diseño web, tiendas Shopify, imágenes de producto, branding e inteligencia artificial aplicada para negocios y marcas.",
+    "Tiendas Shopify, diseño web, imágenes de producto y branding para negocios y marcas, con IA aplicada en el proceso.",
   founder: {
     "@type": "Person",
     name: "José Antonio González Moreno",
