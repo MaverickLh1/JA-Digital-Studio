@@ -5,7 +5,9 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { projects } from "@/lib/data";
 import SectionHeader from "@/components/SectionHeader";
-import { easeOut } from "@/lib/motion";
+import { easeOut, fadeUp } from "@/lib/motion";
+
+const pad = (n: number) => String(n).padStart(2, "0");
 
 // Carril horizontal con scroll-snap: la sección mantiene una altura fija
 // aunque la lista de proyectos crezca. Las flechas solo aparecen cuando
@@ -14,6 +16,7 @@ export default function Work() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const [overflow, setOverflow] = useState(false);
+  const [active, setActive] = useState(1);
 
   useEffect(() => {
     const el = trackRef.current;
@@ -22,6 +25,11 @@ export default function Work() {
       const max = el.scrollWidth - el.clientWidth;
       setOverflow(max > 8);
       setProgress(max > 0 ? el.scrollLeft / max : 0);
+      const card = el.querySelector("article");
+      if (card) {
+        const step = card.clientWidth + 20;
+        setActive(Math.min(projects.length, Math.round(el.scrollLeft / step) + 1));
+      }
     };
     // La medición inicial va en rAF para no llamar a setState en el render.
     const raf = requestAnimationFrame(update);
@@ -56,31 +64,41 @@ export default function Work() {
           </div>
 
           {overflow && (
-            <div className="hidden shrink-0 gap-2.5 md:flex">
-              <button
-                type="button"
-                onClick={() => scrollByCard(-1)}
-                aria-label="Proyecto anterior"
-                disabled={progress <= 0.01}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-carbon/20 text-carbon transition-colors hover:border-coral hover:text-coral-dark disabled:pointer-events-none disabled:opacity-35"
+            <div className="flex shrink-0 items-center gap-4">
+              <span
+                aria-hidden="true"
+                className="font-mono text-xs tracking-[0.2em] text-carbon/50"
               >
-                ←
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollByCard(1)}
-                aria-label="Proyecto siguiente"
-                disabled={progress >= 0.99}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-carbon/20 text-carbon transition-colors hover:border-coral hover:text-coral-dark disabled:pointer-events-none disabled:opacity-35"
-              >
-                →
-              </button>
+                {pad(active)} / {pad(projects.length)}
+              </span>
+              <div className="hidden gap-2.5 md:flex">
+                <button
+                  type="button"
+                  onClick={() => scrollByCard(-1)}
+                  aria-label="Proyecto anterior"
+                  disabled={progress <= 0.01}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-carbon/20 text-carbon transition-colors hover:border-coral hover:text-coral-dark active:scale-[0.94] disabled:pointer-events-none disabled:opacity-35"
+                >
+                  ←
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollByCard(1)}
+                  aria-label="Proyecto siguiente"
+                  disabled={progress >= 0.99}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-carbon/20 text-carbon transition-colors hover:border-coral hover:text-coral-dark active:scale-[0.94] disabled:pointer-events-none disabled:opacity-35"
+                >
+                  →
+                </button>
+              </div>
             </div>
           )}
         </div>
 
         <div
           ref={trackRef}
+          role="region"
+          aria-label="Proyectos seleccionados"
           className="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2"
         >
           {projects.map((p, i) => (
@@ -168,7 +186,7 @@ export default function Work() {
                       </span>
                     </a>
                   ) : (
-                    <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/45">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/60">
                       En construcción — lanzamiento próximo
                     </span>
                   )}
@@ -189,6 +207,20 @@ export default function Work() {
             />
           </div>
         )}
+
+        {/* Puente a la acción tras la prueba */}
+        <motion.p
+          {...fadeUp(0.1)}
+          className="mt-12 flex flex-wrap items-baseline gap-x-3 gap-y-1"
+        >
+          <span className="kicker text-coral-dark">(→)</span>
+          <a
+            href="#contacto"
+            className="link-underline font-display text-xl font-bold tracking-tight sm:text-2xl"
+          >
+            ¿Quieres algo así para tu negocio? Hablemos
+          </a>
+        </motion.p>
       </div>
     </section>
   );

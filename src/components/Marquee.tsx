@@ -19,7 +19,12 @@ export default function Marquee() {
                       className="flex items-center whitespace-nowrap font-display text-sm font-black uppercase tracking-[0.14em] sm:text-base"
                     >
                       {item}
-                      <span className="mx-6 text-carbon/60">✦</span>
+                      {/* Separador: la barra inclinada del logo */}
+                      <span
+                        className="mx-6 inline-block -skew-x-[18deg] font-black text-carbon/60"
+                      >
+                        /
+                      </span>
                     </span>
                   ))}
               </div>

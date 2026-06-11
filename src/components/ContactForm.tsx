@@ -12,7 +12,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="shimmer relative w-full overflow-hidden rounded-full bg-coral px-7 py-3.5 text-sm font-semibold text-carbon transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+      className="shimmer relative w-full overflow-hidden rounded-full bg-coral px-7 py-3.5 text-sm font-semibold text-carbon transition-transform hover:scale-[1.02] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
     >
       {pending ? "Enviando…" : "Enviar mensaje"}
     </button>
@@ -69,7 +69,9 @@ export default function ContactForm() {
         {state.message && (
           <p
             role="status"
-            className={`text-sm ${state.ok ? "text-coral" : "text-crema/60"}`}
+            className={`text-sm ${
+              state.ok ? "text-coral" : "font-medium text-coral-dark"
+            }`}
           >
             {state.message}
           </p>

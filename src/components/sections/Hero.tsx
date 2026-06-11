@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-svh flex-col justify-center overflow-hidden bg-carbon px-5 pb-20 pt-32 text-crema"
+      className="relative flex min-h-svh flex-col justify-center overflow-hidden bg-carbon px-5 pb-20 pt-28 text-crema sm:pt-32"
     >
       <div className="aurora" aria-hidden="true" />
 
@@ -68,7 +68,9 @@ export default function Hero() {
             animate="visible"
             className="mt-2 block text-coral"
           >
-            <ScrambleText text="web, e-commerce e IA." />
+            {/* El U+2060 tras el guion evita que "e-commerce" se parta
+                en dos líneas en móvil. */}
+            <ScrambleText text={"web, e-⁠commerce y marca."} />
           </motion.span>
         </h1>
 
@@ -77,7 +79,7 @@ export default function Hero() {
           variants={fade}
           initial="hidden"
           animate="visible"
-          className="mt-8 max-w-xl text-base leading-relaxed text-crema/70 sm:text-lg"
+          className="mt-6 max-w-xl text-[15px] leading-relaxed text-crema/70 sm:mt-8 sm:text-lg"
         >
           Ayudo a negocios y marcas a crecer en internet: tiendas Shopify y
           diseño web, con imágenes de producto y branding para rematar. Y la
@@ -89,11 +91,11 @@ export default function Hero() {
           variants={fade}
           initial="hidden"
           animate="visible"
-          className="mt-10 flex flex-wrap items-center gap-4"
+          className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10"
         >
           <a
             href="#servicios"
-            className="shimmer group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-coral px-7 py-3.5 text-sm font-semibold text-carbon transition-transform hover:scale-[1.03]"
+            className="shimmer group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-coral px-7 py-3.5 text-sm font-semibold text-carbon transition-transform hover:scale-[1.03] active:scale-[0.97]"
           >
             Ver lo que hago
             <span
@@ -105,7 +107,7 @@ export default function Hero() {
           </a>
           <a
             href="#contacto"
-            className="inline-flex items-center rounded-full border border-crema/25 px-7 py-3.5 text-sm font-semibold text-crema transition-colors hover:border-crema/60"
+            className="inline-flex items-center rounded-full border border-crema/25 px-7 py-3.5 text-sm font-semibold text-crema transition-[border-color,transform] hover:border-crema/60 active:scale-[0.97]"
           >
             Hablemos
           </a>

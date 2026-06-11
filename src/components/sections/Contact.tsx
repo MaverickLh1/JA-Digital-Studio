@@ -44,7 +44,7 @@ export default function Contact() {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
+            className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.97]"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Escríbeme por WhatsApp
@@ -52,7 +52,7 @@ export default function Contact() {
 
           <a
             href={`mailto:${contact.email}`}
-            className="flex items-center justify-center gap-2 rounded-full border border-crema/20 px-6 py-3.5 text-sm font-semibold text-crema transition-colors hover:border-coral hover:text-coral"
+            className="flex items-center justify-center gap-2 rounded-full border border-crema/20 px-6 py-3.5 text-sm font-semibold text-crema transition-[border-color,color,transform] hover:border-coral hover:text-coral active:scale-[0.97]"
           >
             <svg
               viewBox="0 0 24 24"
@@ -70,7 +70,7 @@ export default function Contact() {
             Escríbeme un email
           </a>
 
-          <p className="border-t border-crema/10 pt-4 text-center font-mono text-[11px] uppercase tracking-[0.15em] text-crema/40">
+          <p className="border-t border-crema/10 pt-4 text-center font-mono text-[11px] uppercase tracking-[0.15em] text-crema/55">
             Respuesta en menos de 24 h · España (CET)
           </p>
         </motion.div>

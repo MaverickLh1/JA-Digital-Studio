@@ -32,7 +32,7 @@ const siteUrl = "https://joseagonzalez.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Josea González — Web, e-commerce e IA para tu negocio",
+  title: "Josea González — Web, e-commerce y marca para tu negocio",
   description:
     "Soy José Antonio González, freelance digital. Llevo tu negocio al siguiente nivel: tiendas Shopify, diseño web, imágenes de producto y branding, con IA aplicada en el proceso.",
   keywords: [
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "José Antonio" }],
   openGraph: {
-    title: "Josea González — Web, e-commerce e IA",
+    title: "Josea González — Web, e-commerce y marca",
     description:
-      "Llevo tu negocio al siguiente nivel: web, e-commerce e IA. Freelance digital en España.",
+      "Llevo tu negocio al siguiente nivel: web, e-commerce y marca. Freelance digital en España.",
     url: siteUrl,
     siteName: "Josea González",
     locale: "es_ES",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Josea González — Web, e-commerce e IA",
+    title: "Josea González — Web, e-commerce y marca",
     description:
-      "Llevo tu negocio al siguiente nivel: web, e-commerce e IA. Freelance digital en España.",
+      "Llevo tu negocio al siguiente nivel: web, e-commerce y marca. Freelance digital en España.",
   },
 };
 

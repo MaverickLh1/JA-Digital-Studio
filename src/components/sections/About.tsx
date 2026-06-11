@@ -5,6 +5,13 @@ import { motion } from "motion/react";
 import { easeOut, fadeUp } from "@/lib/motion";
 import { aboutChips } from "@/lib/data";
 import SectionHeader from "@/components/SectionHeader";
+import { BoltIcon, ChatIcon, PinIcon } from "@/components/icons";
+
+const chipIcons = {
+  pin: PinIcon,
+  chat: ChatIcon,
+  bolt: BoltIcon,
+} as const;
 
 export default function About() {
   return (
@@ -43,8 +50,7 @@ export default function About() {
           <SectionHeader
             index="03"
             kicker="Sobre mí"
-            title="Hola, soy José Antonio 👋"
-            dot={false}
+            title="Hola, soy José Antonio"
             titleClassName="text-3xl sm:text-4xl"
           />
 
@@ -71,14 +77,18 @@ export default function About() {
           </motion.div>
 
           <motion.ul {...fadeUp(0.18)} className="mt-7 flex flex-wrap gap-3">
-            {aboutChips.map((c) => (
-              <li
-                key={c}
-                className="rounded-full border border-carbon/15 bg-crema px-4 py-2 text-sm font-medium"
-              >
-                {c}
-              </li>
-            ))}
+            {aboutChips.map((c) => {
+              const Icon = chipIcons[c.icon];
+              return (
+                <li
+                  key={c.label}
+                  className="flex items-center gap-2 rounded-full border border-carbon/15 bg-crema px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-carbon/75"
+                >
+                  <Icon className="h-3.5 w-3.5 text-coral-dark" />
+                  {c.label}
+                </li>
+              );
+            })}
           </motion.ul>
         </div>
       </div>

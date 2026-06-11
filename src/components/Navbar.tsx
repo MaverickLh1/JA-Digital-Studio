@@ -60,7 +60,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contacto"
-            className="rounded-full bg-coral px-5 py-2 text-sm font-semibold text-carbon transition-transform hover:scale-105"
+            className="rounded-full bg-coral px-5 py-2 text-sm font-semibold text-carbon transition-transform hover:scale-105 active:scale-[0.96]"
           >
             Hablemos
           </a>
@@ -137,7 +137,7 @@ export default function Navbar() {
                 <a
                   href="#contacto"
                   onClick={() => setOpen(false)}
-                  className="rounded-full bg-coral px-6 py-3.5 text-center text-sm font-semibold text-carbon"
+                  className="rounded-full bg-coral px-6 py-3.5 text-center text-sm font-semibold text-carbon transition-transform active:scale-[0.97]"
                 >
                   Hablemos de tu proyecto
                 </a>

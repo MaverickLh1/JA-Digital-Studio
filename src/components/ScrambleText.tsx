@@ -43,7 +43,9 @@ export default function ScrambleText({
       const out = text
         .split("")
         .map((char, i) => {
-          if (char === " " || char === "\n") return char;
+          // Espacios, saltos y el word-joiner (U+2060, evita partir
+          // "e-commerce" en dos líneas) se mantienen tal cual.
+          if (char === " " || char === "\n" || char === "⁠") return char;
           if (i < revealed) return char;
           return CHARS[Math.floor(Math.random() * CHARS.length)];
         })

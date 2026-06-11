@@ -56,3 +56,43 @@ export function GitHubIcon(props: IconProps) {
     </svg>
   );
 }
+
+/* ===== Iconos de interfaz propios =====
+   Estilo técnico de la marca: trazo 1.8, terminaciones redondeadas,
+   geometría simple. Color vía currentColor, tamaño vía className. */
+
+const stroke = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.8,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  xmlns: "http://www.w3.org/2000/svg",
+  "aria-hidden": true,
+} as const;
+
+export function PinIcon(props: IconProps) {
+  return (
+    <svg {...stroke} {...props}>
+      <path d="M12 21s-6.2-5.4-6.2-10.2a6.2 6.2 0 1 1 12.4 0C18.2 15.6 12 21 12 21z" />
+      <circle cx="12" cy="10.6" r="2.2" />
+    </svg>
+  );
+}
+
+export function ChatIcon(props: IconProps) {
+  return (
+    <svg {...stroke} {...props}>
+      <path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5h-8.6L6 19.6V16H5a1.5 1.5 0 0 1-1.5-1.5V7A1.5 1.5 0 0 1 5 5.5z" />
+    </svg>
+  );
+}
+
+export function BoltIcon(props: IconProps) {
+  return (
+    <svg {...stroke} {...props}>
+      <path d="M13 3 5.4 13.5h5L11 21l7.6-10.5h-5z" />
+    </svg>
+  );
+}

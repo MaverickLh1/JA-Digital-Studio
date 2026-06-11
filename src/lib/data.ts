@@ -23,7 +23,7 @@ export const services: Service[] = [
       "Metafields personalizados",
       "Reseñas y badges de confianza",
     ],
-    image: "/mockup-shopify.webp",
+    image: "/services/shopify.jpg",
     featured: true,
   },
   {
@@ -38,7 +38,7 @@ export const services: Service[] = [
       "Páginas Coming Soon",
       "Páginas legales",
     ],
-    image: "/mockup-web.webp",
+    image: "/services/webs.jpg",
   },
   {
     id: "imagenes",
@@ -52,7 +52,7 @@ export const services: Service[] = [
       "Edición de sombras y reflejos",
       "Adaptación a Amazon, Etsy y Shopify",
     ],
-    image: "/mockup-imagenes.webp",
+    image: "/services/imagenes.png",
     extra: true,
   },
   {
@@ -67,7 +67,7 @@ export const services: Service[] = [
       "Iconos de beneficios",
       "Favicon y cabeceras",
     ],
-    image: "/mockup-branding.webp",
+    image: "/services/branding.png",
     extra: true,
   },
 ];
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     type: "Tienda Shopify",
     description:
       "Tienda de tazas y regalos personalizados. Montaje en Shopify, catálogo con personalización de producto e imágenes listas para vender.",
-    image: "/work/tazamagica.png",
+    image: "/work/tazamagica.jpg",
     url: "https://tazamagica.com",
     status: "live",
     services: ["Shopify", "Catálogo", "Imágenes de producto"],
@@ -131,28 +131,9 @@ export const projects: Project[] = [
     status: "soon",
     services: ["Shopify", "Catálogo", "Imágenes de producto"],
   },
-  {
-    id: "visionariodigital",
-    name: "Visionario Digital",
-    type: "Blog · IA",
-    description:
-      "Noticias de inteligencia artificial explicadas sin humo: modelos, herramientas y novedades al día.",
-    image: "/work/visionariodigital.png",
-    url: "https://visionariodigital.com",
-    status: "soon",
-    services: ["Diseño web", "Contenidos", "SEO"],
-  },
-  {
-    id: "aventurasyviajes",
-    name: "Aventuras y Viajes",
-    type: "Blog · Viajes",
-    description:
-      "Blog de viajes y aventuras: rutas, consejos y los mejores destinos, contados por quien los pisa.",
-    image: "/work/aventurasyviajes.png",
-    url: "https://aventurasyviajes.com",
-    status: "soon",
-    services: ["Diseño web", "Contenidos", "SEO"],
-  },
+  // Ocultos hasta que estén más avanzados (las imágenes siguen en
+  // /public/work): Visionario Digital y Aventuras y Viajes. Para
+  // reactivarlos, recuperar sus objetos del historial de git.
   {
     id: "theintellectum",
     name: "The Intellectum",
@@ -220,11 +201,11 @@ export const navLinks = [
   { label: "Contacto", href: "#contacto" },
 ] as const;
 
-// Chips de confianza de la sección "Sobre mí".
+// Chips de confianza de la sección "Sobre mí" (icono del sistema + texto).
 export const aboutChips = [
-  "📍 España",
-  "Trato directo conmigo",
-  "Respuesta rápida",
+  { icon: "pin", label: "España" },
+  { icon: "chat", label: "Trato directo conmigo" },
+  { icon: "bolt", label: "Respuesta rápida" },
 ] as const;
 
 // Pasos de la sección "Trabajar conmigo es fácil".
@@ -233,16 +214,19 @@ export const processSteps = [
     n: "01",
     title: "Cuéntame",
     text: "Me escribes y me explicas qué necesitas. Te respondo rápido y sin compromiso.",
+    note: "Respuesta en menos de 24 h",
   },
   {
     n: "02",
     title: "Lo definimos",
     text: "Acordamos alcance, plazo y precio. Todo claro desde el principio, sin sorpresas.",
+    note: "Precio cerrado antes de empezar",
   },
   {
     n: "03",
     title: "Lo entrego",
     text: "Hago el trabajo y te lo entrego listo para usar. Con revisiones si hace falta.",
+    note: "Revisiones incluidas",
   },
 ] as const;
 

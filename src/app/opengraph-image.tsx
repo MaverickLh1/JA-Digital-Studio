@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { stackedLogo, domainWordmark } from "@/lib/brand-paths";
 
-export const alt = "Josea González — Web, e-commerce e IA para tu negocio";
+export const alt = "Josea González — Web, e-commerce y marca para tu negocio";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
