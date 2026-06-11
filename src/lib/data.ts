@@ -105,7 +105,7 @@ export const platforms: Platform[] = [
 ];
 
 export const contact = {
-  email: "joseantonio@jadigitalstudio.com",
+  email: "hola@joseagonzalez.com",
   whatsapp: "34623462851",
   // Perfil de LinkedIn. Déjalo vacío ("") para ocultar el botón social.
   // URL con tildes codificadas (é→%C3%A9, á→%C3%A1) para máxima compatibilidad.
