@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
-import { services } from "@/lib/data";
+import { dossierHref, services } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import SectionHeader from "@/components/SectionHeader";
 import { Crosshair } from "@/components/decor";
-import { easeOut } from "@/lib/motion";
+import { easeOut, fadeUp } from "@/lib/motion";
 
 export default function Services() {
   // Jerarquía de oferta: dos especialidades grandes y dos complementos.
@@ -77,6 +77,25 @@ export default function Services() {
             ))}
           </div>
         </div>
+
+        {/* Dossier: toda la oferta ampliada y tarifas, fuera de la landing */}
+        <motion.p
+          {...fadeUp(0.1)}
+          className="mt-12 flex flex-wrap items-baseline gap-x-3 gap-y-1"
+        >
+          <span className="kicker text-coral-dark">(↓)</span>
+          <a
+            href={dossierHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline font-display text-xl font-bold tracking-tight sm:text-2xl"
+          >
+            Dossier de servicios y tarifas
+          </a>
+          <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/50">
+            PDF · 6 págs
+          </span>
+        </motion.p>
       </div>
     </section>
   );

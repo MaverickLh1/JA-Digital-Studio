@@ -172,6 +172,9 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/jos%C3%A9-antonio-gonz%C3%A1lez-moreno-96b60a415",
 };
 
+// Dossier de servicios y tarifas (PDF en /public; fuente en docs/dossier.html).
+export const dossierHref = "/dossier-servicios.pdf";
+
 // Enlace de WhatsApp con mensaje precargado (botón flotante y sección contacto).
 export const whatsappHref = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
   "¡Hola José Antonio! Quería comentarte un proyecto."

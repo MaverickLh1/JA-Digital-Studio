@@ -9,7 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import type { Service } from "@/lib/data";
+import { dossierHref, type Service } from "@/lib/data";
 import { easeOut } from "@/lib/motion";
 
 export default function ServiceCard({
@@ -151,6 +151,20 @@ export default function ServiceCard({
                     {b}
                   </li>
                 ))}
+                <li className="pt-1.5">
+                  <a
+                    href={dossierHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`font-mono text-[11px] uppercase tracking-[0.15em] underline underline-offset-4 transition-colors ${
+                      dark
+                        ? "text-crema/70 hover:text-coral"
+                        : "text-carbon/60 hover:text-coral-dark"
+                    }`}
+                  >
+                    → Detalles y tarifas en el dossier (PDF)
+                  </a>
+                </li>
               </motion.ul>
             )}
           </AnimatePresence>

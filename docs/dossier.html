@@ -1,0 +1,245 @@
+<!--
+  FUENTE DEL DOSSIER DE SERVICIOS (public/dossier-servicios.pdf)
+  Para regenerar el PDF tras editar tarifas o textos:
+
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+    --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=8000 \
+    --print-to-pdf="public/dossier-servicios.pdf" "file://$PWD/docs/dossier.html"
+
+  (ejecutar desde la raíz del proyecto)
+-->
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap');
+*{margin:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4;margin:0}
+body{font-family:Geist,sans-serif;color:#171615}
+.page{width:210mm;height:296mm;padding:18mm 16mm;page-break-after:always;position:relative;overflow:hidden}
+.dark{background:#171615;color:#F8F0E3}
+.lite{background:#F8F0E3}
+.paper{background:#FFFCF6}
+.mono{font-family:'JetBrains Mono',monospace}
+.kick{font-family:'JetBrains Mono',monospace;font-size:8.5pt;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
+.coral{color:#FF6F61}.coraldk{color:#F25444}
+h2{font-family:Archivo;font-weight:900;font-size:26pt;letter-spacing:-.5pt;margin:4mm 0 6mm}
+h3{font-family:Archivo;font-weight:900;font-size:14pt;letter-spacing:-.2pt}
+p,li{font-size:10pt;line-height:1.55;color:#171615d9}
+.dark p{color:#f8f0e3cc}
+.rule{height:1px;background:#17161526;flex:1}
+.dark .rule{background:#f8f0e326}
+.hrow{display:flex;align-items:center;gap:4mm;margin-bottom:2mm}
+.foot{position:absolute;left:16mm;right:16mm;bottom:10mm;display:flex;justify-content:space-between;align-items:center}
+.foot .mono{font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:#17161580}
+.dark .foot .mono{color:#f8f0e373}
+ul{list-style:none;margin-top:3mm}
+ul li{padding-left:5mm;position:relative;margin-bottom:1.6mm}
+ul li::before{content:"";position:absolute;left:0;top:5.5pt;width:2.4mm;height:2.4mm;border-radius:50%;background:#FF6F61}
+.price{display:inline-block;background:#171615;color:#F8F0E3;border-radius:999px;padding:2mm 5mm;font-family:'JetBrains Mono';font-size:9pt;font-weight:700;letter-spacing:.06em}
+.price b{color:#FF6F61}
+.tag{display:inline-block;border:1px solid #FF6F61;color:#F25444;border-radius:999px;padding:1.2mm 4mm;font-family:'JetBrains Mono';font-size:8pt;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
+.block{border:1px solid #17161522;border-radius:6mm;padding:8mm;background:#FFFCF6;margin-bottom:6mm}
+.lite .block{background:#FFFCF6}
+.cols{display:flex;gap:6mm}
+.cols>*{flex:1}
+table{width:100%;border-collapse:collapse;margin-top:4mm}
+th{font-family:'JetBrains Mono';font-size:8pt;letter-spacing:.15em;text-transform:uppercase;color:#17161599;text-align:left;padding:2.4mm 3mm;border-bottom:1.5px solid #171615}
+td{font-size:9.5pt;padding:2.8mm 3mm;border-bottom:1px solid #17161520}
+td.r{text-align:right;font-family:'JetBrains Mono';font-weight:700;white-space:nowrap}
+td.r b{color:#F25444}
+.slash{display:inline-block;transform:skewX(-18deg);color:#FF6F61;font-family:Archivo;font-weight:900}
+</style></head><body>
+
+<!-- P1 · PORTADA -->
+<section class="page dark">
+  <p class="kick coral" style="margin-top:6mm">Dossier de servicios — 2026</p>
+  <img src="file:///Users/joseantonio/Downloads/JA Digital Studio/public/brand/logo-apilado-oscuro.svg" style="width:150mm;margin:18mm 0 10mm -3mm">
+  <p style="font-size:13pt;max-width:120mm;color:#f8f0e3d9">Llevo tu negocio al siguiente nivel: tiendas Shopify, diseño web, imágenes de producto y branding. Con la IA bien aplicada en cada proyecto.</p>
+  <div style="position:absolute;left:16mm;bottom:34mm">
+    <p class="kick" style="color:#f8f0e380">Qué encontrarás dentro</p>
+    <p class="mono" style="font-size:9.5pt;margin-top:3mm;line-height:2">(01) Cómo trabajo<br>(02) Especialidades<br>(03) Complementos<br>(04) Tarifas orientativas y FAQ<br>(05) Contacto</p>
+  </div>
+  <div class="foot"><span class="mono">joseagonzalez.com</span><span class="mono coral">WEB/ ECOM/ BRAND/</span></div>
+</section>
+
+<!-- P2 · CÓMO TRABAJO -->
+<section class="page lite">
+  <div class="hrow"><span class="kick coraldk">(01)</span><span class="kick coraldk">Cómo trabajo</span><span class="rule"></span></div>
+  <h2>Trabajar conmigo es fácil<span class="coral">.</span></h2>
+  <div class="cols" style="margin-top:8mm">
+    <div>
+      <p class="mono" style="font-size:22pt;font-weight:700;color:#17161533">01</p>
+      <h3 style="margin:2mm 0">Cuéntame</h3>
+      <p>Me escribes y me explicas qué necesitas. Te respondo rápido y sin compromiso.</p>
+      <p class="mono coraldk" style="font-size:8pt;margin-top:3mm;letter-spacing:.12em">→ RESPUESTA EN MENOS DE 24 H</p>
+    </div>
+    <div>
+      <p class="mono" style="font-size:22pt;font-weight:700;color:#17161533">02</p>
+      <h3 style="margin:2mm 0">Lo definimos</h3>
+      <p>Acordamos alcance, plazo y precio. Todo claro desde el principio, sin sorpresas.</p>
+      <p class="mono coraldk" style="font-size:8pt;margin-top:3mm;letter-spacing:.12em">→ PRECIO CERRADO ANTES DE EMPEZAR</p>
+    </div>
+    <div>
+      <p class="mono" style="font-size:22pt;font-weight:700;color:#17161533">03</p>
+      <h3 style="margin:2mm 0">Lo entrego</h3>
+      <p>Hago el trabajo y te lo entrego listo para usar. Con revisiones si hace falta.</p>
+      <p class="mono coraldk" style="font-size:8pt;margin-top:3mm;letter-spacing:.12em">→ REVISIONES INCLUIDAS</p>
+    </div>
+  </div>
+  <div class="block" style="margin-top:12mm">
+    <p class="kick coraldk">Siempre incluido, hagas lo que hagas conmigo</p>
+    <ul style="margin-top:4mm">
+      <li>Trato directo conmigo de principio a fin: sin intermediarios ni gestores de cuenta.</li>
+      <li>Presupuesto cerrado por escrito antes de empezar. Si surge algo nuevo, se habla antes de hacerlo.</li>
+      <li>Una ronda de revisiones incluida en todos los paquetes (y flexibilidad razonable después).</li>
+      <li>Los archivos y accesos son tuyos: dominio, tienda, originales y exportables.</li>
+      <li>Entrega lista para usar, con una mini-guía de cómo tocar lo entregado sin romper nada.</li>
+    </ul>
+  </div>
+  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">02</span></div>
+</section>
+
+<!-- P3 · ESPECIALIDADES -->
+<section class="page paper">
+  <div class="hrow"><span class="kick coraldk">(02)</span><span class="kick coraldk">Especialidades</span><span class="rule"></span></div>
+  <h2>Lo mío: que tu tienda venda<span class="coral">.</span></h2>
+
+  <div class="block">
+    <span class="tag">Optimización en Shopify</span>
+    <p style="margin-top:3mm">Subo, organizo y optimizo tu catálogo para que se venda solo. SEO, variantes, migraciones y todo lo que tu tienda necesita.</p>
+    <div class="cols" style="margin-top:3mm">
+      <ul>
+        <li>Subida y SEO de productos (títulos, descripciones, etiquetas)</li>
+        <li>Migración de catálogos desde otra plataforma o CSV</li>
+        <li>Corrección y limpieza de archivos CSV</li>
+        <li>Metafields personalizados y variantes complejas</li>
+      </ul>
+      <ul>
+        <li>Reseñas y badges de confianza</li>
+        <li>Colecciones inteligentes y navegación de catálogo</li>
+        <li>Fichas listas para campañas (Meta, Google)</li>
+        <li>Informe final con lo hecho y recomendaciones</li>
+      </ul>
+    </div>
+    <p style="margin-top:4mm">
+      <span class="price">Puesta a punto (hasta 50 fichas) — desde <b>390&nbsp;€</b></span>&nbsp;&nbsp;
+      <span class="price">Catálogo XL / migración — desde <b>690&nbsp;€</b></span>
+    </p>
+  </div>
+
+  <div class="block">
+    <span class="tag">Webs y landing pages</span>
+    <p style="margin-top:3mm">Páginas que no solo se ven bien: convierten. Diseño orientado a que el visitante haga lo que quieres que haga.</p>
+    <div class="cols" style="margin-top:3mm">
+      <ul>
+        <li>Landing de una página con textos base y formulario</li>
+        <li>Webs de hasta 5 secciones/páginas</li>
+        <li>Páginas legales (aviso, privacidad, cookies)</li>
+      </ul>
+      <ul>
+        <li>Adaptación total a móvil y carga rápida</li>
+        <li>Dominio, correo y analítica configurados</li>
+        <li>Link in Bio y páginas Coming Soon</li>
+      </ul>
+    </div>
+    <p style="margin-top:4mm">
+      <span class="price">Landing page — desde <b>450&nbsp;€</b></span>&nbsp;&nbsp;
+      <span class="price">Web completa — desde <b>850&nbsp;€</b></span>
+    </p>
+  </div>
+  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">03</span></div>
+</section>
+
+<!-- P4 · COMPLEMENTOS -->
+<section class="page paper">
+  <div class="hrow"><span class="kick coraldk">(03)</span><span class="kick coraldk">Complementos</span><span class="rule"></span></div>
+  <h2>Los detalles que rematan<span class="coral">.</span></h2>
+
+  <div class="block">
+    <span class="tag">Imágenes para e-commerce</span>
+    <p style="margin-top:3mm">Tus productos, vistos como se merecen. Fondos limpios, fotografía con IA, infografías y formatos listos para cada marketplace.</p>
+    <div class="cols" style="margin-top:3mm">
+      <ul>
+        <li>Fondos blancos y transparentes (PNG)</li>
+        <li>Fotografía de producto con IA</li>
+        <li>Edición de sombras y reflejos</li>
+      </ul>
+      <ul>
+        <li>Infografías y miniaturas que explican el producto</li>
+        <li>Adaptación a Amazon, Etsy y Shopify (medidas y pesos)</li>
+        <li>Entrega organizada por producto y canal</li>
+      </ul>
+    </div>
+    <p style="margin-top:4mm"><span class="price">Pack 20 imágenes — desde <b>180&nbsp;€</b></span>&nbsp;&nbsp;<span class="price">Catálogos grandes — precio por volumen</span></p>
+  </div>
+
+  <div class="block">
+    <span class="tag">Identidad de marca</span>
+    <p style="margin-top:3mm">Una imagen coherente que se reconoce a la primera. Colores, logos, plantillas y los detalles que hacen que tu marca parezca grande.</p>
+    <div class="cols" style="margin-top:3mm">
+      <ul>
+        <li>Diseño de logo con variantes (principal, horizontal, monograma)</li>
+        <li>Paleta de colores y tipografías con guía de uso</li>
+        <li>Kits editables en Canva para tu día a día</li>
+      </ul>
+      <ul>
+        <li>Iconos de beneficios para tu web o fichas</li>
+        <li>Favicon y cabeceras para redes</li>
+        <li>Archivos finales en todos los formatos (SVG, PNG, PDF)</li>
+      </ul>
+    </div>
+    <p style="margin-top:4mm"><span class="price">Identidad básica — desde <b>420&nbsp;€</b></span></p>
+  </div>
+  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">04</span></div>
+</section>
+
+<!-- P5 · TARIFAS + FAQ -->
+<section class="page lite">
+  <div class="hrow"><span class="kick coraldk">(04)</span><span class="kick coraldk">Tarifas orientativas</span><span class="rule"></span></div>
+  <h2>Claro y por escrito<span class="coral">.</span></h2>
+  <table>
+    <tr><th>Servicio</th><th>Incluye</th><th style="text-align:right">Desde</th></tr>
+    <tr><td>Landing page</td><td>1 página, textos base, formulario, legal, publicación</td><td class="r"><b>450 €</b></td></tr>
+    <tr><td>Web completa</td><td>Hasta 5 secciones/páginas + todo lo anterior</td><td class="r"><b>850 €</b></td></tr>
+    <tr><td>Puesta a punto Shopify</td><td>Auditoría + hasta 50 fichas optimizadas + SEO base</td><td class="r"><b>390 €</b></td></tr>
+    <tr><td>Catálogo Shopify XL</td><td>Migración o subida masiva, variantes, metafields</td><td class="r"><b>690 €</b></td></tr>
+    <tr><td>Pack imágenes (20)</td><td>Fondos, retoque y formatos por marketplace</td><td class="r"><b>180 €</b></td></tr>
+    <tr><td>Identidad básica</td><td>Logo + paleta + tipografías + kit Canva</td><td class="r"><b>420 €</b></td></tr>
+  </table>
+  <p class="mono" style="font-size:8pt;letter-spacing:.1em;color:#17161599;margin-top:3mm">* TARIFAS ORIENTATIVAS. CADA PROYECTO SE PRESUPUESTA CERRADO Y POR ESCRITO TRAS UNA PRIMERA LLAMADA O MENSAJE.</p>
+
+  <div class="hrow" style="margin-top:10mm"><span class="kick coraldk">FAQ</span><span class="rule"></span></div>
+  <div class="cols" style="margin-top:4mm">
+    <div>
+      <h3 style="font-size:11pt">¿Cuánto se tarda?</h3>
+      <p style="margin-top:1.5mm">Una landing, 1–2 semanas. Una web completa o un catálogo grande, 2–4. Te doy fecha concreta en el presupuesto.</p>
+      <h3 style="font-size:11pt;margin-top:5mm">¿Cómo se paga?</h3>
+      <p style="margin-top:1.5mm">50% para reservar y arrancar, 50% a la entrega. Transferencia o Bizum, con factura.</p>
+    </div>
+    <div>
+      <h3 style="font-size:11pt">¿Qué necesito darte?</h3>
+      <p style="margin-top:1.5mm">Lo que tengas: textos, fotos, accesos. Si falta algo, lo resolvemos juntos — no necesitas tenerlo todo perfecto.</p>
+      <h3 style="font-size:11pt;margin-top:5mm">¿De quién es el resultado?</h3>
+      <p style="margin-top:1.5mm">Tuyo. Dominio, tienda, archivos originales y accesos quedan a tu nombre desde el primer día.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">05</span></div>
+</section>
+
+<!-- P6 · CONTACTO -->
+<section class="page dark">
+  <div class="hrow"><span class="kick coral">(05)</span><span class="kick coral">Contacto</span><span class="rule"></span></div>
+  <h2 style="font-size:34pt;margin-top:30mm">¿Hablamos de<br>tu proyecto<span class="coral">?</span></h2>
+  <p style="max-width:110mm">Cuéntame qué necesitas y te respondo en menos de 24 h con los siguientes pasos y, si lo tienes claro, presupuesto cerrado.</p>
+  <div style="margin-top:14mm">
+    <p class="mono" style="font-size:13pt;line-height:2.2">
+      <span class="coral">→</span>&nbsp; hola@joseagonzalez.com<br>
+      <span class="coral">→</span>&nbsp; WhatsApp: +34 623 462 851<br>
+      <span class="coral">→</span>&nbsp; joseagonzalez.com
+    </p>
+  </div>
+  <p class="kick" style="color:#f8f0e373;margin-top:16mm">También en Fiverr · Malt · Freelancer</p>
+  <img src="file:///Users/joseantonio/Downloads/JA Digital Studio/public/brand/monograma-app.svg" style="width:26mm;border-radius:6mm;position:absolute;right:16mm;bottom:28mm">
+  <div class="foot"><span class="mono">José Antonio González Moreno — La Haba (Badajoz), España</span><span class="mono coral">06</span></div>
+</section>
+
+</body></html>
