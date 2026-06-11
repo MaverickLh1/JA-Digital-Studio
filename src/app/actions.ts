@@ -45,12 +45,12 @@ export async function sendContact(
 
   try {
     const resend = new Resend(apiKey);
-    const from = process.env.CONTACT_FROM ?? "JA Digital Studio <onboarding@resend.dev>";
+    const from = process.env.CONTACT_FROM ?? "Josea González <onboarding@resend.dev>";
     await resend.emails.send({
       from,
       to: contact.email,
       replyTo: email,
-      subject: `Nuevo mensaje de ${name} — jadigitalstudio.com`,
+      subject: `Nuevo mensaje de ${name} — joseagonzalez.com`,
       text: `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`,
     });
     return { ok: true, message: "¡Mensaje enviado! Te responderé lo antes posible." };

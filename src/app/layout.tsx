@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -7,8 +7,10 @@ import Grain from "@/components/Grain";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { contact, platforms } from "@/lib/data";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+// Archivo es la familia variable hermana de Archivo Black (la del logo):
+// los titulares en peso 900 conectan directamente con el wordmark.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
   display: "swap",
 });
@@ -19,19 +21,20 @@ const geist = Geist({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// JetBrains Mono: la mono del tagline del logo (WEB/ ECOM/ IA/).
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
 });
 
-const siteUrl = "https://jadigitalstudio.com";
+const siteUrl = "https://joseagonzalez.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "JA Digital Studio — Web, e-commerce e IA para tu negocio",
+  title: "Josea González — Web, e-commerce e IA para tu negocio",
   description:
-    "Soy José Antonio, freelance digital. Llevo tu negocio al siguiente nivel: diseño web, tiendas Shopify, imágenes de producto e inteligencia artificial aplicada.",
+    "Soy José Antonio González, freelance digital. Llevo tu negocio al siguiente nivel: diseño web, tiendas Shopify, imágenes de producto, branding e inteligencia artificial aplicada.",
   keywords: [
     "freelance digital",
     "diseño web",
@@ -44,17 +47,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "José Antonio" }],
   openGraph: {
-    title: "JA Digital Studio — Web, e-commerce e IA",
+    title: "Josea González — Web, e-commerce e IA",
     description:
       "Llevo tu negocio al siguiente nivel: web, e-commerce e IA. Freelance digital en España.",
     url: siteUrl,
-    siteName: "JA Digital Studio",
+    siteName: "Josea González",
     locale: "es_ES",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "JA Digital Studio — Web, e-commerce e IA",
+    title: "Josea González — Web, e-commerce e IA",
     description:
       "Llevo tu negocio al siguiente nivel: web, e-commerce e IA. Freelance digital en España.",
   },
@@ -65,11 +68,12 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "JA Digital Studio",
+  name: "Josea González",
+  alternateName: "JOSEA GONZALEZ",
   url: siteUrl,
   email: contact.email,
   description:
-    "Diseño web, tiendas Shopify, imágenes de producto e inteligencia artificial aplicada para negocios y marcas.",
+    "Diseño web, tiendas Shopify, imágenes de producto, branding e inteligencia artificial aplicada para negocios y marcas.",
   founder: {
     "@type": "Person",
     name: "José Antonio González Moreno",
@@ -90,7 +94,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${bricolage.variable} ${geist.variable} ${geistMono.variable}`}
+      className={`${archivo.variable} ${geist.variable} ${jetbrains.variable}`}
     >
       <body>
         <script

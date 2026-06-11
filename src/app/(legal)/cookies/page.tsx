@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { contact } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Política de cookies — JA Digital Studio",
+  title: "Política de cookies — Josea González",
   description:
-    "Información sobre el uso de cookies en jadigitalstudio.com.",
+    "Información sobre el uso de cookies en joseagonzalez.com.",
   alternates: { canonical: "/cookies" },
 };
 

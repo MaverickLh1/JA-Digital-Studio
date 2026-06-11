@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { contact } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Aviso legal — JA Digital Studio",
+  title: "Aviso legal — Josea González",
   description:
-    "Información legal y datos identificativos del titular de jadigitalstudio.com conforme a la LSSI-CE.",
+    "Información legal y datos identificativos del titular de joseagonzalez.com conforme a la LSSI-CE.",
   alternates: { canonical: "/aviso-legal" },
 };
 
@@ -26,7 +26,7 @@ export default function AvisoLegal() {
         <li><strong>Domicilio:</strong> La Haba (Badajoz), España</li>
         <li><strong>Correo electrónico:</strong> <a href={`mailto:${contact.email}`}>{contact.email}</a></li>
         <li><strong>Actividad:</strong> servicios digitales freelance (diseño web, e-commerce, imágenes e inteligencia artificial aplicada)</li>
-        <li><strong>Sitio web:</strong> jadigitalstudio.com</li>
+        <li><strong>Sitio web:</strong> joseagonzalez.com</li>
       </ul>
 
       <h2>2. Objeto</h2>

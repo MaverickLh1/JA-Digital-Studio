@@ -10,9 +10,9 @@
   --color-coral-dark: #f25444;
   --color-paper: #fffcf6;
 
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
 /* ===== Base ===== */
@@ -147,6 +147,7 @@ body {
 @utility kicker {
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  font-weight: 500;
   line-height: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;

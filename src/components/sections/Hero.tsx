@@ -40,10 +40,10 @@ export default function Hero() {
           animate="visible"
           className="kicker mb-6 text-coral"
         >
-          José Antonio — Freelance digital · España
+          Josea González — Freelance digital · España
         </motion.p>
 
-        <h1 className="font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+        <h1 className="font-display text-[2.6rem] font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
           <motion.span
             custom={1}
             variants={fade}

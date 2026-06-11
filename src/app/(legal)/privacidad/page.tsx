@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { contact } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Política de privacidad — JA Digital Studio",
+  title: "Política de privacidad — Josea González",
   description:
-    "Cómo se tratan tus datos personales en jadigitalstudio.com conforme al RGPD y la LOPDGDD.",
+    "Cómo se tratan tus datos personales en joseagonzalez.com conforme al RGPD y la LOPDGDD.",
   alternates: { canonical: "/privacidad" },
 };
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
+import Logo from "@/components/Logo";
 import { navLinks } from "@/lib/data";
 import { easeOut } from "@/lib/motion";
 
@@ -35,22 +35,12 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5">
-        <a href="#top" className="flex items-center gap-3" aria-label="JA Digital Studio — inicio">
-          <Image
-            src="/logo-coral.svg"
-            alt="JA Digital Studio"
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-full"
-            priority
-          />
-          <span
-            className={`font-display text-lg font-semibold tracking-tight transition-colors ${
+        <a href="#top" className="flex items-center" aria-label="Josea González — inicio">
+          <Logo
+            className={`h-[15px] w-auto transition-colors duration-300 sm:h-[17px] ${
               scrolled || open ? "text-carbon" : "text-crema"
             }`}
-          >
-            JA Digital Studio
-          </span>
+          />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -151,8 +141,8 @@ export default function Navbar() {
                 >
                   Hablemos de tu proyecto
                 </a>
-                <p className="text-center text-sm text-carbon/55">
-                  Web · E-commerce · Imágenes · IA
+                <p className="text-center font-mono text-xs font-bold uppercase tracking-[0.3em] text-carbon/55">
+                  WEB/ ECOM/ <span className="text-coral-dark">IA/</span>
                 </p>
               </motion.div>
             </nav>

@@ -16,7 +16,7 @@ export default function Marquee() {
                   .map((item, i) => (
                     <span
                       key={`${copy}-${i}`}
-                      className="flex items-center whitespace-nowrap font-display text-sm font-bold uppercase tracking-[0.14em] sm:text-base"
+                      className="flex items-center whitespace-nowrap font-display text-sm font-black uppercase tracking-[0.14em] sm:text-base"
                     >
                       {item}
                       <span className="mx-6 text-carbon/60">✦</span>

@@ -29,7 +29,7 @@ export default function Process() {
             >
               <span
                 aria-hidden="true"
-                className="text-outline block font-display text-7xl font-extrabold leading-none sm:text-8xl"
+                className="text-outline block font-display text-7xl font-black leading-none sm:text-8xl"
               >
                 {step.n}
               </span>

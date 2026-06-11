@@ -43,7 +43,7 @@ export default function SectionHeader({
 
       <motion.h2
         {...fadeUp(0.05)}
-        className={`mt-5 font-display font-bold tracking-tight ${titleClassName} ${
+        className={`mt-5 font-display font-black tracking-tight ${titleClassName} ${
           center ? "mx-auto" : ""
         }`}
       >

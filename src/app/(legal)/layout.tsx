@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 import { legalLinks } from "@/lib/data";
 
 export default function LegalLayout({
@@ -11,15 +11,8 @@ export default function LegalLayout({
     <div className="min-h-screen bg-carbon text-crema">
       <header className="border-b border-crema/10 px-5 py-5">
         <div className="mx-auto flex max-w-3xl items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/logo-coral.svg"
-              alt="JA Digital Studio"
-              width={32}
-              height={32}
-              className="h-8 w-8 rounded-full"
-            />
-            <span className="font-display font-semibold">JA Digital Studio</span>
+          <Link href="/" className="flex items-center" aria-label="Josea González — inicio">
+            <Logo className="h-3.5 w-auto text-crema" />
           </Link>
           <Link
             href="/"
