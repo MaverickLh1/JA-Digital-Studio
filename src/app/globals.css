@@ -173,6 +173,14 @@ body {
   to { transform: translateX(-50%); }
 }
 
+/* ===== Carril horizontal sin barra de scroll visible ===== */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* ===== Línea animada bajo enlaces ===== */
 .link-underline {
   background-image: linear-gradient(var(--color-coral), var(--color-coral));

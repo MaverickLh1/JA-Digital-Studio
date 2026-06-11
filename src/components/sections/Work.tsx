@@ -1,40 +1,103 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { projects } from "@/lib/data";
 import SectionHeader from "@/components/SectionHeader";
 import { easeOut } from "@/lib/motion";
 
+// Carril horizontal con scroll-snap: la sección mantiene una altura fija
+// aunque la lista de proyectos crezca. Las flechas solo aparecen cuando
+// hay desbordamiento real (en escritorio con pocos casos no hacen falta).
 export default function Work() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+  const [overflow, setOverflow] = useState(false);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const update = () => {
+      const max = el.scrollWidth - el.clientWidth;
+      setOverflow(max > 8);
+      setProgress(max > 0 ? el.scrollLeft / max : 0);
+    };
+    // La medición inicial va en rAF para no llamar a setState en el render.
+    const raf = requestAnimationFrame(update);
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const scrollByCard = (dir: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector("article");
+    const step = card ? card.clientWidth + 20 : 460;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
   return (
     <section id="trabajos" className="bg-crema-dim px-5 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-14 max-w-2xl">
-          <SectionHeader
-            index="02"
-            kicker="Casos reales"
-            title="Trabajo seleccionado"
-            description="Proyectos de verdad, con tienda abierta o en camino. Esto es lo que sé montar."
-          />
+        <div className="flex items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <SectionHeader
+              index="02"
+              kicker="Casos reales"
+              title="Trabajo seleccionado"
+              description="Proyectos de verdad, con tienda abierta o en camino. Esto es lo que sé montar."
+            />
+          </div>
+
+          {overflow && (
+            <div className="hidden shrink-0 gap-2.5 md:flex">
+              <button
+                type="button"
+                onClick={() => scrollByCard(-1)}
+                aria-label="Proyecto anterior"
+                disabled={progress <= 0.01}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-carbon/20 text-carbon transition-colors hover:border-coral hover:text-coral-dark disabled:pointer-events-none disabled:opacity-35"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollByCard(1)}
+                aria-label="Proyecto siguiente"
+                disabled={progress >= 0.99}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-carbon/20 text-carbon transition-colors hover:border-coral hover:text-coral-dark disabled:pointer-events-none disabled:opacity-35"
+              >
+                →
+              </button>
+            </div>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div
+          ref={trackRef}
+          className="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2"
+        >
           {projects.map((p, i) => (
             <motion.article
               key={p.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: easeOut }}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-carbon/10 bg-paper shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-coral/35 hover:shadow-xl hover:shadow-carbon/10"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, delay: 0.05 * i, ease: easeOut }}
+              className="group flex w-[min(84vw,440px)] shrink-0 snap-start flex-col overflow-hidden rounded-3xl border border-carbon/10 bg-paper shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-coral/35 hover:shadow-xl hover:shadow-carbon/10"
             >
               <div className="relative aspect-[16/10] overflow-hidden border-b border-carbon/10 bg-carbon">
                 <Image
                   src={p.image}
                   alt={`${p.name} — ${p.type}`}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 84vw, 440px"
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 />
                 {p.status === "soon" && (
@@ -110,6 +173,18 @@ export default function Work() {
             </motion.article>
           ))}
         </div>
+
+        {overflow && (
+          <div
+            aria-hidden="true"
+            className="mt-7 h-px w-full bg-carbon/10"
+          >
+            <div
+              className="h-px bg-coral transition-[width] duration-150"
+              style={{ width: `${Math.round(progress * 100)}%` }}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
