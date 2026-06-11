@@ -103,11 +103,66 @@ export const projects: Project[] = [
     name: "Wemaker",
     type: "E-commerce + Marca",
     description:
-      "Proyecto propio de e-commerce construido de cero: identidad de marca, diseño web y catálogo. Lanzamiento en camino.",
-    image: "/mockup-web.webp",
+      "Personalización creativa para clubes, empresas y eventos. Proyecto propio construido de cero: marca, web y catálogo.",
+    image: "/work/wemaker.png",
     url: "https://wemaker.es",
     status: "soon",
     services: ["Branding", "Diseño web", "Shopify"],
+  },
+  {
+    id: "kodrux",
+    name: "Kodrux",
+    type: "Tienda Shopify",
+    description:
+      "Ropa geek con drops limitados para Europa, Estados Unidos y Latinoamérica. Marca, catálogo y tienda en construcción.",
+    image: "/work/kodrux.png",
+    url: "https://kodrux.com",
+    status: "soon",
+    services: ["Shopify", "Branding", "Catálogo"],
+  },
+  {
+    id: "chefhogar",
+    name: "ChefHogar",
+    type: "Tienda Shopify",
+    description:
+      "Todo para la cocina: utensilios, menaje y accesorios escogidos. Tienda en construcción con catálogo e imágenes de producto.",
+    image: "/work/chefhogar.png",
+    url: "https://chefhogar.com",
+    status: "soon",
+    services: ["Shopify", "Catálogo", "Imágenes de producto"],
+  },
+  {
+    id: "visionariodigital",
+    name: "Visionario Digital",
+    type: "Blog · IA",
+    description:
+      "Noticias de inteligencia artificial explicadas sin humo: modelos, herramientas y novedades al día.",
+    image: "/work/visionariodigital.png",
+    url: "https://visionariodigital.com",
+    status: "soon",
+    services: ["Diseño web", "Contenidos", "SEO"],
+  },
+  {
+    id: "aventurasyviajes",
+    name: "Aventuras y Viajes",
+    type: "Blog · Viajes",
+    description:
+      "Blog de viajes y aventuras: rutas, consejos y los mejores destinos, contados por quien los pisa.",
+    image: "/work/aventurasyviajes.png",
+    url: "https://aventurasyviajes.com",
+    status: "soon",
+    services: ["Diseño web", "Contenidos", "SEO"],
+  },
+  {
+    id: "theintellectum",
+    name: "The Intellectum",
+    type: "Editorial",
+    description:
+      "Editorial de pasatiempos, cuentos infantiles y libros de colorear. Historias para cabecitas curiosas.",
+    image: "/work/theintellectum.png",
+    url: "https://theintellectum.com",
+    status: "soon",
+    services: ["Branding", "Editorial", "Diseño"],
   },
 ];
 
