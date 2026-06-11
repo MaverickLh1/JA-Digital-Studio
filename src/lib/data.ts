@@ -105,6 +105,7 @@ export const projects: Project[] = [
     description:
       "Proyecto propio de e-commerce construido de cero: identidad de marca, diseño web y catálogo. Lanzamiento en camino.",
     image: "/mockup-web.webp",
+    url: "https://wemaker.es",
     status: "soon",
     services: ["Branding", "Diseño web", "Shopify"],
   },

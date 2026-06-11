@@ -92,7 +92,7 @@ export default function Work() {
                       rel="noopener noreferrer"
                       className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-coral-dark"
                     >
-                      Visitar tienda
+                      {p.status === "soon" ? "Visitar web" : "Visitar tienda"}
                       <span
                         aria-hidden="true"
                         className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
