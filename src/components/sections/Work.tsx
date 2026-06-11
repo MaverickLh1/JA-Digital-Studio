@@ -98,7 +98,11 @@ export default function Work() {
                   alt={`${p.name} — ${p.type}`}
                   fill
                   sizes="(max-width: 640px) 84vw, 440px"
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  className={`object-cover object-top transition-all duration-500 group-hover:scale-[1.03] ${
+                    p.status === "soon"
+                      ? "opacity-30 grayscale group-hover:opacity-55"
+                      : ""
+                  }`}
                 />
                 {p.status === "soon" && (
                   <span className="absolute right-4 top-4 rounded-full bg-coral px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-carbon">
