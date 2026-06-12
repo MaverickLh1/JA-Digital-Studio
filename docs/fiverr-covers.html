@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --carbon: #171615;
+    --crema: #F8F0E3;
+    --coral: #FF6F61;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1280px; height: 769px; overflow: hidden; }
+  .cover {
+    position: relative;
+    width: 1280px;
+    height: 769px;
+    background: var(--carbon);
+    overflow: hidden;
+    font-family: "Archivo", sans-serif;
+  }
+  /* glow cálido abajo-izquierda */
+  .glow {
+    position: absolute;
+    left: -200px;
+    bottom: -300px;
+    width: 900px;
+    height: 700px;
+    background: radial-gradient(closest-side, rgba(255, 111, 97, 0.13), transparent 70%);
+  }
+  /* slash gigante derecha */
+  .slash {
+    position: absolute;
+    right: 60px;
+    top: -120px;
+    width: 150px;
+    height: 1050px;
+    background: rgba(255, 111, 97, 0.16);
+    transform: skewX(-18deg);
+  }
+  .slash2 {
+    position: absolute;
+    right: -60px;
+    top: -120px;
+    width: 60px;
+    height: 1050px;
+    background: rgba(255, 111, 97, 0.10);
+    transform: skewX(-18deg);
+  }
+  /* hairlines + crosshair */
+  .hairline-h {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(248, 240, 227, 0.08);
+  }
+  .hairline-v {
+    position: absolute;
+    top: 0;
+    left: 64px;
+    width: 1px;
+    height: 100%;
+    background: rgba(248, 240, 227, 0.05);
+  }
+  .cross {
+    position: absolute;
+    top: 60px;
+    left: 64px;
+    width: 14px;
+    height: 14px;
+    transform: translate(-7px, -7px);
+  }
+  .cross::before, .cross::after {
+    content: "";
+    position: absolute;
+    background: rgba(248, 240, 227, 0.55);
+  }
+  .cross::before { top: 6.5px; left: 0; width: 14px; height: 1px; }
+  .cross::after { left: 6.5px; top: 0; width: 1px; height: 14px; }
+
+  .content {
+    position: absolute;
+    left: 84px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  }
+  .kicker {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.32em;
+    color: var(--coral);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-family: "Archivo", sans-serif;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--crema);
+    max-width: 760px;
+  }
+  h1 .dot {
+    display: inline-block;
+    width: 0.22em;
+    height: 0.22em;
+    background: var(--coral);
+    margin-left: 0.06em;
+  }
+  .tags {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 27px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(248, 240, 227, 0.75);
+    margin-top: 44px;
+    display: flex;
+    gap: 38px;
+  }
+  .tags .hot { color: var(--coral); }
+  .footline {
+    position: absolute;
+    left: 84px;
+    bottom: 46px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(248, 240, 227, 0.45);
+    z-index: 2;
+  }
+  .logo {
+    position: absolute;
+    right: 72px;
+    bottom: 56px;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 44px;
+    color: var(--crema);
+    letter-spacing: 0.01em;
+    z-index: 2;
+  }
+  .logo span { color: var(--coral); }
+  /* grano */
+  .grain {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="glow"></div>
+  <div class="slash"></div>
+  <div class="slash2"></div>
+  <div class="hairline-h"></div>
+  <div class="hairline-v"></div>
+  <div class="cross"></div>
+  <div class="content">
+    <div class="kicker" id="kicker"></div>
+    <h1><span id="line1"></span><br><span id="line2"></span><span class="dot"></span></h1>
+    <div class="tags" id="tags"></div>
+  </div>
+  <div class="footline" id="foot"></div>
+  <div class="logo">JG<span>.</span></div>
+  <div class="grain"></div>
+</div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const data = {
+    webs: {
+      kicker: "WEBS Y LANDINGS",
+      line1: "Diseño",
+      line2: "tu web",
+      tags: ["LANDING/", "CORPORATIVA/", '<span class="hot">SEO ON-PAGE/</span>'],
+      foot: "RÁPIDA, OPTIMIZADA — LISTA PARA VENDER"
+    },
+    imagenes: {
+      kicker: "IMÁGENES DE PRODUCTO",
+      line1: "Fotos que",
+      line2: "venden",
+      tags: ["AMAZON/", "ETSY/", '<span class="hot">SHOPIFY/</span>'],
+      foot: "PACKS LISTOS PARA SUBIR — REVISIONES INCLUIDAS"
+    }
+  };
+  const d = data[params.get("gig") || "webs"];
+  document.getElementById("kicker").textContent = d.kicker;
+  document.getElementById("line1").textContent = d.line1;
+  document.getElementById("line2").textContent = d.line2;
+  document.getElementById("tags").innerHTML = d.tags.map(t => `<span>${t}</span>`).join("");
+  document.getElementById("foot").textContent = d.foot;
+</script>
+</body>
+</html>
