@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Archivo";
+        src: url("fonts/archivo-var.woff2") format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #171615;
+      }
+      body {
+        font-family: "Archivo", sans-serif;
+      }
+      .scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #s1 { z-index: 1; background: #171615; }
+      #s2 { z-index: 2; background: #fffcf6; opacity: 0; }
+      #s3 { z-index: 3; background: #171615; opacity: 0; }
+      #s4 { z-index: 4; background: #ff6f61; opacity: 0; }
+      #s5 { z-index: 5; background: #171615; opacity: 0; }
+      #s6 { z-index: 6; background: #171615; opacity: 0; }
+
+      .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 110px 140px;
+        gap: 28px;
+        box-sizing: border-box;
+      }
+      .kicker {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+      }
+      .mono {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+        font-size: 22px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.03em;
+        line-height: 0.96;
+      }
+      .coral { color: #ff6f61; }
+      .slashbar {
+        position: absolute;
+        background: #ff6f61;
+        transform: skewX(-18deg);
+      }
+      .hairline {
+        position: absolute;
+        background: rgba(248, 240, 227, 0.16);
+      }
+      .cross {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+      }
+      .cross::before,
+      .cross::after {
+        content: "";
+        position: absolute;
+        background: rgba(248, 240, 227, 0.3);
+      }
+      .cross::before { left: 12px; top: 0; width: 3px; height: 26px; }
+      .cross::after { left: 0; top: 12px; width: 26px; height: 3px; }
+      .ghost {
+        position: absolute;
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: rgba(23, 22, 21, 0);
+        -webkit-text-stroke: 3px rgba(248, 240, 227, 0.10);
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+      .glow {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 111, 97, 0.30), rgba(255, 111, 97, 0) 70%);
+      }
+      .grain {
+        position: absolute;
+        inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0.06;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ===== S1 — HOOK ===== */
+      #s1 .glow { width: 1100px; height: 1100px; top: -420px; right: -320px; }
+      #s1-ghost { font-size: 430px; bottom: -90px; left: -60px; }
+      #s1-kicker { position: absolute; top: 96px; left: 140px; color: #ff6f61; }
+      #s1-h { color: #f8f0e3; font-size: 168px; max-width: 1500px; }
+      #s1-slash { width: 130px; height: 1400px; right: 260px; top: -160px; opacity: 0.16; }
+      #s1-web { position: absolute; right: 140px; bottom: 88px; color: rgba(248, 240, 227, 0.55); }
+      #s1-line { left: 140px; right: 140px; bottom: 170px; height: 2px; }
+
+      /* ===== S2 — PROBLEMA (claro) ===== */
+      #s2-ghost { font-size: 560px; top: -120px; right: -80px; -webkit-text-stroke: 3px rgba(23, 22, 21, 0.08); }
+      #s2-kicker { position: absolute; top: 96px; left: 140px; color: #f25444; }
+      #s2-h { color: #171615; font-size: 150px; max-width: 1500px; }
+      #s2-chips { display: flex; gap: 26px; margin-top: 26px; }
+      .chip {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.16em;
+        color: #171615;
+        border: 3px solid rgba(23, 22, 21, 0.8);
+        border-radius: 999px;
+        padding: 22px 40px;
+        white-space: nowrap;
+      }
+      #s2-line { left: 140px; right: 140px; top: 170px; height: 2px; background: rgba(23, 22, 21, 0.14); }
+      #s2 .cross::before, #s2 .cross::after { background: rgba(23, 22, 21, 0.35); }
+
+      /* ===== S3 — OFERTA (peak) ===== */
+      #s3-slashbg { width: 420px; height: 1700px; left: 880px; top: -300px; opacity: 0.13; }
+      #s3-ghost { font-size: 360px; bottom: -70px; right: -120px; }
+      #s3 .content { flex-direction: row; align-items: center; gap: 90px; }
+      #s3-left { flex: 1.05; }
+      #s3-kicker { color: #ff6f61; margin-bottom: 34px; }
+      #s3-h { color: #f8f0e3; font-size: 140px; }
+      #s3-right { flex: 1; display: flex; flex-direction: column; gap: 34px; }
+      .item { display: flex; align-items: center; gap: 26px; }
+      .item-slash {
+        width: 18px;
+        height: 56px;
+        background: #ff6f61;
+        transform: skewX(-18deg);
+        flex-shrink: 0;
+      }
+      .item-text {
+        color: rgba(248, 240, 227, 0.92);
+        font-family: "Archivo", sans-serif;
+        font-weight: 700;
+        font-size: 44px;
+        letter-spacing: -0.01em;
+      }
+      #s3-line { left: 140px; right: 140px; bottom: 110px; height: 2px; }
+
+      /* ===== S4 — SPANISH (coral) ===== */
+      #s4-ghost { font-size: 900px; top: -180px; right: 40px; -webkit-text-stroke: 4px rgba(23, 22, 21, 0.13); }
+      #s4 .content { align-items: flex-start; }
+      #s4-kicker { color: #171615; opacity: 0.85; }
+      #s4-h { color: #171615; font-size: 190px; }
+      #s4-sub {
+        color: rgba(23, 22, 21, 0.82);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 30px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-top: 14px;
+      }
+      #s4-flags { display: flex; gap: 22px; margin-top: 36px; }
+      .flag {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.12em;
+        color: #ff6f61;
+        background: #171615;
+        border-radius: 999px;
+        padding: 16px 30px;
+      }
+      #s4 .cross::before, #s4 .cross::after { background: rgba(23, 22, 21, 0.4); }
+
+      /* ===== S5 — PAQUETES ===== */
+      #s5-ghost { font-size: 700px; top: -160px; left: -100px; }
+      #s5 .glow { width: 900px; height: 900px; bottom: -380px; right: -260px; }
+      #s5 .content { gap: 44px; }
+      #s5-kicker { color: #ff6f61; }
+      #s5-cards { display: flex; gap: 40px; align-items: stretch; }
+      .card {
+        flex: 1;
+        background: #fffcf6;
+        border: 3px solid rgba(23, 22, 21, 0.15);
+        border-radius: 26px;
+        padding: 48px 44px 42px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        position: relative;
+      }
+      .card.pop { border: 4px solid #ff6f61; }
+      .badge {
+        position: absolute;
+        top: -24px;
+        left: 44px;
+        background: #ff6f61;
+        color: #171615;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 19px;
+        letter-spacing: 0.16em;
+        border-radius: 999px;
+        padding: 10px 24px;
+      }
+      .card-name {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(23, 22, 21, 0.65);
+      }
+      .card-price {
+        font-family: "Archivo Black", sans-serif;
+        font-size: 96px;
+        color: #171615;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+      }
+      .card-desc {
+        font-family: "Archivo", sans-serif;
+        font-weight: 600;
+        font-size: 27px;
+        color: rgba(23, 22, 21, 0.75);
+        line-height: 1.35;
+      }
+      #s5-foot { color: rgba(248, 240, 227, 0.65); }
+
+      /* ===== S6 — CTA ===== */
+      #s6 .glow { width: 1300px; height: 1300px; top: -500px; left: -400px; }
+      #s6-slash { width: 150px; height: 1500px; right: 330px; top: -200px; opacity: 0.15; }
+      #s6 .content { align-items: flex-start; gap: 40px; }
+      #s6-h { color: #f8f0e3; font-size: 185px; }
+      #s6-order { color: #ff6f61; font-size: 32px; font-weight: 700; }
+      #s6-foot { position: absolute; left: 140px; bottom: 92px; color: rgba(248, 240, 227, 0.5); }
+      #s6-logo { position: absolute; right: 140px; bottom: 76px; width: 130px; border-radius: 30px; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-width="1920"
+      data-height="1080"
+      data-start="0"
+      data-duration="44.5"
+    >
+      <!-- S1 · HOOK -->
+      <div id="s1" class="scene">
+        <div class="glow" data-layout-ignore></div>
+        <div id="s1-ghost" class="ghost" data-layout-allow-overflow data-layout-ignore>PHOTOS</div>
+        <div id="s1-slash" class="slashbar" data-layout-ignore></div>
+        <p id="s1-kicker" class="kicker">Product Images — Amazon · Etsy · Shopify</p>
+        <div class="content">
+          <h1 id="s1-h">Are your photos <span class="coral">costing you sales?</span></h1>
+        </div>
+        <div id="s1-line" class="hairline" data-layout-ignore></div>
+        <p id="s1-web" class="mono">joseagonzalez.com</p>
+        <span class="cross" style="left: 120px; top: 80px" data-layout-ignore></span>
+        <span class="cross" style="right: 120px; bottom: 150px" data-layout-ignore></span>
+      </div>
+
+      <!-- S2 · PROBLEMA -->
+      <div id="s2" class="scene">
+        <div id="s2-ghost" class="ghost" data-layout-allow-overflow data-layout-ignore>01</div>
+        <div id="s2-line" class="hairline" data-layout-ignore></div>
+        <p id="s2-kicker" class="kicker">The diagnosis</p>
+        <div class="content">
+          <h1 id="s2-h">The problem? Your photos<span class="coral">.</span></h1>
+          <div id="s2-chips">
+            <span class="chip">Dark and blurry</span>
+            <span class="chip">Messy background</span>
+            <span class="chip">Not store-ready</span>
+          </div>
+        </div>
+        <span class="cross" style="left: 120px; bottom: 100px" data-layout-ignore></span>
+        <span class="cross" style="right: 120px; top: 220px" data-layout-ignore></span>
+      </div>
+
+      <!-- S3 · OFERTA -->
+      <div id="s3" class="scene">
+        <div id="s3-slashbg" class="slashbar" data-layout-ignore></div>
+        <div id="s3-ghost" class="ghost" data-layout-allow-overflow data-layout-ignore>ENHANCE</div>
+        <div class="content">
+          <div id="s3-left">
+            <p id="s3-kicker" class="kicker">What you get</p>
+            <h1 id="s3-h">I enhance your images<span class="coral">.</span></h1>
+          </div>
+          <div id="s3-right">
+            <div class="item"><span class="item-slash"></span><span class="item-text">Clean white backgrounds</span></div>
+            <div class="item"><span class="item-slash"></span><span class="item-text">Light and color correction</span></div>
+            <div class="item"><span class="item-slash"></span><span class="item-text">Lifestyle compositions</span></div>
+            <div class="item"><span class="item-slash"></span><span class="item-text">Amazon-ready formats</span></div>
+            <div class="item"><span class="item-slash"></span><span class="item-text">Ready to upload</span></div>
+          </div>
+        </div>
+        <div id="s3-line" class="hairline" data-layout-ignore></div>
+      </div>
+
+      <!-- S4 · SPANISH -->
+      <div id="s4" class="scene">
+        <div id="s4-ghost" class="ghost" data-layout-allow-overflow data-layout-ignore>ñ</div>
+        <div class="content">
+          <p id="s4-kicker" class="kicker">The difference</p>
+          <h1 id="s4-h">Hablo español<span style="color:#f8f0e3">.</span></h1>
+          <p id="s4-sub">Service in your language — Spain &amp; Latin America</p>
+          <div id="s4-flags">
+            <span class="flag">ES</span>
+            <span class="flag">MX</span>
+            <span class="flag">AR</span>
+            <span class="flag">CO</span>
+            <span class="flag">CL</span>
+            <span class="flag">+</span>
+          </div>
+        </div>
+        <span class="cross" style="left: 120px; top: 90px" data-layout-ignore></span>
+        <span class="cross" style="right: 120px; bottom: 100px" data-layout-ignore></span>
+      </div>
+
+      <!-- S5 · PAQUETES -->
+      <div id="s5" class="scene">
+        <div id="s5-ghost" class="ghost" data-layout-allow-overflow data-layout-ignore>$</div>
+        <div class="glow" data-layout-ignore></div>
+        <div class="content">
+          <p id="s5-kicker" class="kicker">Packages — pick your size</p>
+          <div id="s5-cards">
+            <div class="card" id="card1">
+              <span class="card-name">Starter</span>
+              <span class="card-price">$20</span>
+              <span class="card-desc">5 images, clean background + perfect light</span>
+            </div>
+            <div class="card pop" id="card2">
+              <span class="badge">Most popular</span>
+              <span class="card-name">Catalog Pack</span>
+              <span class="card-price">$50</span>
+              <span class="card-desc">15 images + 2 lifestyle compositions</span>
+            </div>
+            <div class="card" id="card3">
+              <span class="card-name">Full Store</span>
+              <span class="card-price">$100</span>
+              <span class="card-desc">30 images + Amazon A+ banners</span>
+            </div>
+          </div>
+          <p id="s5-foot" class="mono">2-day delivery · revisions included · direct communication</p>
+        </div>
+      </div>
+
+      <!-- S6 · CTA -->
+      <div id="s6" class="scene">
+        <div class="glow" data-layout-ignore></div>
+        <div id="s6-slash" class="slashbar" data-layout-ignore></div>
+        <div class="content">
+          <h1 id="s6-h">Fotos que venden<span class="coral">.</span></h1>
+          <p id="s6-order" class="mono">Order on Fiverr → joseantoniog692</p>
+        </div>
+        <p id="s6-foot" class="mono">WEB/ ECOM/ <span class="coral">BRAND/</span></p>
+        <img id="s6-logo" src="monograma-app.svg" alt="" />
+      </div>
+
+      <div class="grain" data-layout-ignore></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      /* ============ S1 · HOOK (0 – 5.5) ============ */
+      tl.fromTo("#s1-kicker", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0.15);
+      tl.fromTo("#s1-h", { y: 110, opacity: 0, skewY: 4 }, { y: 0, opacity: 1, skewY: 0, duration: 0.7, ease: "expo.out" }, 0.35);
+      tl.fromTo("#s1-slash", { scaleY: 0, transformOrigin: "top center" }, { scaleY: 1, duration: 0.9, ease: "power2.inOut" }, 0.3);
+      tl.fromTo("#s1-line", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.8, ease: "power1.inOut" }, 0.8);
+      tl.fromTo("#s1-web", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "sine.out" }, 1.1);
+      tl.fromTo("#s1 .cross", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.12 }, 1.0);
+      tl.fromTo("#s1-ghost", { x: 0 }, { x: 70, duration: 5.3, ease: "none" }, 0.2);
+      tl.to("#s1 .glow", { scale: 1.12, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.2);
+
+      /* T1 = 5.5 · vertical push S1 → S2 */
+      tl.to("#s1", { y: -1080, duration: 0.55, ease: "power3.inOut" }, 5.5);
+      tl.fromTo("#s2", { y: 1080, opacity: 1 }, { y: 0, duration: 0.55, ease: "power3.inOut" }, 5.5);
+      tl.set("#s1", { opacity: 0, visibility: "hidden" }, 6.1);
+
+      /* ============ S2 · PROBLEMA (6.05 – 11.5) ============ */
+      tl.fromTo("#s2-kicker", { letterSpacing: "0.6em", opacity: 0 }, { letterSpacing: "0.32em", opacity: 1, duration: 0.6, ease: "power2.out" }, 6.25);
+      tl.fromTo("#s2-h", { x: -90, opacity: 0 }, { x: 0, opacity: 1, duration: 0.65, ease: "power4.out" }, 6.45);
+      tl.fromTo("#s2-line", { scaleX: 0, transformOrigin: "right center" }, { scaleX: 1, duration: 0.7, ease: "power2.inOut" }, 6.4);
+      tl.fromTo("#s2-chips .chip", { y: 56, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.6)", stagger: 0.13 }, 7.0);
+      tl.fromTo("#s2 .cross", { rotation: -90, opacity: 0 }, { rotation: 0, opacity: 1, duration: 0.5, ease: "power2.out", stagger: 0.15 }, 7.1);
+      tl.fromTo("#s2-ghost", { y: 0 }, { y: 50, duration: 4.8, ease: "none" }, 6.3);
+
+      /* T2 = 11.5 · elastic push S2 → S3 (peak entry) */
+      tl.to("#s2", { x: -1920, duration: 0.5, ease: "power3.in" }, 11.5);
+      tl.fromTo("#s3", { x: 1920, opacity: 1 }, { x: 30, duration: 0.4, ease: "power4.out" }, 11.6);
+      tl.to("#s3", { x: -15, duration: 0.15, ease: "sine.inOut" }, 12.0);
+      tl.to("#s3", { x: 0, duration: 0.1, ease: "sine.out" }, 12.15);
+      tl.set("#s2", { opacity: 0, visibility: "hidden" }, 12.3);
+
+      /* ============ S3 · OFERTA (12 – 23.5) ============ */
+      tl.fromTo("#s3-kicker", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 12.35);
+      tl.fromTo("#s3-h", { scale: 1.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 12.5);
+      tl.fromTo("#s3-right .item", { x: 90, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 13.0);
+      tl.fromTo("#s3-line", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.9, ease: "sine.inOut" }, 13.2);
+      tl.fromTo("#s3-ghost", { x: 0 }, { x: -80, duration: 10.5, ease: "none" }, 12.4);
+      tl.to("#s3-slashbg", { skewX: -14, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 5 }, 12.4);
+
+      /* T3 = 23.5 · push slide S3 → S4 */
+      tl.to("#s3", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 23.5);
+      tl.fromTo("#s4", { x: 1920, opacity: 1 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 23.5);
+      tl.set("#s3", { opacity: 0, visibility: "hidden" }, 24.05);
+
+      /* ============ S4 · SPANISH (24 – 30.5) ============ */
+      tl.fromTo("#s4-kicker", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 24.2);
+      tl.fromTo("#s4-h", { scale: 0.7, opacity: 0, rotation: -2 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.65, ease: "back.out(1.4)" }, 24.35);
+      tl.fromTo("#s4-sub", { x: -70, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 24.8);
+      tl.fromTo("#s4-flags .flag", { y: 44, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power4.out", stagger: 0.09 }, 25.1);
+      tl.fromTo("#s4 .cross", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.12 }, 25.3);
+      tl.fromTo("#s4-ghost", { rotation: 0, y: 0 }, { rotation: 4, y: 40, duration: 6.0, ease: "none" }, 24.3);
+
+      /* T4 = 30.5 · push slide S4 → S5 */
+      tl.to("#s4", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 30.5);
+      tl.fromTo("#s5", { x: 1920, opacity: 1 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 30.5);
+      tl.set("#s4", { opacity: 0, visibility: "hidden" }, 31.05);
+
+      /* ============ S5 · PAQUETES (31 – 37.5) ============ */
+      tl.fromTo("#s5-kicker", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 31.2);
+      tl.fromTo("#card1", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 31.45);
+      tl.fromTo("#card2", { y: 120, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1.03, duration: 0.6, ease: "back.out(1.5)" }, 31.6);
+      tl.fromTo("#card3", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 31.75);
+      tl.fromTo("#s5-foot", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, 32.4);
+      tl.fromTo("#s5-ghost", { y: 0 }, { y: -60, duration: 5.8, ease: "none" }, 31.3);
+      tl.to("#s5 .glow", { scale: 1.15, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 31.3);
+
+      /* T5 = 37.5 · vertical push S5 → S6 */
+      tl.to("#s5", { y: -1080, duration: 0.55, ease: "power3.inOut" }, 37.5);
+      tl.fromTo("#s6", { y: 1080, opacity: 1 }, { y: 0, duration: 0.55, ease: "power3.inOut" }, 37.5);
+      tl.set("#s5", { opacity: 0, visibility: "hidden" }, 38.1);
+
+      /* ============ S6 · CTA (38 – 44.5) ============ */
+      tl.fromTo("#s6-h", { y: 120, opacity: 0, skewY: 3 }, { y: 0, opacity: 1, skewY: 0, duration: 0.7, ease: "expo.out" }, 38.3);
+      tl.fromTo("#s6-order", { letterSpacing: "0.5em", opacity: 0 }, { letterSpacing: "0.22em", opacity: 1, duration: 0.7, ease: "power2.out" }, 38.8);
+      tl.fromTo("#s6-foot", { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, 39.2);
+      tl.fromTo("#s6-logo", { scale: 0, rotation: -12, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.55, ease: "back.out(1.8)" }, 39.3);
+      tl.fromTo("#s6-slash", { scaleY: 0, transformOrigin: "bottom center" }, { scaleY: 1, duration: 0.9, ease: "power2.inOut" }, 38.5);
+      tl.to("#s6 .glow", { scale: 1.1, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 38.6);
+
+      /* Final fade (allowed on last scene only) */
+      tl.to("#s6 .content, #s6-foot, #s6-logo, #s6-slash", { opacity: 0, duration: 0.6, ease: "power2.in" }, 43.7);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
