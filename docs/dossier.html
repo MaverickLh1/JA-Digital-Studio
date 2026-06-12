@@ -1,12 +1,13 @@
 <!--
-  FUENTE DEL DOSSIER DE SERVICIOS (public/dossier-servicios.pdf)
-  Para regenerar el PDF tras editar tarifas o textos:
+  FUENTE DEL DOSSIER GENERAL (public/dossier-servicios.pdf) — SIN PRECIOS
+  Catálogo completo de los 4 servicios. Las tarifas viven en los dossiers
+  por sección (docs/dossier-secciones.html).
+
+  Para regenerar el PDF tras editar textos (desde la raíz del proyecto):
 
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
     --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=8000 \
     --print-to-pdf="public/dossier-servicios.pdf" "file://$PWD/docs/dossier.html"
-
-  (ejecutar desde la raíz del proyecto)
 -->
 <!doctype html><html><head><meta charset="utf-8">
 <style>
@@ -26,7 +27,6 @@ h3{font-family:Archivo;font-weight:900;font-size:14pt;letter-spacing:-.2pt}
 p,li{font-size:10pt;line-height:1.55;color:#171615d9}
 .dark p{color:#f8f0e3cc}
 .rule{height:1px;background:#17161526;flex:1}
-.dark .rule{background:#f8f0e326}
 .hrow{display:flex;align-items:center;gap:4mm;margin-bottom:2mm}
 .foot{position:absolute;left:16mm;right:16mm;bottom:10mm;display:flex;justify-content:space-between;align-items:center}
 .foot .mono{font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:#17161580}
@@ -34,18 +34,15 @@ p,li{font-size:10pt;line-height:1.55;color:#171615d9}
 ul{list-style:none;margin-top:3mm}
 ul li{padding-left:5mm;position:relative;margin-bottom:1.6mm}
 ul li::before{content:"";position:absolute;left:0;top:5.5pt;width:2.4mm;height:2.4mm;border-radius:50%;background:#FF6F61}
-.price{display:inline-block;background:#171615;color:#F8F0E3;border-radius:999px;padding:2mm 5mm;font-family:'JetBrains Mono';font-size:9pt;font-weight:700;letter-spacing:.06em}
-.price b{color:#FF6F61}
-.tag{display:inline-block;border:1px solid #FF6F61;color:#F25444;border-radius:999px;padding:1.2mm 4mm;font-family:'JetBrains Mono';font-size:8pt;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
-.block{border:1px solid #17161522;border-radius:6mm;padding:8mm;background:#FFFCF6;margin-bottom:6mm}
-.lite .block{background:#FFFCF6}
 .cols{display:flex;gap:6mm}
 .cols>*{flex:1}
-table{width:100%;border-collapse:collapse;margin-top:4mm}
-th{font-family:'JetBrains Mono';font-size:8pt;letter-spacing:.15em;text-transform:uppercase;color:#17161599;text-align:left;padding:2.4mm 3mm;border-bottom:1.5px solid #171615}
-td{font-size:9.5pt;padding:2.8mm 3mm;border-bottom:1px solid #17161520}
-td.r{text-align:right;font-family:'JetBrains Mono';font-weight:700;white-space:nowrap}
-td.r b{color:#F25444}
+.block{border:1px solid #17161522;border-radius:6mm;padding:8mm;background:#FFFCF6;margin-bottom:6mm}
+.intro{font-size:10.5pt;color:#171615b8;max-width:165mm;margin-bottom:5mm}
+.row{display:flex;align-items:baseline;gap:5mm;padding:2.9mm 0;border-bottom:1px solid #17161518}
+.row .nm{font-family:Archivo;font-weight:700;font-size:10pt;width:58mm;flex-shrink:0}
+.row .nm .st{color:#F25444;font-family:'JetBrains Mono';font-size:8pt;margin-right:1mm}
+.row .ds{font-size:8.8pt;color:#171615b8;line-height:1.45;flex:1}
+.legend{font-family:'JetBrains Mono';font-size:7.6pt;letter-spacing:.1em;color:#17161599;margin-top:4mm;text-transform:uppercase}
 .slash{display:inline-block;transform:skewX(-18deg);color:#FF6F61;font-family:Archivo;font-weight:900}
 </style></head><body>
 
@@ -56,7 +53,7 @@ td.r b{color:#F25444}
   <p style="font-size:13pt;max-width:120mm;color:#f8f0e3d9">Llevo tu negocio al siguiente nivel: tiendas Shopify, diseño web, imágenes de producto y branding. Con la IA bien aplicada en cada proyecto.</p>
   <div style="position:absolute;left:16mm;bottom:34mm">
     <p class="kick" style="color:#f8f0e380">Qué encontrarás dentro</p>
-    <p class="mono" style="font-size:9.5pt;margin-top:3mm;line-height:2">(01) Cómo trabajo<br>(02) Especialidades<br>(03) Complementos<br>(04) Tarifas orientativas y FAQ<br>(05) Contacto</p>
+    <p class="mono" style="font-size:9.5pt;margin-top:3mm;line-height:2">(01) Cómo trabajo<br>(02) Optimización en Shopify<br>(03) Webs y landing pages<br>(04) Imágenes para e-commerce<br>(05) Identidad de marca<br>(06) Preguntas frecuentes<br>(07) Contacto</p>
   </div>
   <div class="foot"><span class="mono">joseagonzalez.com</span><span class="mono coral">WEB/ ECOM/ BRAND/</span></div>
 </section>
@@ -90,7 +87,7 @@ td.r b{color:#F25444}
     <ul style="margin-top:4mm">
       <li>Trato directo conmigo de principio a fin: sin intermediarios ni gestores de cuenta.</li>
       <li>Presupuesto cerrado por escrito antes de empezar. Si surge algo nuevo, se habla antes de hacerlo.</li>
-      <li>Una ronda de revisiones incluida en todos los paquetes (y flexibilidad razonable después).</li>
+      <li>Una ronda de revisiones incluida en todos los trabajos (y flexibilidad razonable después).</li>
       <li>Los archivos y accesos son tuyos: dominio, tienda, originales y exportables.</li>
       <li>Entrega lista para usar, con una mini-guía de cómo tocar lo entregado sin romper nada.</li>
     </ul>
@@ -98,136 +95,115 @@ td.r b{color:#F25444}
   <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">02</span></div>
 </section>
 
-<!-- P3 · ESPECIALIDADES -->
+<!-- P3 · SHOPIFY -->
 <section class="page paper">
-  <div class="hrow"><span class="kick coraldk">(02)</span><span class="kick coraldk">Especialidades</span><span class="rule"></span></div>
-  <h2>Lo mío: que tu tienda venda<span class="coral">.</span></h2>
-
-  <div class="block">
-    <span class="tag">Optimización en Shopify</span>
-    <p style="margin-top:3mm">Subo, organizo y optimizo tu catálogo para que se venda solo. SEO, variantes, migraciones y todo lo que tu tienda necesita.</p>
-    <div class="cols" style="margin-top:3mm">
-      <ul>
-        <li>Limpieza y auditoría de catálogo</li>
-        <li>Variantes y productos personalizables</li>
-        <li>SEO completo de tienda</li>
-        <li>Copy persuasivo de fichas</li>
-      </ul>
-      <ul>
-        <li>Optimización de velocidad</li>
-        <li>Email marketing: bienvenida y carrito abandonado</li>
-        <li>Reseñas y badges de confianza</li>
-        <li>Mantenimiento mensual con informe</li>
-      </ul>
-    </div>
-    <p style="margin-top:4mm">
-      <span class="price">Puesta a punto (hasta 50 fichas) — desde <b>390&nbsp;€</b></span>&nbsp;&nbsp;
-      <span class="price">Catálogo XL / migración — desde <b>690&nbsp;€</b></span>
-    </p>
-  </div>
-
-  <div class="block">
-    <span class="tag">Webs y landing pages</span>
-    <p style="margin-top:3mm">Páginas que no solo se ven bien: convierten. Diseño orientado a que el visitante haga lo que quieres que haga.</p>
-    <div class="cols" style="margin-top:3mm">
-      <ul>
-        <li>Rediseño de webs existentes</li>
-        <li>Landings para campañas de Google/Meta Ads</li>
-        <li>Página de captura + lead magnet</li>
-      </ul>
-      <ul>
-        <li>Webs personales y portfolios</li>
-        <li>Dominio, correo y analítica configurados</li>
-        <li>Mantenimiento web mensual</li>
-      </ul>
-    </div>
-    <p style="margin-top:4mm">
-      <span class="price">Landing page — desde <b>450&nbsp;€</b></span>&nbsp;&nbsp;
-      <span class="price">Web completa — desde <b>850&nbsp;€</b></span>
-    </p>
-  </div>
+  <div class="hrow"><span class="kick coraldk">(02)</span><span class="kick coraldk">Optimización en Shopify</span><span class="rule"></span></div>
+  <h2>Que tu tienda venda<span class="coral">.</span></h2>
+  <p class="intro">Subo, organizo y optimizo tu catálogo para que se venda solo. Todo lo que puedo hacer en tu tienda:</p>
+  <div class="row"><span class="nm"><span class="st">★</span>Limpieza y auditoría de catálogo</span><span class="ds">Reviso todo el catálogo y arreglo lo que frena ventas: duplicados, fichas rotas, huecos.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Variantes y personalizables</span><span class="ds">Productos con opciones y personalización montados para que el cliente configure sin errores.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>SEO completo de tienda</span><span class="ds">Títulos, metas, alt y redirecciones para que Google entienda (y muestre) tu tienda.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Copy persuasivo de fichas</span><span class="ds">Fichas que venden: textos claros y persuasivos, no descripciones de fabricante.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Optimización de velocidad</span><span class="ds">Tienda más rápida: imágenes, apps muertas y tema a dieta.</span></div>
+  <div class="row"><span class="nm">Personalización de tema</span><span class="ds">Tu tema afinado a tu marca: secciones, tipografías y colores sin look de plantilla.</span></div>
+  <div class="row"><span class="nm">Reseñas y badges de confianza</span><span class="ds">Opiniones y sellos de confianza colocados donde empujan la compra.</span></div>
+  <div class="row"><span class="nm">A/B testing de elementos clave</span><span class="ds">Pruebas en lo importante (hero, CTAs, fichas) para decidir con datos.</span></div>
+  <div class="row"><span class="nm">Email marketing: flujos</span><span class="ds">Bienvenida y carrito abandonado funcionando solos: ventas que se recuperan.</span></div>
+  <div class="row"><span class="nm">Emails transaccionales con marca</span><span class="ds">Confirmaciones y avisos de envío con tu imagen, no el email genérico.</span></div>
+  <div class="row"><span class="nm">Mantenimiento mensual</span><span class="ds">Tu tienda al día cada mes: novedades, fichas nuevas y un informe claro.</span></div>
+  <p class="legend">★ Lo más pedido</p>
   <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">03</span></div>
 </section>
 
-<!-- P4 · COMPLEMENTOS -->
+<!-- P4 · WEBS -->
 <section class="page paper">
-  <div class="hrow"><span class="kick coraldk">(03)</span><span class="kick coraldk">Complementos</span><span class="rule"></span></div>
-  <h2>Los detalles que rematan<span class="coral">.</span></h2>
-
-  <div class="block">
-    <span class="tag">Imágenes para e-commerce</span>
-    <p style="margin-top:3mm">Tus productos, vistos como se merecen. Fondos limpios, fotografía con IA, infografías y formatos listos para cada marketplace.</p>
-    <div class="cols" style="margin-top:3mm">
-      <ul>
-        <li>Recorte y fondos por lotes (catálogos enteros)</li>
-        <li>Lifestyle con IA: producto en escenarios reales</li>
-        <li>Modelos con IA para ropa y accesorios</li>
-      </ul>
-      <ul>
-        <li>Mockups de producto (taza, camiseta, packaging)</li>
-        <li>Banners hero para la tienda</li>
-        <li>Pack Amazon A+ Content</li>
-      </ul>
-    </div>
-    <p style="margin-top:4mm"><span class="price">Pack 20 imágenes — desde <b>180&nbsp;€</b></span>&nbsp;&nbsp;<span class="price">Catálogos grandes — precio por volumen</span></p>
-  </div>
-
-  <div class="block">
-    <span class="tag">Identidad de marca</span>
-    <p style="margin-top:3mm">Una imagen coherente que se reconoce a la primera. Colores, logos, plantillas y los detalles que hacen que tu marca parezca grande.</p>
-    <div class="cols" style="margin-top:3mm">
-      <ul>
-        <li>Naming + comprobación de dominio y redes</li>
-        <li>Logo con variantes (principal, horizontal, monograma)</li>
-        <li>Mini manual de marca en PDF</li>
-      </ul>
-      <ul>
-        <li>Packaging para e-commerce (pegatinas, tarjetas, etiquetas)</li>
-        <li>Mockups de presentación de marca</li>
-        <li>Archivos finales en todos los formatos (SVG, PNG, PDF)</li>
-      </ul>
-    </div>
-    <p style="margin-top:4mm"><span class="price">Identidad básica — desde <b>420&nbsp;€</b></span></p>
-  </div>
+  <div class="hrow"><span class="kick coraldk">(03)</span><span class="kick coraldk">Webs y landing pages</span><span class="rule"></span></div>
+  <h2>Páginas que convierten<span class="coral">.</span></h2>
+  <p class="intro">Diseño orientado a que el visitante haga lo que quieres que haga. Todo lo que puedo construir o mejorar:</p>
+  <div class="row"><span class="nm"><span class="st">★</span>Rediseño de web existente</span><span class="ds">Lavado de cara completo: tu web actual, puesta al nivel de tu negocio.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Landing para campañas de ads</span><span class="ds">Pensada para Google/Meta Ads: un objetivo, cero fugas.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Captura + lead magnet</span><span class="ds">Captación con regalo: formulario + PDF entregado en automático.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Web personal / portfolio</span><span class="ds">Tu presencia profesional en una página que impone.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Mantenimiento web mensual</span><span class="ds">Cambios, copias y actualizaciones: tu web cuidada cada mes.</span></div>
+  <div class="row"><span class="nm">Setup de newsletter</span><span class="ds">Brevo o Mailchimp conectados a tu web y listos para enviar.</span></div>
+  <div class="row"><span class="nm">SEO on-page + Search Console</span><span class="ds">Lo básico bien hecho para salir en Google: estructura, metas y alta.</span></div>
+  <div class="row"><span class="nm">Email corporativo con tu dominio</span><span class="ds">Correo profesional funcionando en tu móvil y ordenador.</span></div>
+  <div class="row"><span class="nm">Multi-idioma básico</span><span class="ds">Tu web en más de un idioma, sin líos.</span></div>
+  <p class="legend">★ Lo más pedido</p>
   <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">04</span></div>
 </section>
 
-<!-- P5 · TARIFAS + FAQ -->
-<section class="page lite">
-  <div class="hrow"><span class="kick coraldk">(04)</span><span class="kick coraldk">Tarifas orientativas</span><span class="rule"></span></div>
-  <h2>Claro y por escrito<span class="coral">.</span></h2>
-  <table>
-    <tr><th>Servicio</th><th>Incluye</th><th style="text-align:right">Desde</th></tr>
-    <tr><td>Landing page</td><td>1 página, textos base, formulario, legal, publicación</td><td class="r"><b>450 €</b></td></tr>
-    <tr><td>Web completa</td><td>Hasta 5 secciones/páginas + todo lo anterior</td><td class="r"><b>850 €</b></td></tr>
-    <tr><td>Puesta a punto Shopify</td><td>Auditoría + hasta 50 fichas optimizadas + SEO base</td><td class="r"><b>390 €</b></td></tr>
-    <tr><td>Catálogo Shopify XL</td><td>Migración o subida masiva, variantes, metafields</td><td class="r"><b>690 €</b></td></tr>
-    <tr><td>Pack imágenes (20)</td><td>Fondos, retoque y formatos por marketplace</td><td class="r"><b>180 €</b></td></tr>
-    <tr><td>Identidad básica</td><td>Logo + paleta + tipografías + kit Canva</td><td class="r"><b>420 €</b></td></tr>
-  </table>
-  <p class="mono" style="font-size:8pt;letter-spacing:.1em;color:#17161599;margin-top:3mm">* TARIFAS ORIENTATIVAS. CADA PROYECTO SE PRESUPUESTA CERRADO Y POR ESCRITO TRAS UNA PRIMERA LLAMADA O MENSAJE.</p>
+<!-- P5 · IMÁGENES -->
+<section class="page paper">
+  <div class="hrow"><span class="kick coraldk">(04)</span><span class="kick coraldk">Imágenes para e-commerce</span><span class="rule"></span></div>
+  <h2>Productos que se ven como se merecen<span class="coral">.</span></h2>
+  <p class="intro">Del recorte por lotes a la fotografía con IA: todo lo que puedo hacer con tu catálogo visual:</p>
+  <div class="row"><span class="nm"><span class="st">★</span>Recorte y fondo por lotes</span><span class="ds">Catálogos enteros recortados y con fondo limpio, a precio de lote.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Lifestyle con IA</span><span class="ds">Tu producto en escenarios reales generados con IA: sin estudio ni viajes.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Modelos con IA para ropa</span><span class="ds">Tu ropa puesta en modelos generados con IA: catálogo vivo sin sesión de fotos.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Mockups de producto</span><span class="ds">Tu diseño sobre tazas, camisetas o packaging con acabado real.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Banners hero para la tienda</span><span class="ds">Portadas y banners de campaña que visten la tienda.</span></div>
+  <div class="row"><span class="nm">Retoque y limpieza</span><span class="ds">Color fiel y producto impecable: fuera polvo, arrugas y dominantes.</span></div>
+  <div class="row"><span class="nm">Sombras y reflejos realistas</span><span class="ds">Producto asentado, no flotando: profundidad creíble.</span></div>
+  <div class="row"><span class="nm">Infografías de beneficios</span><span class="ds">Beneficios y medidas explicados en una imagen que evita devoluciones.</span></div>
+  <div class="row"><span class="nm">Imágenes comparativas</span><span class="ds">Antes/después y comparativas que dejan claro por qué el tuyo.</span></div>
+  <div class="row"><span class="nm">Pack Amazon A+ Content</span><span class="ds">Los módulos de la ficha premium que convierten mirones en compras.</span></div>
+  <div class="row"><span class="nm">Renombrado SEO + alt text</span><span class="ds">Cien imágenes renombradas y con alt text SEO en un lote.</span></div>
+  <div class="row"><span class="nm">Optimización de peso (WebP)</span><span class="ds">Mismas imágenes, mitad de peso: carga rápida sin perder calidad.</span></div>
+  <p class="legend">★ Lo más pedido</p>
+  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">05</span></div>
+</section>
 
-  <div class="hrow" style="margin-top:10mm"><span class="kick coraldk">FAQ</span><span class="rule"></span></div>
-  <div class="cols" style="margin-top:4mm">
+<!-- P6 · BRANDING -->
+<section class="page paper">
+  <div class="hrow"><span class="kick coraldk">(05)</span><span class="kick coraldk">Identidad de marca</span><span class="rule"></span></div>
+  <h2>Una marca que se reconoce<span class="coral">.</span></h2>
+  <p class="intro">Del naming al packaging: todas las piezas para que tu marca parezca grande:</p>
+  <div class="row"><span class="nm"><span class="st">★</span>Naming + dominio y redes</span><span class="ds">Nombre disponible de verdad: dominio y redes comprobados antes de enamorarte.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Logo con variantes</span><span class="ds">Profesional y completo: principal, horizontal y monograma.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Mini manual de marca (PDF)</span><span class="ds">Guía breve de uso: colores, tipografías y reglas para no desvirtuar la marca.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Packaging para e-commerce</span><span class="ds">Pegatinas, tarjetas de agradecimiento y etiquetas: el paquete también vende.</span></div>
+  <div class="row"><span class="nm"><span class="st">★</span>Mockups de presentación</span><span class="ds">Tu logo presentado en soportes reales: fachada, bolsa, app.</span></div>
+  <div class="row"><span class="nm">Rediseño / refresh de logo</span><span class="ds">Tu logo de siempre, afinado: moderniza sin perder lo que te reconoce.</span></div>
+  <div class="row"><span class="nm">Plantilla de presentación</span><span class="ds">Pitch deck con tu marca para propuestas que imponen.</span></div>
+  <div class="row"><span class="nm">Firmas de email corporativas</span><span class="ds">Firmas coherentes para ti y tu equipo.</span></div>
+  <div class="row"><span class="nm">Set de iconos personalizados</span><span class="ds">Iconos a medida con el estilo de tu marca (como los de mi web).</span></div>
+  <div class="row"><span class="nm">Cabeceras de perfiles</span><span class="ds">LinkedIn, Facebook, YouTube o Etsy, a juego con tu marca.</span></div>
+  <div class="row"><span class="nm">Dossier corporativo en PDF</span><span class="ds">Tus servicios en un PDF con tu marca — como el que estás leyendo.</span></div>
+  <div class="row"><span class="nm">Amazon Brand Store / Etsy</span><span class="ds">Tu rincón de marca en el marketplace, vestido para vender.</span></div>
+  <div class="row"><span class="nm">Papelería con tu marca</span><span class="ds">Tarjetas de visita, sobres y recibos con tu marca impresa.</span></div>
+  <p class="legend">★ Lo más pedido</p>
+  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">06</span></div>
+</section>
+
+<!-- P7 · FAQ -->
+<section class="page lite">
+  <div class="hrow"><span class="kick coraldk">(06)</span><span class="kick coraldk">Preguntas frecuentes</span><span class="rule"></span></div>
+  <h2>Claro y por escrito<span class="coral">.</span></h2>
+  <div class="cols" style="margin-top:8mm">
     <div>
-      <h3 style="font-size:11pt">¿Cuánto se tarda?</h3>
+      <h3 style="font-size:11pt">¿Cuánto cuesta?</h3>
+      <p style="margin-top:1.5mm">Cada proyecto se presupuesta cerrado y por escrito tras el primer mensaje, según el alcance. Tienes tarifas orientativas por servicio en joseagonzalez.com.</p>
+      <h3 style="font-size:11pt;margin-top:6mm">¿Cuánto se tarda?</h3>
       <p style="margin-top:1.5mm">Una landing, 1–2 semanas. Una web completa o un catálogo grande, 2–4. Te doy fecha concreta en el presupuesto.</p>
-      <h3 style="font-size:11pt;margin-top:5mm">¿Cómo se paga?</h3>
+      <h3 style="font-size:11pt;margin-top:6mm">¿Cómo se paga?</h3>
       <p style="margin-top:1.5mm">50% para reservar y arrancar, 50% a la entrega. Transferencia o Bizum, con factura.</p>
     </div>
     <div>
       <h3 style="font-size:11pt">¿Qué necesito darte?</h3>
       <p style="margin-top:1.5mm">Lo que tengas: textos, fotos, accesos. Si falta algo, lo resolvemos juntos — no necesitas tenerlo todo perfecto.</p>
-      <h3 style="font-size:11pt;margin-top:5mm">¿De quién es el resultado?</h3>
+      <h3 style="font-size:11pt;margin-top:6mm">¿De quién es el resultado?</h3>
       <p style="margin-top:1.5mm">Tuyo. Dominio, tienda, archivos originales y accesos quedan a tu nombre desde el primer día.</p>
+      <h3 style="font-size:11pt;margin-top:6mm">¿Y si necesito algo que no está aquí?</h3>
+      <p style="margin-top:1.5mm">Pregunta. Si entra en lo que sé hacer bien, te lo presupuesto; si no, te lo digo claro y, si puedo, te recomiendo a alguien.</p>
     </div>
   </div>
-  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">05</span></div>
+  <div class="foot"><span class="mono">Josea González — Dossier de servicios</span><span class="mono">07</span></div>
 </section>
 
-<!-- P6 · CONTACTO -->
+<!-- P8 · CONTACTO -->
 <section class="page dark">
-  <div class="hrow"><span class="kick coral">(05)</span><span class="kick coral">Contacto</span><span class="rule"></span></div>
+  <div class="hrow"><span class="kick coral">(07)</span><span class="kick coral">Contacto</span><span class="rule"></span></div>
   <h2 style="font-size:34pt;margin-top:30mm">¿Hablamos de<br>tu proyecto<span class="coral">?</span></h2>
   <p style="max-width:110mm">Cuéntame qué necesitas y te respondo en menos de 24 h con los siguientes pasos y, si lo tienes claro, presupuesto cerrado.</p>
   <div style="margin-top:14mm">
@@ -239,7 +215,7 @@ td.r b{color:#F25444}
   </div>
   <p class="kick" style="color:#f8f0e373;margin-top:16mm">También en Fiverr · Malt · Freelancer</p>
   <img src="file:///Users/joseantonio/Downloads/JA Digital Studio/public/brand/monograma-app.svg" style="width:26mm;border-radius:6mm;position:absolute;right:16mm;bottom:28mm">
-  <div class="foot"><span class="mono">José Antonio González Moreno — La Haba (Badajoz), España</span><span class="mono coral">06</span></div>
+  <div class="foot"><span class="mono">José Antonio González Moreno — La Haba (Badajoz), España</span><span class="mono coral">08</span></div>
 </section>
 
 </body></html>
