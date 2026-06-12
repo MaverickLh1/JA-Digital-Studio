@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selector de servicios — JA Digital Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crema: #f8f0e3;
+      --crema-dim: #ede3d2;
+      --carbon: #171615;
+      --coral: #ff6f61;
+      --coral-dark: #f25444;
+      --gold: #b8860b;
+      --gold-light: #f5e6b8;
+      --gold-dark: #8a6508;
+      --paper: #fffcf6;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+      background: var(--crema);
+      color: var(--carbon);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    ::selection { background: var(--coral); color: var(--carbon); }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 240, 227, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--crema-dim);
+      padding: 1rem 1.5rem;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: "Archivo", sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--coral); }
+
+    .summary-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .count {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.35rem 0.75rem;
+      background: var(--paper);
+      border: 1px solid var(--crema-dim);
+      border-radius: 999px;
+    }
+
+    .count strong { font-weight: 700; }
+    .count-list strong { color: var(--coral-dark); }
+    .count-star strong { color: var(--gold-dark); }
+
+    button {
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      transition: transform 0.15s, background 0.15s, opacity 0.15s;
+    }
+
+    button:active { transform: scale(0.97); }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .btn-coral { background: var(--coral); color: var(--carbon); }
+    .btn-coral:hover:not(:disabled) { background: var(--coral-dark); }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    .btn-gold:hover:not(:disabled) { background: var(--gold-dark); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--carbon);
+      border: 1px solid var(--crema-dim);
+    }
+
+    .btn-ghost:hover { background: var(--crema-dim); }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .intro { margin-bottom: 2rem; }
+
+    .intro h1 {
+      font-family: "Archivo", sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro p {
+      color: #4a4643;
+      max-width: 62ch;
+      margin-bottom: 1.25rem;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--crema-dim);
+      background: var(--paper);
+    }
+
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .legend-swatch.list { background: var(--coral); }
+    .legend-swatch.star { background: var(--gold); }
+
+    .category { margin-bottom: 2.5rem; }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--carbon);
+    }
+
+    .category-title {
+      font-family: "Archivo", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .category-code {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--coral-dark);
+      background: rgba(255, 111, 97, 0.15);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .subgroup { margin-bottom: 1.25rem; }
+
+    .subgroup-title {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b6560;
+      margin-bottom: 0.5rem;
+      padding-left: 0.25rem;
+    }
+
+    .col-labels {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 0.5rem;
+      padding: 0 0.85rem 0.35rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8a8480;
+    }
+
+    .col-labels span:nth-child(2) { color: var(--coral-dark); text-align: center; min-width: 52px; }
+    .col-labels span:nth-child(3) { color: var(--gold-dark); text-align: center; min-width: 52px; }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 0.85rem;
+      background: var(--paper);
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+
+    .item:hover { border-color: var(--crema-dim); }
+
+    .item.is-selected {
+      border-color: var(--coral);
+      box-shadow: 0 0 0 1px rgba(255, 111, 97, 0.2);
+      background: #fff;
+    }
+
+    .item.is-starred {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.25);
+      background: linear-gradient(135deg, #fff 0%, #fdf8ec 100%);
+    }
+
+    .item.is-selected.is-starred {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.3), inset 3px 0 0 var(--coral);
+    }
+
+    .item-label {
+      font-size: 0.9375rem;
+      cursor: default;
+      padding-right: 0.5rem;
+    }
+
+    .item-code {
+      font-family: "Archivo", monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      color: var(--coral-dark);
+      margin-right: 0.35rem;
+    }
+
+    .item.is-starred .item-code { color: var(--gold-dark); }
+
+    .cb-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      flex-shrink: 0;
+    }
+
+    .cb-wrap input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .cb-wrap.list input { accent-color: var(--coral); }
+    .cb-wrap.star input { accent-color: var(--gold); }
+
+    .cb-wrap.star input:disabled {
+      cursor: not-allowed;
+      opacity: 0.35;
+    }
+
+    .btn-toggle-preview {
+      display: none;
+    }
+
+    .btn-toggle-preview.visible {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .preview {
+      display: none;
+      margin-bottom: 2rem;
+      background: var(--carbon);
+      color: var(--crema);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .preview.open { display: block; }
+
+    .preview-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 700px) {
+      .preview-inner { grid-template-columns: 1fr; }
+      .col-labels { display: none; }
+      .item { grid-template-columns: 1fr auto auto; }
+    }
+
+    .panel-section h3 {
+      font-family: "Archivo", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-section.list h3 { color: var(--coral); }
+    .panel-section.star h3 { color: var(--gold-light); }
+
+    .panel-list { font-size: 0.8125rem; line-height: 1.7; }
+    .panel-empty { opacity: 0.45; font-style: italic; }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: var(--carbon);
+      color: var(--crema);
+      padding: 0.65rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      z-index: 70;
+      transition: transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">JA Digital <span>Studio</span></div>
+      <div class="summary-bar">
+        <div class="count count-list"><strong id="list-count">0</strong> en lista</div>
+        <div class="count count-star"><strong id="star-count">0</strong> destacados</div>
+        <button type="button" class="btn-ghost btn-toggle-preview" id="btn-toggle-preview" aria-expanded="false">Ver selección</button>
+        <button type="button" class="btn-ghost" id="btn-clear">Limpiar todo</button>
+        <button type="button" class="btn-coral" id="btn-copy-list" disabled>Copiar lista</button>
+        <button type="button" class="btn-gold" id="btn-copy-star" disabled>Copiar destacados</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h1>Selector de servicios</h1>
+      <p>
+        Primero marca los servicios en tu <strong>lista</strong>. Después, de los que hayas elegido,
+        marca los que quieras <strong>destacar</strong>. Puedes exportar las dos listas por separado.
+      </p>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-swatch list"></span>
+          Lista — servicios seleccionados
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch star"></span>
+          Destacar — prioridad dentro de la lista
+        </div>
+      </div>
+    </div>
+
+    <section class="preview" id="preview" aria-hidden="true">
+      <div class="preview-inner">
+        <div class="panel-section list">
+          <h3>Lista completa</h3>
+          <div class="panel-list" id="panel-list"></div>
+        </div>
+        <div class="panel-section star">
+          <h3>Destacados</h3>
+          <div class="panel-list" id="panel-star"></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="catalog"></div>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    const STORAGE_KEY = "ja-servicios-seleccion-v3";
+
+    const catalog = [
+      {
+        id: "S",
+        emoji: "🛒",
+        title: "SHOPIFY",
+        subgroups: [
+          {
+            title: "Montaje y catálogo",
+            items: [
+              { code: "S1", text: "⭐ Configuración completa de tienda nueva (ajustes, pagos, envíos, impuestos)" },
+              { code: "S2", text: "Personalización de tema (secciones, colores, tipografías)" },
+              { code: "S3", text: "⭐ Migración desde WooCommerce / Wix / PrestaShop / Etsy" },
+              { code: "S4", text: "Limpieza y auditoría de catálogo (duplicados, fichas rotas, imágenes faltantes)" },
+              { code: "S5", text: "Variantes complejas y productos personalizables (como Taza Mágica)" },
+              { code: "S6", text: "Colecciones inteligentes + filtros de navegación" },
+            ],
+          },
+          {
+            title: "Visibilidad y conversión",
+            items: [
+              { code: "S7", text: "⭐ SEO completo de tienda (títulos, metas, alt text, redirecciones)" },
+              { code: "S8", text: "Copy persuasivo de fichas de producto" },
+              { code: "S9", text: "Reseñas, badges de confianza y prueba social" },
+              { code: "S10", text: "Ofertas: bundles, descuentos, upsells y cross-sells" },
+              { code: "S11", text: "Optimización de velocidad (imágenes, apps muertas, tema)" },
+              { code: "S12", text: "A/B testing de elementos clave (hero, CTAs, fichas)" },
+            ],
+          },
+          {
+            title: "Canales y marketing",
+            items: [
+              { code: "S13", text: "⭐ Píxel de Meta + Conversions API + GA4 + consentimiento" },
+              { code: "S14", text: "Feed de Google Shopping + catálogo de Meta/Instagram Shop" },
+              { code: "S15", text: "🔥 Preparación de catálogo para TikTok Shop (recién llegado a España, poca competencia)" },
+              { code: "S16", text: "Email marketing: flujos de bienvenida y carrito abandonado (Klaviyo / Shopify Email)" },
+              { code: "S17", text: "Emails transaccionales con tu marca (confirmación, envío)" },
+              { code: "S18", text: "Shopify Markets: multi-idioma, multi-moneda" },
+            ],
+          },
+          {
+            title: "Continuidad",
+            items: [
+              { code: "S19", text: "💶 Mantenimiento mensual de tienda (novedades, fichas nuevas, informes)" },
+              { code: "S20", text: "💶 Informe mensual de métricas con recomendaciones" },
+              { code: "S21", text: "Formación 1:1 — te enseño a gestionar tu tienda (2h)" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "W",
+        emoji: "🌐",
+        title: "WEBS",
+        subgroups: [
+          {
+            title: null,
+            items: [
+              { code: "W1", text: "Rediseño de web existente (lavado de cara completo)" },
+              { code: "W2", text: "⭐ Landing para campañas de Google/Meta Ads (orientada a conversión)" },
+              { code: "W3", text: "Página de captura + lead magnet (formulario + PDF de regalo automático)" },
+              { code: "W4", text: "Setup de newsletter (Brevo/Mailchimp) integrada en la web" },
+              { code: "W5", text: "Blog montado + plantilla de artículos" },
+              { code: "W6", text: "Web personal/portfolio para profesionales" },
+              { code: "W7", text: "⭐ Optimización de velocidad y Core Web Vitals de webs existentes" },
+              { code: "W8", text: "SEO on-page básico + alta en Search Console" },
+              { code: "W9", text: "Migración de dominio/hosting sin caídas" },
+              { code: "W10", text: "Integraciones: WhatsApp, reservas (Calendly), mapas, chat" },
+              { code: "W11", text: "Analítica: GA4 + eventos de conversión configurados" },
+              { code: "W12", text: "Email corporativo con tu dominio (como tu hola@)" },
+              { code: "W13", text: "Multi-idioma básico" },
+              { code: "W14", text: "💶 Mantenimiento web mensual (cambios, copias, actualizaciones)" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "I",
+        emoji: "📸",
+        title: "IMÁGENES",
+        subgroups: [
+          {
+            title: "Edición",
+            items: [
+              { code: "I1", text: "Retoque y limpieza (polvo, arrugas, color fiel)" },
+              { code: "I2", text: "Recorte y fondo por lotes (catálogos enteros)" },
+              { code: "I3", text: "Ghost mannequin para ropa (efecto maniquí invisible)" },
+              { code: "I4", text: "Sombras y reflejos realistas" },
+            ],
+          },
+          {
+            title: "Creación con IA",
+            items: [
+              { code: "I5", text: "⭐ Lifestyle con IA: tu producto en escenarios reales" },
+              { code: "I6", text: "🔥 Modelos con IA para ropa/accesorios (sin sesión de fotos)" },
+              { code: "I7", text: "Mockups de producto (taza, camiseta, libro, packaging — lo de Wemaker)" },
+            ],
+          },
+          {
+            title: "Para vender más",
+            items: [
+              { code: "I8", text: "⭐ Infografías de beneficios y medidas" },
+              { code: "I9", text: "Imágenes comparativas (antes/después, tu producto vs genérico)" },
+              { code: "I10", text: "⭐ Pack Amazon A+ Content (los módulos de la ficha premium)" },
+              { code: "I11", text: "Miniaturas para anuncios (Meta, TikTok)" },
+              { code: "I12", text: "Banners hero para la tienda (portada, colecciones, rebajas)" },
+              { code: "I13", text: "GIF/vídeo corto de producto (slideshow para fichas y redes)" },
+            ],
+          },
+          {
+            title: "Técnico",
+            items: [
+              { code: "I14", text: "Adaptación a cada canal (medidas/pesos Amazon, Etsy, Shopify, TikTok)" },
+              { code: "I15", text: "Renombrado SEO + alt text por lote" },
+              { code: "I16", text: "Optimización de peso (WebP, carga rápida)" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "B",
+        emoji: "🎨",
+        title: "BRANDING",
+        subgroups: [
+          {
+            title: null,
+            items: [
+              { code: "B1", text: "Naming + comprobación de dominio y redes" },
+              { code: "B2", text: "⭐ Logo con variantes (principal, horizontal, monograma — como el tuyo)" },
+              { code: "B3", text: "Rediseño/refresh de logo existente" },
+              { code: "B4", text: "Mini manual de marca en PDF (cómo usar logo, colores, tipos)" },
+              { code: "B5", text: "⭐ Plantillas de redes sociales editables en Canva (posts + stories)" },
+              { code: "B6", text: "Plantilla de presentación/pitch deck" },
+              { code: "B7", text: "Firmas de email corporativas" },
+              { code: "B8", text: "⭐ Packaging básico e-commerce: pegatinas, tarjetas de agradecimiento, etiquetas" },
+              { code: "B9", text: "Set de iconos personalizados (como los de tu web)" },
+              { code: "B10", text: "Cabeceras de perfiles (LinkedIn, Facebook, YouTube, Etsy)" },
+              { code: "B11", text: "🔥 Dossier corporativo/catálogo en PDF (como el mío — ya tienes la muestra viva)" },
+              { code: "B12", text: "Branding para Amazon Brand Store / tienda Etsy" },
+              { code: "B13", text: "Mockups de presentación de marca (logo en soportes reales)" },
+              { code: "B14", text: "Papelería: tarjetas de visita, sobres, recibos con marca" },
+            ],
+          },
+        ],
+      },
+    ];
+
+    const allItems = catalog.flatMap((cat) => cat.subgroups.flatMap((sg) => sg.items));
+    const itemMap = Object.fromEntries(allItems.map((item) => [item.code, item]));
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const data = JSON.parse(raw);
+          return {
+            list: new Set(Array.isArray(data.list) ? data.list : []),
+            star: new Set(Array.isArray(data.star) ? data.star : []),
+          };
+        }
+        const v2 = localStorage.getItem("ja-servicios-seleccion-v2");
+        if (v2) {
+          const data = JSON.parse(v2);
+          const list = new Set(Array.isArray(data.items) ? data.items : []);
+          return { list, star: new Set() };
+        }
+        const legacy = localStorage.getItem("ja-servicios-seleccion");
+        if (legacy) {
+          const arr = JSON.parse(legacy);
+          if (Array.isArray(arr)) return { list: new Set(arr), star: new Set() };
+        }
+      } catch { /* ignore */ }
+      return { list: new Set(), star: new Set() };
+    }
+
+    let state = loadState();
+
+    function saveState() {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({ list: [...state.list], star: [...state.star] })
+      );
+    }
+
+    function sortCodes(codes) {
+      return [...codes].sort((a, b) => {
+        const la = a[0], na = parseInt(a.slice(1), 10);
+        const lb = b[0], nb = parseInt(b.slice(1), 10);
+        if (la !== lb) return la.localeCompare(lb);
+        return na - nb;
+      });
+    }
+
+    function stripEmojis(text) {
+      return text.replace(/[⭐🔥💶]/g, "").trim();
+    }
+
+    function formatLine(code) {
+      return `${code} — ${stripEmojis(itemMap[code].text)}`;
+    }
+
+    function syncItemRow(code) {
+      const row = document.querySelector(`.item[data-code="${code}"]`);
+      if (!row) return;
+      const inList = state.list.has(code);
+      const isStar = state.star.has(code);
+      row.classList.toggle("is-selected", inList);
+      row.classList.toggle("is-starred", isStar);
+      const listCb = row.querySelector(".cb-list");
+      const starCb = row.querySelector(".cb-star");
+      if (listCb) listCb.checked = inList;
+      if (starCb) {
+        starCb.checked = isStar;
+        starCb.disabled = !inList;
+      }
+    }
+
+    function renderCatalog() {
+      const root = document.getElementById("catalog");
+      root.innerHTML = catalog
+        .map(
+          (cat) => `
+        <section class="category">
+          <div class="category-header">
+            <h2 class="category-title">${cat.emoji} ${cat.title}</h2>
+            <span class="category-code">${cat.id}</span>
+          </div>
+          ${cat.subgroups
+            .map(
+              (sg) => `
+            <div class="subgroup">
+              ${sg.title ? `<div class="subgroup-title">${sg.title}</div>` : ""}
+              <div class="col-labels">
+                <span>Servicio</span>
+                <span>Lista</span>
+                <span>Destacar</span>
+              </div>
+              <div class="items">
+                ${sg.items
+                  .map((item) => {
+                    const inList = state.list.has(item.code);
+                    const isStar = state.star.has(item.code);
+                    return `
+                  <div
+                    class="item${inList ? " is-selected" : ""}${isStar ? " is-starred" : ""}"
+                    data-code="${item.code}"
+                  >
+                    <div class="item-label">
+                      <span class="item-code">${item.code}</span>${item.text}
+                    </div>
+                    <label class="cb-wrap list" title="Añadir a la lista">
+                      <input
+                        type="checkbox"
+                        class="cb-list"
+                        data-code="${item.code}"
+                        ${inList ? "checked" : ""}
+                        aria-label="Lista: ${item.code}"
+                      />
+                    </label>
+                    <label class="cb-wrap star" title="Destacar dentro de la lista">
+                      <input
+                        type="checkbox"
+                        class="cb-star"
+                        data-code="${item.code}"
+                        ${isStar ? "checked" : ""}
+                        ${inList ? "" : "disabled"}
+                        aria-label="Destacar: ${item.code}"
+                      />
+                    </label>
+                  </div>
+                `;
+                  })
+                  .join("")}
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </section>
+      `
+        )
+        .join("");
+
+      root.querySelectorAll(".cb-list").forEach((cb) => {
+        cb.addEventListener("change", (e) => {
+          const code = e.target.dataset.code;
+          if (e.target.checked) {
+            state.list.add(code);
+          } else {
+            state.list.delete(code);
+            state.star.delete(code);
+          }
+          saveState();
+          syncItemRow(code);
+          updateUI();
+        });
+      });
+
+      root.querySelectorAll(".cb-star").forEach((cb) => {
+        cb.addEventListener("change", (e) => {
+          const code = e.target.dataset.code;
+          if (!state.list.has(code)) return;
+          if (e.target.checked) state.star.add(code);
+          else state.star.delete(code);
+          saveState();
+          syncItemRow(code);
+          updateUI();
+        });
+      });
+    }
+
+    let previewOpen = false;
+
+    function updateUI() {
+      const listCount = state.list.size;
+      const starCount = state.star.size;
+      const hasSelection = listCount > 0 || starCount > 0;
+
+      document.getElementById("list-count").textContent = listCount;
+      document.getElementById("star-count").textContent = starCount;
+      document.getElementById("btn-copy-list").disabled = listCount === 0;
+      document.getElementById("btn-copy-star").disabled = starCount === 0;
+
+      const toggleBtn = document.getElementById("btn-toggle-preview");
+      const preview = document.getElementById("preview");
+      const panelList = document.getElementById("panel-list");
+      const panelStar = document.getElementById("panel-star");
+
+      toggleBtn.classList.toggle("visible", hasSelection);
+
+      if (!hasSelection) {
+        previewOpen = false;
+        preview.classList.remove("open");
+        preview.setAttribute("aria-hidden", "true");
+        toggleBtn.setAttribute("aria-expanded", "false");
+        toggleBtn.textContent = "Ver selección";
+        panelList.innerHTML = "";
+        panelStar.innerHTML = "";
+        return;
+      }
+
+      panelList.innerHTML =
+        listCount > 0
+          ? sortCodes(state.list).map((c) => `<div>${formatLine(c)}</div>`).join("")
+          : '<div class="panel-empty">Ninguno en lista</div>';
+
+      panelStar.innerHTML =
+        starCount > 0
+          ? sortCodes(state.star).map((c) => `<div><strong>${c}</strong> — ${stripEmojis(itemMap[c].text)}</div>`).join("")
+          : '<div class="panel-empty">Ninguno destacado</div>';
+
+      preview.classList.toggle("open", previewOpen);
+      preview.setAttribute("aria-hidden", previewOpen ? "false" : "true");
+      toggleBtn.setAttribute("aria-expanded", previewOpen ? "true" : "false");
+      toggleBtn.textContent = previewOpen ? "Ocultar selección" : "Ver selección";
+    }
+
+    document.getElementById("btn-toggle-preview").addEventListener("click", () => {
+      previewOpen = !previewOpen;
+      updateUI();
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
+    }
+
+    document.getElementById("btn-copy-list").addEventListener("click", async () => {
+      if (state.list.size === 0) return;
+      const text = sortCodes(state.list).map(formatLine).join("\n");
+      await copyText(text);
+      showToast(`Lista completa copiada (${state.list.size})`);
+    });
+
+    document.getElementById("btn-copy-star").addEventListener("click", async () => {
+      if (state.star.size === 0) return;
+      const text = sortCodes(state.star).map(formatLine).join("\n");
+      await copyText(text);
+      showToast(`Destacados copiados (${state.star.size})`);
+    });
+
+    document.getElementById("btn-clear").addEventListener("click", () => {
+      if (state.list.size === 0 && state.star.size === 0) return;
+      if (!confirm("¿Limpiar lista y destacados?")) return;
+      state = { list: new Set(), star: new Set() };
+      saveState();
+      document.querySelectorAll(".item").forEach((row) => {
+        const code = row.dataset.code;
+        syncItemRow(code);
+      });
+      updateUI();
+    });
+
+    renderCatalog();
+    updateUI();
+  </script>
+</body>
+</html>

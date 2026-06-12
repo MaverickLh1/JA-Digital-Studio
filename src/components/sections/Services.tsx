@@ -78,31 +78,52 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Dossier: toda la oferta ampliada y tarifas, fuera de la landing */}
-        <motion.p
-          {...fadeUp(0.1)}
-          className="mt-12 flex flex-wrap items-baseline gap-x-3 gap-y-1"
-        >
-          <span className="kicker text-coral-dark">(↓)</span>
-          <a
-            href={dossierHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-underline font-display text-xl font-bold tracking-tight sm:text-2xl"
-          >
-            Dossier de servicios y tarifas
-          </a>
-          <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/50">
-            PDF · 6 págs ·
-          </span>
-          <a
-            href={dossierHref}
-            download="dossier-josea-gonzalez.pdf"
-            className="font-mono text-[11px] uppercase tracking-[0.15em] text-coral-dark underline underline-offset-4 transition-colors hover:text-coral"
-          >
-            Descargar ↓
-          </a>
-        </motion.p>
+        {/* Dossiers: toda la oferta ampliada y tarifas, fuera de la landing */}
+        <motion.div {...fadeUp(0.1)} className="mt-12">
+          <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="kicker text-coral-dark">(↓)</span>
+            <a
+              href={dossierHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline font-display text-xl font-bold tracking-tight sm:text-2xl"
+            >
+              Dossier de servicios y tarifas
+            </a>
+            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/50">
+              PDF ·
+            </span>
+            <a
+              href={dossierHref}
+              download="dossier-josea-gonzalez.pdf"
+              className="font-mono text-[11px] uppercase tracking-[0.15em] text-coral-dark underline underline-offset-4 transition-colors hover:text-coral"
+            >
+              Descargar ↓
+            </a>
+          </p>
+          <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/50">
+            O por servicio:
+            {services.map((s, i) => (
+              <span key={s.id} className="flex items-center gap-2">
+                {i > 0 && <span aria-hidden="true">·</span>}
+                <a
+                  href={s.dossier}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-carbon/70 underline underline-offset-4 transition-colors hover:text-coral-dark"
+                >
+                  {s.id === "web"
+                    ? "Webs"
+                    : s.id === "imagenes"
+                      ? "Imágenes"
+                      : s.id === "branding"
+                        ? "Branding"
+                        : "Shopify"}
+                </a>
+              </span>
+            ))}
+          </p>
+        </motion.div>
       </div>
     </section>
   );

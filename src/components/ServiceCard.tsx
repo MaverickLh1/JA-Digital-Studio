@@ -9,7 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { dossierHref, type Service } from "@/lib/data";
+import type { Service } from "@/lib/data";
 import { easeOut } from "@/lib/motion";
 
 export default function ServiceCard({
@@ -153,7 +153,7 @@ export default function ServiceCard({
                 ))}
                 <li className="pt-1.5">
                   <a
-                    href={dossierHref}
+                    href={service.dossier}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`font-mono text-[11px] uppercase tracking-[0.15em] underline underline-offset-4 transition-colors ${
@@ -162,7 +162,7 @@ export default function ServiceCard({
                         : "text-carbon/60 hover:text-coral-dark"
                     }`}
                   >
-                    → Detalles y tarifas en el dossier (PDF)
+                    → Catálogo completo y tarifas (PDF)
                   </a>
                 </li>
               </motion.ul>

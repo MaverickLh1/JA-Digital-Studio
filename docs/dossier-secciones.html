@@ -1,0 +1,212 @@
+<!--
+  FUENTE DE LOS DOSSIERS POR SECCIÓN (public/dossier-{seccion}.pdf)
+  Una sola plantilla parametrizada: ?seccion=shopify|webs|imagenes|branding
+
+  Para regenerar los 4 PDF tras editar tarifas o textos (desde la raíz):
+
+  for s in shopify webs imagenes branding; do
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --no-pdf-header-footer --virtual-time-budget=8000 \
+      --print-to-pdf="public/dossier-$s.pdf" "file://$PWD/docs/dossier-secciones.html?seccion=$s"
+  done
+-->
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap');
+*{margin:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4;margin:0}
+body{font-family:Geist,sans-serif;color:#171615;background:#fff}
+.page{width:210mm;height:296mm;page-break-after:always;position:relative;overflow:hidden;background:#F8F0E3}
+.mono{font-family:'JetBrains Mono',monospace}
+.kick{font-family:'JetBrains Mono',monospace;font-size:8.5pt;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
+.coral{color:#FF6F61}.coraldk{color:#F25444}
+.head{background:#171615;color:#F8F0E3;padding:14mm 16mm 12mm}
+.head .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:9mm}
+.head img{height:7mm}
+h1{font-family:Archivo;font-weight:900;font-size:30pt;letter-spacing:-.6pt;line-height:1.02}
+.head p.intro{margin-top:4mm;font-size:10.5pt;color:#f8f0e3cc;max-width:150mm;line-height:1.5}
+.body{padding:10mm 16mm}
+.hrow{display:flex;align-items:center;gap:4mm;margin:2mm 0 5mm}
+.rule{height:1px;background:#17161526;flex:1}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.dest{background:#FFFCF6;border:1px solid #17161522;border-radius:5mm;padding:6mm 6mm 5mm;position:relative}
+.dest .idx{position:absolute;top:5mm;right:6mm;font-family:'JetBrains Mono';font-size:8pt;color:#17161540;letter-spacing:.1em}
+.dest h3{font-family:Archivo;font-weight:900;font-size:11.5pt;letter-spacing:-.2pt;padding-right:10mm}
+.dest p{font-size:8.6pt;line-height:1.45;color:#171615c4;margin-top:1.6mm;min-height:9mm}
+.pricepill{display:inline-block;margin-top:2.6mm;background:#171615;color:#F8F0E3;border-radius:999px;padding:1.4mm 4mm;font-family:'JetBrains Mono';font-size:8pt;font-weight:700}
+.pricepill b{color:#FF6F61}
+.star{position:absolute;top:-2.6mm;left:5mm;background:#FF6F61;color:#171615;font-family:'JetBrains Mono';font-size:6.6pt;font-weight:700;letter-spacing:.14em;padding:.9mm 3mm;border-radius:999px}
+.list{margin-top:1mm}
+.row{display:flex;align-items:baseline;gap:5mm;padding:3.1mm 0;border-bottom:1px solid #17161518}
+.row .nm{font-family:Archivo;font-weight:700;font-size:10pt;width:52mm;flex-shrink:0}
+.row .ds{font-size:8.6pt;color:#171615b8;line-height:1.4;flex:1}
+.row .pr{font-family:'JetBrains Mono';font-size:8.6pt;font-weight:700;white-space:nowrap}
+.row .pr b{color:#F25444}
+.pack{background:#171615;color:#F8F0E3;border-radius:5mm;padding:7mm 8mm;display:flex;align-items:center;gap:8mm;margin-top:7mm}
+.pack .t h3{font-family:Archivo;font-weight:900;font-size:13pt}
+.pack .t p{font-size:8.8pt;color:#f8f0e3b8;margin-top:1.2mm;line-height:1.45}
+.pack .pp{margin-left:auto;text-align:right;flex-shrink:0}
+.pack .pp .from{font-family:'JetBrains Mono';font-size:7.5pt;letter-spacing:.18em;color:#f8f0e380}
+.pack .pp .eur{font-family:Archivo;font-weight:900;font-size:22pt;color:#FF6F61;line-height:1}
+.foot{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between}
+.foot span{font-family:'JetBrains Mono';font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:#17161573}
+.cta{background:#171615;border-radius:5mm;color:#F8F0E3;padding:6mm 8mm;margin-top:6mm;display:flex;align-items:center;gap:6mm}
+.cta .mono{font-size:9.5pt;line-height:1.9}
+.cta .arrow{color:#FF6F61}
+.note{font-family:'JetBrains Mono';font-size:7.6pt;letter-spacing:.08em;color:#17161599;margin-top:4mm;text-transform:uppercase}
+.slashsep{display:inline-block;transform:skewX(-18deg);color:#FF6F61;font-family:Archivo;font-weight:900}
+</style></head><body>
+<div id="app"></div>
+<script>
+const CONTACTO = { email:"hola@joseagonzalez.com", wa:"+34 623 462 851", web:"joseagonzalez.com" };
+const LOGO = "file:///Users/joseantonio/Downloads/JA Digital Studio/public/brand/logo-horizontal-crema.svg";
+
+const SECS = {
+shopify: {
+  num:"01", file:"SHOPIFY", titulo:"Optimización<br>en Shopify<span class='coral'>.</span>",
+  intro:"Subo, organizo y optimizo tu catálogo para que se venda solo. Estos son todos los trabajos que puedo hacer en tu tienda, con su tarifa orientativa.",
+  pack:{nombre:"Pack Puesta a punto", desc:"Auditoría completa + hasta 50 fichas optimizadas + SEO base de tienda. Lo esencial, de una vez.", precio:"390 €", extra:"Catálogo XL / migración — desde 690 €"},
+  dest:[
+    {id:"S4", nm:"Limpieza y auditoría de catálogo", ds:"Reviso todo el catálogo y arreglo lo que frena ventas: duplicados, fichas rotas, huecos.", pr:"desde 150 €"},
+    {id:"S5", nm:"Variantes y personalizables", ds:"Productos con opciones y personalización montados para que el cliente configure sin errores.", pr:"desde 180 €"},
+    {id:"S7", nm:"SEO completo de tienda", ds:"Títulos, metas, alt y redirecciones para que Google entienda (y muestre) tu tienda.", pr:"desde 290 €"},
+    {id:"S8", nm:"Copy persuasivo de fichas", ds:"Fichas que venden: textos claros y persuasivos, no descripciones de fabricante.", pr:"desde 120 € · 20 fichas"},
+    {id:"S11", nm:"Optimización de velocidad", ds:"Tienda más rápida: imágenes, apps muertas y tema a dieta.", pr:"desde 180 €"},
+  ],
+  resto:[
+    {nm:"Personalización de tema", ds:"Tu tema afinado a tu marca: secciones, tipografías y colores sin look de plantilla.", pr:"desde 240 €"},
+    {nm:"Reseñas y badges de confianza", ds:"Opiniones y sellos de confianza colocados donde empujan la compra.", pr:"desde 120 €"},
+    {nm:"A/B testing de elementos clave", ds:"Pruebas en lo importante (hero, CTAs, fichas) para decidir con datos.", pr:"desde 160 €/test"},
+    {nm:"Email marketing: flujos", ds:"Bienvenida y carrito abandonado funcionando solos: ventas que se recuperan.", pr:"desde 240 €"},
+    {nm:"Emails transaccionales con marca", ds:"Confirmaciones y avisos de envío con tu imagen, no el email genérico.", pr:"desde 120 €"},
+    {nm:"Mantenimiento mensual", ds:"Tu tienda al día cada mes: novedades, fichas nuevas y un informe claro.", pr:"desde 120 €/mes"},
+  ]
+},
+webs: {
+  num:"02", file:"WEBS", titulo:"Webs y<br>landing pages<span class='coral'>.</span>",
+  intro:"Páginas que no solo se ven bien: convierten. Todo lo que puedo construir o mejorar en tu presencia web, con su tarifa orientativa.",
+  pack:{nombre:"Pack Web completa", desc:"Hasta 5 secciones/páginas con textos base, formulario, legales, dominio y analítica. Llave en mano.", precio:"850 €", extra:"Landing page — desde 450 €"},
+  dest:[
+    {id:"W1", nm:"Rediseño de web existente", ds:"Lavado de cara completo: tu web actual, puesta al nivel de tu negocio.", pr:"desde 690 €"},
+    {id:"W2", nm:"Landing para campañas de ads", ds:"Pensada para Google/Meta Ads: un objetivo, cero fugas.", pr:"desde 450 €"},
+    {id:"W3", nm:"Captura + lead magnet", ds:"Captación con regalo: formulario + PDF entregado en automático.", pr:"desde 290 €"},
+    {id:"W6", nm:"Web personal / portfolio", ds:"Tu presencia profesional en una página que impone.", pr:"desde 390 €"},
+    {id:"W14", nm:"Mantenimiento web mensual", ds:"Cambios, copias y actualizaciones: tu web cuidada cada mes.", pr:"desde 60 €/mes"},
+  ],
+  resto:[
+    {nm:"Setup de newsletter", ds:"Brevo o Mailchimp conectados a tu web y listos para enviar.", pr:"desde 150 €"},
+    {nm:"SEO on-page + Search Console", ds:"Lo básico bien hecho para salir en Google: estructura, metas y alta.", pr:"desde 190 €"},
+    {nm:"Email corporativo con tu dominio", ds:"Correo profesional funcionando en tu móvil y ordenador.", pr:"desde 60 €"},
+    {nm:"Multi-idioma básico", ds:"Tu web en más de un idioma, sin líos.", pr:"desde 240 €"},
+  ]
+},
+imagenes: {
+  num:"03", file:"IMÁGENES", titulo:"Imágenes para<br>e-commerce<span class='coral'>.</span>",
+  intro:"Tus productos, vistos como se merecen. Del recorte por lotes a la fotografía con IA: todo lo que puedo hacer con tu catálogo visual.",
+  pack:{nombre:"Pack 20 imágenes", desc:"Fondos, retoque y formatos listos para tu canal. La puesta a punto visual de tu catálogo.", precio:"180 €", extra:"Catálogos grandes — precio por volumen"},
+  dest:[
+    {id:"I2", nm:"Recorte y fondo por lotes", ds:"Catálogos enteros recortados y con fondo limpio, a precio de lote.", pr:"desde 75 € · 50 uds"},
+    {id:"I5", nm:"Lifestyle con IA", ds:"Tu producto en escenarios reales generados con IA: sin estudio ni viajes.", pr:"desde 120 € · 10 uds"},
+    {id:"I6", nm:"Modelos con IA para ropa", ds:"Tu ropa puesta en modelos generados con IA: catálogo vivo sin sesión de fotos.", pr:"desde 150 € · 10 uds"},
+    {id:"I7", nm:"Mockups de producto", ds:"Tu diseño sobre tazas, camisetas o packaging con acabado real.", pr:"desde 80 € · 10 uds"},
+    {id:"I12", nm:"Banners hero para la tienda", ds:"Portadas y banners de campaña que visten la tienda.", pr:"desde 90 € · 2 uds"},
+  ],
+  resto:[
+    {nm:"Retoque y limpieza", ds:"Color fiel y producto impecable: fuera polvo, arrugas y dominantes.", pr:"desde 60 € · 20 uds"},
+    {nm:"Sombras y reflejos realistas", ds:"Producto asentado, no flotando: profundidad creíble.", pr:"desde 50 € · 20 uds"},
+    {nm:"Infografías de beneficios", ds:"Beneficios y medidas explicados en una imagen que evita devoluciones.", pr:"desde 75 € · 3 uds"},
+    {nm:"Imágenes comparativas", ds:"Antes/después y comparativas que dejan claro por qué el tuyo.", pr:"desde 25 €/ud"},
+    {nm:"Pack Amazon A+ Content", ds:"Los módulos de la ficha premium que convierten mirones en compras.", pr:"desde 190 €/producto"},
+    {nm:"Renombrado SEO + alt text", ds:"Cien imágenes renombradas y con alt text SEO en un lote.", pr:"desde 60 € · 100 uds"},
+    {nm:"Optimización de peso (WebP)", ds:"Mismas imágenes, mitad de peso: carga rápida sin perder calidad.", pr:"desde 50 €/lote"},
+  ]
+},
+branding: {
+  num:"04", file:"BRANDING", titulo:"Identidad<br>de marca<span class='coral'>.</span>",
+  intro:"Una imagen coherente que se reconoce a la primera. Del naming al packaging: todas las piezas de marca que puedo crear para ti.",
+  pack:{nombre:"Pack Identidad básica", desc:"Logo con variantes + paleta + tipografías + kit editable en Canva. Tu marca, lista para usar.", precio:"420 €", extra:"Cada pieza, también por separado ↓"},
+  dest:[
+    {id:"B1", nm:"Naming + dominio y redes", ds:"Nombre disponible de verdad: dominio y redes comprobados antes de enamorarte.", pr:"desde 150 €"},
+    {id:"B2", nm:"Logo con variantes", ds:"Profesional y completo: principal, horizontal y monograma.", pr:"desde 290 €"},
+    {id:"B4", nm:"Mini manual de marca (PDF)", ds:"Guía breve de uso: colores, tipografías y reglas para no desvirtuar la marca.", pr:"desde 120 €"},
+    {id:"B8", nm:"Packaging para e-commerce", ds:"Pegatinas, tarjetas de agradecimiento y etiquetas: el paquete también vende.", pr:"desde 180 €"},
+    {id:"B13", nm:"Mockups de presentación", ds:"Tu logo presentado en soportes reales: fachada, bolsa, app.", pr:"desde 90 €"},
+  ],
+  resto:[
+    {nm:"Rediseño / refresh de logo", ds:"Tu logo de siempre, afinado: moderniza sin perder lo que te reconoce.", pr:"desde 190 €"},
+    {nm:"Plantilla de presentación", ds:"Pitch deck con tu marca para propuestas que imponen.", pr:"desde 240 €"},
+    {nm:"Firmas de email corporativas", ds:"Firmas coherentes para ti y tu equipo.", pr:"desde 60 €"},
+    {nm:"Set de iconos personalizados", ds:"Iconos a medida con el estilo de tu marca (como los de mi web).", pr:"desde 120 € · 8 uds"},
+    {nm:"Cabeceras de perfiles", ds:"LinkedIn, Facebook, YouTube o Etsy, a juego con tu marca.", pr:"desde 90 € · 3 uds"},
+    {nm:"Dossier corporativo en PDF", ds:"Tus servicios y tarifas en un PDF como el que estás leyendo.", pr:"desde 290 €"},
+    {nm:"Amazon Brand Store / Etsy", ds:"Tu rincón de marca en el marketplace, vestido para vender.", pr:"desde 240 €"},
+    {nm:"Papelería con tu marca", ds:"Tarjetas de visita, sobres y recibos con tu marca impresa.", pr:"desde 150 €"},
+  ]
+}
+};
+
+const q = new URLSearchParams(location.search).get("seccion") || "shopify";
+const S = SECS[q];
+
+const destCards = S.dest.map((d,i)=>`
+  <div class="dest">
+    ${i===0?'<span class="star">LO MÁS PEDIDO</span>':""}
+    <span class="idx">/${String(i+1).padStart(2,"0")}</span>
+    <h3>${d.nm}</h3>
+    <p>${d.ds}</p>
+    <span class="pricepill">${d.pr.replace(/(\d[\d.,]*\s?€)/,"<b>$1</b>")}</span>
+  </div>`).join("");
+
+const restoRows = S.resto.map(r=>`
+  <div class="row">
+    <span class="nm">${r.nm}</span>
+    <span class="ds">${r.ds}</span>
+    <span class="pr">${r.pr.replace(/(\d[\d.,]*\s?€)/,"<b>$1</b>")}</span>
+  </div>`).join("");
+
+document.getElementById("app").innerHTML = `
+<section class="page">
+  <div class="head">
+    <div class="top">
+      <img src="${LOGO}">
+      <span class="kick coral">DOSSIER ${S.file} — 2026</span>
+    </div>
+    <span class="kick" style="color:#f8f0e380">(${S.num}) Servicios y tarifas</span>
+    <h1 style="margin-top:3mm">${S.titulo}</h1>
+    <p class="intro">${S.intro}</p>
+  </div>
+  <div class="body">
+    <div class="hrow"><span class="kick coraldk">★ DESTACADOS</span><span class="rule"></span></div>
+    <div class="grid">${destCards}</div>
+    <p class="note">* Tarifas orientativas. Presupuesto cerrado y por escrito antes de empezar. Una ronda de revisiones incluida.</p>
+  </div>
+  <div class="foot"><span>Josea González — joseagonzalez.com</span><span>01</span></div>
+</section>
+
+<section class="page">
+  <div class="body" style="padding-top:14mm">
+    <div class="hrow"><span class="kick coraldk">(+) TODO EL CATÁLOGO</span><span class="rule"></span></div>
+    <div class="list">${restoRows}</div>
+    <div class="pack">
+      <div class="t">
+        <span class="kick coral">¿LO QUIERES TODO DE UNA VEZ?</span>
+        <h3 style="margin-top:2mm">${S.pack.nombre}</h3>
+        <p>${S.pack.desc}</p>
+        <p class="mono" style="font-size:7.5pt;color:#f8f0e380;margin-top:2mm;letter-spacing:.1em">${S.pack.extra.toUpperCase()}</p>
+      </div>
+      <div class="pp"><div class="from">DESDE</div><div class="eur">${S.pack.precio}</div></div>
+    </div>
+    <div class="cta">
+      <div class="mono">
+        <span class="arrow">→</span> ${CONTACTO.email}<br>
+        <span class="arrow">→</span> WhatsApp: ${CONTACTO.wa}<br>
+        <span class="arrow">→</span> ${CONTACTO.web}
+      </div>
+      <p style="margin-left:auto;font-size:9pt;color:#f8f0e3b8;max-width:62mm;line-height:1.5">Cuéntame qué necesitas y te respondo en menos de 24 h con presupuesto cerrado.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Josea González — Dossier ${S.file}</span><span>02</span></div>
+</section>`;
+document.title = "Dossier " + S.file + " — Josea González";
+</script>
+</body></html>

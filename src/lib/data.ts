@@ -2,8 +2,9 @@ export type Service = {
   id: string;
   title: string;
   tagline: string;
-  bullets: string[];
+  bullets: string[]; // los 5 destacados que se ven en la card
   image: string | null;
+  dossier: string; // PDF de la sección con el catálogo completo y tarifas
   featured?: boolean; // tarjeta oscura focal del bento
   extra?: boolean; // complemento (jerarquía menor que las especialidades)
 };
@@ -17,13 +18,14 @@ export const services: Service[] = [
     tagline:
       "Subo, organizo y optimizo tu catálogo para que se venda solo. SEO, variantes, migraciones y todo lo que tu tienda necesita.",
     bullets: [
-      "Subida y SEO de productos",
-      "Migración de catálogos",
-      "Corrección de archivos CSV",
-      "Metafields personalizados",
-      "Reseñas y badges de confianza",
+      "Limpieza y auditoría de catálogo",
+      "Variantes y productos personalizables",
+      "SEO completo de tienda",
+      "Copy persuasivo de fichas",
+      "Optimización de velocidad",
     ],
     image: "/services/shopify.jpg",
+    dossier: "/dossier-shopify.pdf",
     featured: true,
   },
   {
@@ -32,13 +34,14 @@ export const services: Service[] = [
     tagline:
       "Páginas que no solo se ven bien: convierten. Diseño orientado a que el visitante haga lo que quieres que haga.",
     bullets: [
-      "Webs de una página",
-      "Landing pages de captación",
-      "Link in Bio",
-      "Páginas Coming Soon",
-      "Páginas legales",
+      "Rediseño de webs existentes",
+      "Landings para campañas de ads",
+      "Página de captura + lead magnet",
+      "Webs personales y portfolios",
+      "Mantenimiento web mensual",
     ],
     image: "/services/webs.jpg",
+    dossier: "/dossier-webs.pdf",
   },
   {
     id: "imagenes",
@@ -46,13 +49,14 @@ export const services: Service[] = [
     tagline:
       "Tus productos, vistos como se merecen. Fondos limpios, fotografía con IA, infografías y formatos listos para cada marketplace.",
     bullets: [
-      "Fondos blancos y transparentes",
-      "Fotografía de producto con IA",
-      "Infografías y miniaturas",
-      "Edición de sombras y reflejos",
-      "Adaptación a Amazon, Etsy y Shopify",
+      "Recorte y fondos por lotes",
+      "Lifestyle con IA: producto en escena",
+      "Modelos con IA para ropa",
+      "Mockups de producto",
+      "Banners hero para la tienda",
     ],
     image: "/services/imagenes.png",
+    dossier: "/dossier-imagenes.pdf",
     extra: true,
   },
   {
@@ -61,13 +65,14 @@ export const services: Service[] = [
     tagline:
       "Una imagen coherente que se reconoce a la primera. Colores, logos, plantillas y los detalles que hacen que tu marca parezca grande.",
     bullets: [
-      "Paleta de colores y tipografías",
-      "Diseño de logos",
-      "Kits editables en Canva",
-      "Iconos de beneficios",
-      "Favicon y cabeceras",
+      "Naming + dominio y redes",
+      "Logo con variantes",
+      "Mini manual de marca (PDF)",
+      "Packaging para e-commerce",
+      "Mockups de presentación",
     ],
     image: "/services/branding.png",
+    dossier: "/dossier-branding.pdf",
     extra: true,
   },
 ];
