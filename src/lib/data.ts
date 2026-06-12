@@ -173,8 +173,7 @@ export const contact = {
   email: "hola@joseagonzalez.com",
   whatsapp: "34623462851",
   // Perfil de LinkedIn. Déjalo vacío ("") para ocultar el botón social.
-  // URL con tildes codificadas (é→%C3%A9, á→%C3%A1) para máxima compatibilidad.
-  linkedin: "https://www.linkedin.com/in/jos%C3%A9-antonio-gonz%C3%A1lez-moreno-96b60a415",
+  linkedin: "https://www.linkedin.com/in/josea-gonzalez",
 };
 
 // Dossier de servicios y tarifas (PDF en /public; fuente en docs/dossier.html).
