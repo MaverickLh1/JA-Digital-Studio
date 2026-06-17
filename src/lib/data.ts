@@ -87,6 +87,7 @@ export type Project = {
   description: string;
   image: string;
   url?: string; // enlace público; omitir para mostrar estado "en construcción"
+  cta?: string; // texto del enlace; por defecto "Visitar web", "Visitar tienda" solo si es tienda
   status: "live" | "soon";
   services: string[]; // chips de lo aplicado en el proyecto
   quote?: { text: string; author: string }; // testimonio real (cuando llegue)
@@ -103,6 +104,7 @@ export const projects: Project[] = [
       "Tienda Shopify de productos personalizables —tazas, textil, decoración y merchandising— con personalización en la propia web. Montaje, catálogo e imágenes de producto listas para vender.",
     image: "/work/tazamagica.jpg",
     url: "https://tazamagica.com",
+    cta: "Visitar tienda",
     status: "live",
     services: ["Shopify", "Catálogo", "Imágenes de producto"],
   },
