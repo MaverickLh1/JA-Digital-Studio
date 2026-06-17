@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --carbon:#171615; --crema:#F8F0E3; --coral:#FF6F61; --coral-dark:#F25444; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:100vw; height:100vh; overflow:hidden; background:var(--carbon); }
+  .stage{
+    position:relative; width:100vw; height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    overflow:hidden; font-family:"Archivo Black",sans-serif;
+  }
+  /* glow cálido */
+  .glow{ position:absolute; width:120vmin; height:120vmin; left:-25vmin; top:-30vmin;
+    background:radial-gradient(closest-side, rgba(255,111,97,.20), transparent 70%); }
+  .glow2{ position:absolute; width:90vmin; height:90vmin; right:-25vmin; bottom:-28vmin;
+    background:radial-gradient(closest-side, rgba(255,154,60,.12), transparent 70%); }
+  /* slash gigante de marca */
+  .slash{ position:absolute; right:8vmin; top:-20vh; width:11vmin; height:140vh;
+    background:rgba(255,111,97,.14); transform:skewX(-18deg); }
+  .slash.thin{ right:1vmin; width:4vmin; background:rgba(255,111,97,.09); }
+  /* contenido — franja central segura (se conserva al recortar a 1.91:1) */
+  .content{ position:relative; z-index:2; display:flex; flex-direction:column;
+    align-items:center; text-align:center; padding:0 9vmin; max-width:100%; }
+  .kicker{ font-family:"JetBrains Mono",monospace; font-weight:700; color:var(--coral);
+    text-transform:uppercase; letter-spacing:.34em; font-size:3.2vmin; margin-bottom:4.2vmin; }
+  h1{ color:var(--crema); text-transform:uppercase; line-height:.96;
+    letter-spacing:-.01em; font-size:13vmin; }
+  h1 .dot{ display:inline-block; width:.18em; height:.18em; background:var(--coral);
+    margin-left:.05em; vertical-align:baseline; }
+  h1 .c{ color:var(--coral); }
+  .url{ font-family:"JetBrains Mono",monospace; font-weight:500; color:rgba(248,240,227,.55);
+    text-transform:uppercase; letter-spacing:.26em; font-size:2.9vmin; margin-top:5vmin; }
+  /* grano */
+  .grain{ position:absolute; inset:0; z-index:3; opacity:.05; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="glow"></div>
+  <div class="glow2"></div>
+  <div class="slash"></div>
+  <div class="slash thin"></div>
+  <div class="content">
+    <div class="kicker" id="kicker"></div>
+    <h1 id="title"></h1>
+    <div class="url">joseagonzalez.com</div>
+  </div>
+  <div class="grain"></div>
+</div>
+<script>
+  const data = {
+    "1": { kicker:"Llevo tu negocio", title:'AL SIGUIENTE<br>NIVEL<span class="dot"></span>' },
+    "2": { kicker:"Lo que hago por ti", title:'WEB, <span class="c">ECOM</span><br>Y MARCA<span class="dot"></span>' },
+  };
+  const v = new URLSearchParams(location.search).get("v") || "1";
+  const d = data[v];
+  document.getElementById("kicker").textContent = d.kicker;
+  document.getElementById("title").innerHTML = d.title;
+</script>
+</body>
+</html>
