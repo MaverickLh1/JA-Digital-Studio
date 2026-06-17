@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Logo from "@/components/Logo";
 import { navLinks } from "@/lib/data";
@@ -9,6 +9,8 @@ import { easeOut } from "@/lib/motion";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -25,6 +27,21 @@ export default function Navbar() {
     };
   }, [open]);
 
+  // Teclado: al abrir, el foco salta al primer enlace del menú; Escape lo
+  // cierra y devuelve el foco al botón.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <>
     <header
@@ -34,7 +51,7 @@ export default function Navbar() {
           : "border-b border-transparent py-5"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5" aria-label="Principal">
         <a href="#top" className="flex items-center" aria-label="Josea González — inicio">
           <Logo
             className={`h-[15px] w-auto transition-colors duration-300 sm:h-[17px] ${
@@ -68,10 +85,12 @@ export default function Navbar() {
           {/* Botón de menú (solo móvil) */}
           <button
             type="button"
+            ref={menuButtonRef}
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
+            aria-controls="mobile-menu"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors md:hidden ${
+            className={`flex h-11 w-11 items-center justify-center rounded-full border transition-colors md:hidden ${
               scrolled || open
                 ? "border-carbon/20 text-carbon"
                 : "border-crema/25 text-crema"
@@ -102,6 +121,8 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
+            ref={menuRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -141,7 +162,7 @@ export default function Navbar() {
                 >
                   Hablemos de tu proyecto
                 </a>
-                <p className="text-center font-mono text-xs font-bold uppercase tracking-[0.3em] text-carbon/55">
+                <p className="text-center font-mono text-xs font-bold uppercase tracking-[0.3em] text-carbon/65">
                   WEB/ ECOM/ <span className="text-coral-dark">BRAND/</span>
                 </p>
               </motion.div>

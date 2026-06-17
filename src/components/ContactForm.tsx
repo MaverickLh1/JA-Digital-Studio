@@ -20,7 +20,7 @@ function SubmitButton() {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-crema/15 bg-crema/[0.04] px-4 py-3 text-crema placeholder:text-crema/35 outline-none transition-colors focus:border-coral/60";
+  "w-full rounded-xl border border-crema/30 bg-crema/[0.04] px-4 py-3 text-crema placeholder:text-crema/55 outline-none transition-colors focus:border-coral";
 
 export default function ContactForm() {
   const [state, formAction] = useActionState(sendContact, initial);
@@ -38,37 +38,53 @@ export default function ContactForm() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <input
-          type="text"
-          name="name"
+        <div>
+          <label htmlFor="name" className="sr-only">
+            Tu nombre
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Tu nombre"
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="sr-only">
+            Tu email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="Tu email"
+            className={inputClass}
+          />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="message" className="sr-only">
+          Tu mensaje
+        </label>
+        <textarea
+          id="message"
+          name="message"
           required
-          placeholder="Tu nombre"
-          aria-label="Tu nombre"
-          className={inputClass}
-        />
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="Tu email"
-          aria-label="Tu email"
-          className={inputClass}
+          rows={5}
+          placeholder="¿En qué puedo ayudarte?"
+          className={`${inputClass} resize-none`}
         />
       </div>
-      <textarea
-        name="message"
-        required
-        rows={5}
-        placeholder="¿En qué puedo ayudarte?"
-        aria-label="Tu mensaje"
-        className={`${inputClass} resize-none`}
-      />
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <SubmitButton />
         {state.message && (
           <p
-            role="status"
+            role={state.ok ? "status" : "alert"}
+            aria-live={state.ok ? "polite" : "assertive"}
             className={`text-sm ${
               state.ok ? "text-coral" : "font-medium text-coral-dark"
             }`}

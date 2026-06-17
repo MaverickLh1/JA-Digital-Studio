@@ -17,8 +17,14 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-coral focus:px-5 focus:py-2 focus:text-sm focus:font-semibold focus:text-carbon"
+      >
+        Saltar al contenido
+      </a>
       <Navbar />
-      <main>
+      <main id="contenido" tabIndex={-1} className="outline-none">
         <Hero />
         <Marquee />
         <Services />

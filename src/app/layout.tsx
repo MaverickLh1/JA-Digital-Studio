@@ -35,18 +35,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Josea González — Web, e-commerce y marca para tu negocio",
   description:
-    "Soy José Antonio González, freelance digital. Llevo tu negocio al siguiente nivel: tiendas Shopify, diseño web, imágenes de producto y branding, con IA aplicada en el proceso.",
+    "Freelance digital en Badajoz (España). Tiendas Shopify, diseño web, imágenes de producto y branding para llevar tu negocio al siguiente nivel.",
   keywords: [
     "freelance digital",
+    "freelance Badajoz",
     "diseño web",
+    "diseño web Badajoz",
     "Shopify",
     "e-commerce",
-    "inteligencia artificial",
     "imágenes de producto",
     "identidad de marca",
+    "Extremadura",
     "España",
   ],
-  authors: [{ name: "José Antonio" }],
+  authors: [{ name: "José Antonio González", url: siteUrl }],
   openGraph: {
     title: "Josea González — Web, e-commerce y marca",
     description:
@@ -64,27 +66,76 @@ export const metadata: Metadata = {
   },
 };
 
-// Datos estructurados: le dicen a Google que esto es un servicio profesional
+// Datos estructurados (grafo): identifican a la persona (José Antonio), el
+// servicio profesional con su ubicación en Badajoz (SEO local) y el sitio web,
 // y enlazan los perfiles verificados (Fiverr, Malt, Freelancer, LinkedIn).
+const address = {
+  "@type": "PostalAddress",
+  addressLocality: "La Haba",
+  addressRegion: "Badajoz",
+  addressCountry: "ES",
+};
+const sameAs = [...platforms.map((p) => p.url), contact.linkedin].filter(
+  (u) => u && u !== "#"
+);
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Josea González",
-  alternateName: "JOSEA GONZALEZ",
-  url: siteUrl,
-  email: contact.email,
-  description:
-    "Tiendas Shopify, diseño web, imágenes de producto y branding para negocios y marcas, con IA aplicada en el proceso.",
-  founder: {
-    "@type": "Person",
-    name: "José Antonio González Moreno",
-  },
-  areaServed: "ES",
-  knowsLanguage: "es",
-  sameAs: [
-    ...platforms.map((p) => p.url),
-    contact.linkedin,
-  ].filter((u) => u && u !== "#"),
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#josea`,
+      name: "José Antonio González Moreno",
+      alternateName: "Josea González",
+      url: siteUrl,
+      jobTitle: "Freelance digital",
+      email: contact.email,
+      knowsAbout: [
+        "Shopify",
+        "e-commerce",
+        "diseño web",
+        "imágenes de producto",
+        "branding",
+      ],
+      knowsLanguage: ["es", "en"],
+      address,
+      sameAs,
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#service`,
+      name: "Josea González",
+      alternateName: "JOSEA GONZALEZ",
+      url: siteUrl,
+      email: contact.email,
+      description:
+        "Tiendas Shopify, diseño web, imágenes de producto y branding para negocios y marcas, con IA aplicada en el proceso.",
+      founder: { "@id": `${siteUrl}/#josea` },
+      provider: { "@id": `${siteUrl}/#josea` },
+      address,
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 38.93,
+        longitude: -5.76,
+      },
+      areaServed: [
+        { "@type": "Country", name: "España" },
+        { "@type": "Country", name: "México" },
+        { "@type": "Country", name: "Argentina" },
+        { "@type": "Country", name: "Colombia" },
+        { "@type": "Country", name: "Chile" },
+      ],
+      knowsLanguage: "es",
+      sameAs,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Josea González",
+      inLanguage: "es",
+      publisher: { "@id": `${siteUrl}/#josea` },
+    },
+  ],
 };
 
 export default function RootLayout({

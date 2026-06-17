@@ -44,7 +44,7 @@ export default function Contact() {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.97]"
+            className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-carbon transition-transform hover:scale-[1.02] active:scale-[0.97]"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Escríbeme por WhatsApp
