@@ -16,10 +16,13 @@ const archivo = Archivo({
   display: "swap",
 });
 
+// preload:false — Geist es el cuerpo de texto (sobre todo bajo el pliegue);
+// no compite por la red con el titular del hero, que es lo que marca el LCP.
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
+  preload: false,
 });
 
 // JetBrains Mono: la mono del tagline del logo (WEB/ ECOM/ BRAND/).
@@ -27,6 +30,7 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
+  preload: false,
 });
 
 const siteUrl = "https://joseagonzalez.com";

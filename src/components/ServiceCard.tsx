@@ -35,10 +35,15 @@ export default function ServiceCard({
     damping: 20,
   });
 
+  // Cacheamos el rect al entrar y lo reutilizamos en cada movimiento:
+  // getBoundingClientRect en cada mousemove fuerza recalcular layout (jank/INP).
+  const rectRef = useRef<DOMRect | null>(null);
+  const cacheRect = () => {
+    rectRef.current = ref.current?.getBoundingClientRect() ?? null;
+  };
   const handleMove = (e: React.MouseEvent) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
+    const rect = rectRef.current;
+    if (!rect) return;
     mx.set((e.clientX - rect.left) / rect.width - 0.5);
     my.set((e.clientY - rect.top) / rect.height - 0.5);
   };
@@ -52,6 +57,7 @@ export default function ServiceCard({
     <div className="h-full [perspective:1200px]">
       <motion.div
         ref={ref}
+        onMouseEnter={cacheRect}
         onMouseMove={handleMove}
         onMouseLeave={reset}
         style={{ rotateX, rotateY }}
