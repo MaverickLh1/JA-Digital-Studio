@@ -6,6 +6,7 @@ import Services from "@/components/sections/Services";
 import Work from "@/components/sections/Work";
 import About from "@/components/sections/About";
 import Process from "@/components/sections/Process";
+import Faq from "@/components/sections/Faq";
 import Platforms from "@/components/sections/Platforms";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
@@ -31,6 +32,7 @@ export default function Home() {
         <Work />
         <About />
         <Process />
+        <Faq />
         <Platforms />
         <Contact />
       </main>

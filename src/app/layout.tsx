@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import SmoothScroll from "@/components/SmoothScroll";
 import Grain from "@/components/Grain";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { contact, platforms, siteUrl } from "@/lib/data";
+import { contact, platforms, siteUrl, faqs } from "@/lib/data";
 
 // Archivo es la familia variable hermana de Archivo Black (la del logo):
 // los titulares en peso 900 conectan directamente con el wordmark.
@@ -139,6 +139,15 @@ const jsonLd = {
       name: "Josea González",
       inLanguage: "es",
       publisher: { "@id": `${siteUrl}/#josea` },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${siteUrl}/#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
   ],
 };

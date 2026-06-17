@@ -92,15 +92,15 @@ export type Project = {
   quote?: { text: string; author: string }; // testimonio real (cuando llegue)
 };
 
-// REVISAR: descripciones provisionales — ajustar al papel real en cada
-// proyecto y añadir las otras dos tiendas Shopify cuando haya URL.
+// Las descripciones de los proyectos "live" reflejan el trabajo real ya
+// publicado. Los "soon" llevan descripción provisional hasta su lanzamiento.
 export const projects: Project[] = [
   {
     id: "tazamagica",
     name: "Taza Mágica",
     type: "Tienda Shopify",
     description:
-      "Tienda de tazas y regalos personalizados. Montaje en Shopify, catálogo con personalización de producto e imágenes listas para vender.",
+      "Tienda Shopify de productos personalizables —tazas, textil, decoración y merchandising— con personalización en la propia web. Montaje, catálogo e imágenes de producto listas para vender.",
     image: "/work/tazamagica.jpg",
     url: "https://tazamagica.com",
     status: "live",
@@ -114,7 +114,7 @@ export const projects: Project[] = [
       "Personalización creativa para clubes, empresas y eventos. Proyecto propio construido de cero: marca, web y catálogo.",
     image: "/work/wemaker.png",
     url: "https://wemaker.es",
-    status: "soon",
+    status: "live",
     services: ["Branding", "Diseño web", "Shopify"],
   },
   {
@@ -237,6 +237,35 @@ export const processSteps = [
     title: "Lo entrego",
     text: "Hago el trabajo y te lo entrego listo para usar. Con revisiones si hace falta.",
     note: "Revisiones incluidas",
+  },
+] as const;
+
+// Preguntas frecuentes (sección visible + FAQPage schema). Respuestas basadas
+// en cómo trabajo; sin cifras cerradas (el precio se da por proyecto).
+export const faqs = [
+  {
+    q: "¿Con qué tipo de negocios trabajas?",
+    a: "Con tiendas online, marcas y negocios de todo el mundo hispano. Mi especialidad es Shopify y el diseño web, y además me encargo de las imágenes de producto y la identidad de marca. Lo mismo te monto una tienda de cero que mejoro la que ya tienes.",
+  },
+  {
+    q: "¿Cuánto cuesta un proyecto?",
+    a: "Depende de lo que necesites, así que no trabajo con tarifas de catálogo: te doy un precio cerrado antes de empezar, sin sorpresas. Tienes tarifas orientativas en el dossier de servicios.",
+  },
+  {
+    q: "¿Cuánto se tarda?",
+    a: "Según el alcance del proyecto. Acordamos un plazo claro y realista al principio y lo cumplo; para trabajos pequeños suele ser cuestión de días.",
+  },
+  {
+    q: "¿Trabajas con clientes fuera de España?",
+    a: "Sí. Trabajo en remoto con clientes de toda España y de Latinoamérica. Hablamos por donde te resulte cómodo —email, WhatsApp o videollamada— y te respondo en menos de 24 horas.",
+  },
+  {
+    q: "¿Qué necesitas de mí para empezar?",
+    a: "Solo que me cuentes qué tienes entre manos y a dónde quieres llegar. Con eso te oriento, definimos el alcance y arrancamos. La primera consulta es sin compromiso.",
+  },
+  {
+    q: "¿Incluye revisiones o mantenimiento?",
+    a: "Las revisiones van incluidas hasta dejarlo a tu gusto. Y si quieres, me encargo del mantenimiento mensual de tu web o tienda para que no tengas que preocuparte de nada.",
   },
 ] as const;
 
