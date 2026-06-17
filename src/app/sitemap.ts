@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/data";
 
-const siteUrl = "https://joseagonzalez.com";
+// Fecha de la última revisión significativa del contenido. Se actualiza a mano
+// cuando hay cambios reales, en vez de new Date() (que cambiaría en cada build
+// señalando modificaciones que no han ocurrido).
+const lastModified = new Date("2026-06-13");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
   return [
     { url: siteUrl, lastModified, changeFrequency: "monthly", priority: 1 },
     { url: `${siteUrl}/aviso-legal`, lastModified, changeFrequency: "yearly", priority: 0.3 },

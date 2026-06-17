@@ -1,3 +1,6 @@
+// URL canónica del sitio. Fuente única para metadata, sitemap y robots.
+export const siteUrl = "https://joseagonzalez.com";
+
 export type Service = {
   id: string;
   title: string;

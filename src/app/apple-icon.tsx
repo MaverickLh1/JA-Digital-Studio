@@ -10,11 +10,5 @@ export default async function AppleIcon() {
   const svg = await readFile(join(process.cwd(), "public/brand/monograma-app.svg"), "utf8");
   const src = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
 
-  return new ImageResponse(
-    (
-       
-      <img src={src} alt="" width={180} height={180} />
-    ),
-    size
-  );
+  return new ImageResponse(<img src={src} alt="" width={180} height={180} />, size);
 }

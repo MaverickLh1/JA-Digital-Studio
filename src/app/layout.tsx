@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import SmoothScroll from "@/components/SmoothScroll";
 import Grain from "@/components/Grain";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { contact, platforms } from "@/lib/data";
+import { contact, platforms, siteUrl } from "@/lib/data";
 
 // Archivo es la familia variable hermana de Archivo Black (la del logo):
 // los titulares en peso 900 conectan directamente con el wordmark.
@@ -32,8 +32,6 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
   preload: false,
 });
-
-const siteUrl = "https://joseagonzalez.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
