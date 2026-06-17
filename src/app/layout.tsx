@@ -68,6 +68,9 @@ export const metadata: Metadata = {
     description:
       "Llevo tu negocio al siguiente nivel: web, e-commerce y marca. Freelance digital en España.",
   },
+  verification: {
+    google: "WKnPjN7dnS4bvfwRPtsckhJeLzBd2zaUKahFSNzFAkk",
+  },
 };
 
 // Datos estructurados (grafo): identifican a la persona (José Antonio), el
