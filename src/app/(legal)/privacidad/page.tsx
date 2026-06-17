@@ -32,8 +32,14 @@ export default function Privacidad() {
       <p>
         A través del formulario de contacto se recogen los datos que tú mismo
         facilitas: <strong>nombre</strong>, <strong>correo electrónico</strong> y
-        el <strong>contenido del mensaje</strong>. No se recoge ningún dato
-        adicional de forma automática con fines de seguimiento.
+        el <strong>contenido del mensaje</strong>.
+      </p>
+      <p>
+        Además, de forma automática y únicamente con fines estadísticos, se
+        recogen datos de navegación <strong>agregados y anónimos</strong>{" "}
+        (páginas vistas, país aproximado y tipo de dispositivo) mediante Vercel
+        Web Analytics. Esta medición <strong>no utiliza cookies</strong>, no
+        identifica a los visitantes ni permite elaborar perfiles individuales.
       </p>
 
       <h2>3. Finalidad del tratamiento</h2>
@@ -66,7 +72,7 @@ export default function Privacidad() {
         encargados de tratamiento:
       </p>
       <ul>
-        <li><strong>Vercel Inc.</strong> — alojamiento del sitio web.</li>
+        <li><strong>Vercel Inc.</strong> — alojamiento del sitio web y medición de audiencia agregada y sin cookies (Vercel Web Analytics y Speed Insights).</li>
         <li><strong>Resend (Plus Five Five, Inc.)</strong> — envío del correo generado por el formulario de contacto.</li>
       </ul>
       <p>

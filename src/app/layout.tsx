@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import SmoothScroll from "@/components/SmoothScroll";
 import Grain from "@/components/Grain";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -21,7 +22,7 @@ const geist = Geist({
   display: "swap",
 });
 
-// JetBrains Mono: la mono del tagline del logo (WEB/ ECOM/ IA/).
+// JetBrains Mono: la mono del tagline del logo (WEB/ ECOM/ BRAND/).
 const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
@@ -107,6 +108,7 @@ export default function RootLayout({
           <WhatsAppFloat />
         </SmoothScroll>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

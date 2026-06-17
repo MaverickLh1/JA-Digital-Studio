@@ -23,9 +23,14 @@ export default function Cookies() {
 
       <h2>2. Cookies que utiliza este sitio</h2>
       <p>
-        Este sitio web <strong>no utiliza cookies de análisis, publicidad ni
-        seguimiento</strong>. Tampoco elabora perfiles de los usuarios ni comparte
-        datos de navegación con terceros con fines comerciales.
+        Este sitio web <strong>no utiliza cookies de publicidad ni de
+        seguimiento</strong>, ni elabora perfiles individuales de los usuarios.
+        Para conocer de forma agregada y anónima cuánta gente visita la web
+        (páginas vistas, país aproximado y tipo de dispositivo) se emplea{" "}
+        <strong>Vercel Web Analytics</strong>, una herramienta de medición que{" "}
+        <strong>no utiliza cookies</strong> ni identifica a los visitantes, por lo
+        que está exenta del deber de consentimiento. Tienes el detalle en la{" "}
+        <a href="/privacidad">Política de privacidad</a>.
       </p>
       <p>
         Únicamente podrían emplearse cookies <strong>técnicas estrictamente
