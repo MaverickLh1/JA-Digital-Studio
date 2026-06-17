@@ -54,7 +54,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5" aria-label="Principal">
         <a href="#top" className="flex items-center" aria-label="Josea González — inicio">
           <Logo
-            className={`h-[15px] w-auto transition-colors duration-300 sm:h-[17px] ${
+            className={`h-[15px] w-auto transition-colors duration-300 sm:h-[17px] lg:h-[22px] ${
               scrolled || open ? "text-carbon" : "text-crema"
             }`}
           />
