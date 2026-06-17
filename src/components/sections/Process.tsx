@@ -39,7 +39,7 @@ export default function Process() {
               <p className="mt-3 max-w-xs text-base leading-relaxed text-carbon/65">
                 {step.text}
               </p>
-              <p className="mt-4 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-coral-dark">
+              <p className="mt-4 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-coral-text">
                 → {step.note}
               </p>
             </motion.div>

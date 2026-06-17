@@ -57,7 +57,7 @@ export default function Services() {
             className="mb-6 mt-12 flex items-center gap-3"
           >
             <span className="kicker text-coral-dark">(+)</span>
-            <span className="kicker text-carbon/45">
+            <span className="kicker text-carbon/60">
               Complementos que rematan el proyecto
             </span>
             <span aria-hidden="true" className="h-px flex-1 bg-carbon/10" />
@@ -90,18 +90,18 @@ export default function Services() {
             >
               Dossier de servicios y tarifas
             </a>
-            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/50">
+            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/60">
               PDF ·
             </span>
             <a
               href={dossierHref}
               download="dossier-josea-gonzalez.pdf"
-              className="font-mono text-[11px] uppercase tracking-[0.15em] text-coral-dark underline underline-offset-4 transition-colors hover:text-coral"
+              className="font-mono text-[11px] uppercase tracking-[0.15em] text-coral-text underline underline-offset-4 transition-colors hover:text-coral-dark"
             >
               Descargar ↓
             </a>
           </p>
-          <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/50">
+          <p className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] uppercase tracking-[0.15em] text-carbon/60">
             O por servicio:
             {services.map((s, i) => (
               <span key={s.id} className="flex items-center gap-2">
@@ -110,7 +110,7 @@ export default function Services() {
                   href={s.dossier}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-carbon/70 underline underline-offset-4 transition-colors hover:text-coral-dark"
+                  className="text-carbon/70 underline underline-offset-4 transition-colors hover:text-coral-text"
                 >
                   {s.id === "web"
                     ? "Webs"

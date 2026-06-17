@@ -104,7 +104,7 @@ export default function ServiceCard({
         {/* Contenido */}
         <div className="flex flex-1 flex-col p-6">
           {extra && (
-            <p className="kicker mb-2 text-[10px] text-carbon/40">Complemento</p>
+            <p className="kicker mb-2 text-[10px] text-carbon/60">Complemento</p>
           )}
           <div className="flex items-start justify-between gap-3">
             <h3
@@ -159,7 +159,7 @@ export default function ServiceCard({
                     className={`font-mono text-[11px] uppercase tracking-[0.15em] underline underline-offset-4 transition-colors ${
                       dark
                         ? "text-crema/70 hover:text-coral"
-                        : "text-carbon/60 hover:text-coral-dark"
+                        : "text-carbon/60 hover:text-coral-text"
                     }`}
                   >
                     → Catálogo completo y tarifas (PDF)
@@ -174,7 +174,7 @@ export default function ServiceCard({
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             className={`mt-5 inline-flex w-fit items-center gap-1.5 text-sm font-semibold ${
-              dark ? "text-coral" : "text-coral-dark"
+              dark ? "text-coral" : "text-coral-text"
             }`}
           >
             {open ? "Ver menos" : "Ver más"}

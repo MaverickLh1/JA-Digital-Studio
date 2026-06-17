@@ -39,7 +39,7 @@ export default function About() {
               className="relative rounded-3xl object-cover shadow-xl"
             />
           </div>
-          <p className="mt-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-carbon/45">
+          <p className="mt-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-carbon/60">
             <span>La Haba, Badajoz — ES</span>
             <span className="text-coral-dark">38°55′N · 5°57′O</span>
           </p>

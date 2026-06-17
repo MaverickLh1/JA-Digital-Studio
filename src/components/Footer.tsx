@@ -23,7 +23,7 @@ export default function Footer() {
                   target={p.url === "#" ? undefined : "_blank"}
                   rel="noopener noreferrer"
                   aria-label={p.name}
-                  className="block text-crema/45 transition-colors hover:text-coral"
+                  className="block text-crema/60 transition-colors hover:text-coral"
                 >
                   <span
                     className="platform-icon h-5"

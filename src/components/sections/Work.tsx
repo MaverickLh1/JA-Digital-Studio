@@ -67,7 +67,7 @@ export default function Work() {
             <div className="flex shrink-0 items-center gap-4">
               <span
                 aria-hidden="true"
-                className="font-mono text-xs tracking-[0.2em] text-carbon/50"
+                className="font-mono text-xs tracking-[0.2em] text-carbon/65"
               >
                 {pad(active)} / {pad(projects.length)}
               </span>
@@ -132,7 +132,7 @@ export default function Work() {
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="kicker text-[10px] text-coral-dark">{p.type}</p>
+                    <p className="kicker text-[10px] text-coral-text">{p.type}</p>
                     <h3 className="mt-1.5 font-display text-xl font-bold tracking-tight">
                       {p.name}
                     </h3>
@@ -152,7 +152,7 @@ export default function Work() {
                 {p.quote && (
                   <blockquote className="mt-4 border-l-2 border-coral pl-4 text-sm italic leading-relaxed text-carbon/75">
                     “{p.quote.text}”
-                    <footer className="mt-1.5 font-mono text-[10px] uppercase not-italic tracking-[0.15em] text-carbon/45">
+                    <footer className="mt-1.5 font-mono text-[10px] uppercase not-italic tracking-[0.15em] text-carbon/60">
                       — {p.quote.author}
                     </footer>
                   </blockquote>
@@ -175,7 +175,7 @@ export default function Work() {
                       href={p.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-coral-dark"
+                      className="group/link inline-flex items-center gap-1.5 text-sm font-semibold text-coral-text"
                     >
                       {p.status === "soon" ? "Visitar web" : "Visitar tienda"}
                       <span

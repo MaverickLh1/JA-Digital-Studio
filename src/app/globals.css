@@ -8,6 +8,10 @@
   --color-carbon-soft: #201e1c;
   --color-coral: #ff6f61;
   --color-coral-dark: #f25444;
+  /* Coral oscurecido que cumple WCAG AA (4.5:1) como texto/enlace sobre los
+     fondos claros (crema, crema-dim, paper). El coral y el coral-dark se
+     reservan para fondos oscuros y para rellenos (botones, acentos). */
+  --color-coral-text: #c0392b;
   --color-paper: #fffcf6;
 
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
