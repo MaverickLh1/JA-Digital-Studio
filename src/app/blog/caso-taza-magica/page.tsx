@@ -113,6 +113,10 @@ export default function Page() {
         y el resto de proyectos en <a href="/#trabajos">mis trabajos</a>.
       </p>
       <p>
+        ¿Te interesa más el lado de la <strong>marca</strong>? Te enseño cómo
+        creé <a href="/blog/caso-wemaker">Wemaker, una marca de cero</a>.
+      </p>
+      <p>
         Si quieres una tienda así para lo tuyo —montada con esta cabeza, no a lo
         loco— escríbeme y lo vemos. Te cuento cómo trabajo en{" "}
         <a href="/#servicios">servicios</a>.
