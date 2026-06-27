@@ -157,6 +157,18 @@ export const projects: Project[] = [
   },
 ];
 
+export type Testimonial = {
+  quote: string;
+  author: string;
+  role?: string; // negocio o cargo, p.ej. "Fundadora · Tienda de velas"
+  source?: string; // de dónde viene: "Google", "Fiverr", "Cliente directo"
+};
+
+// Reseñas REALES de clientes. Mientras esté vacío, la sección no se muestra.
+// Para activarla, añade objetos aquí con testimonios reales y aparecerá sola:
+//   { quote: "Texto literal del cliente.", author: "Nombre", role: "Negocio", source: "Google" }
+export const testimonials: Testimonial[] = [];
+
 export type Platform = {
   name: string;
   icon: string;
@@ -210,6 +222,7 @@ export const navLinks = [
   { label: "Trabajos", href: "#trabajos" },
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Plataformas", href: "#plataformas" },
+  { label: "Blog", href: "/blog" },
   { label: "Contacto", href: "#contacto" },
 ] as const;
 
