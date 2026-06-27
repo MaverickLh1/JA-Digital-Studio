@@ -46,14 +46,14 @@ export default function Page() {
         vistazo. Y eso genera confianza antes incluso de ver el producto.
       </p>
 
-      <h2>La web y la tienda</h2>
+      <h2>La web, programada a medida</h2>
       <p>
         Con la identidad clara, montar la web fue coser y cantar: todo —colores,
-        tipografías, imágenes— ya hablaba un mismo idioma. Construí la tienda en
-        Shopify (te cuento por qué en la{" "}
-        <a href="/blog/shopify-woocommerce-o-wix">comparativa de plataformas</a>),
-        con un catálogo ordenado y una home que explica en dos frases qué hace
-        Wemaker y para quién. Cuidando, como siempre, el móvil y la velocidad.
+        tipografías, imágenes— ya hablaba un mismo idioma. La{" "}
+        <strong>programé a medida</strong>, con código propio (sin plantillas ni
+        constructores), con un catálogo ordenado y una home que explica en dos
+        frases qué hace Wemaker y para quién. Una web rápida, ligera y cuidada al
+        detalle en el móvil.
       </p>
 
       <h2>Un modelo distinto: presupuesto, no carrito</h2>

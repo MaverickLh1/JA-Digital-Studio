@@ -45,7 +45,7 @@ export const posts: Post[] = [
     slug: "caso-wemaker",
     title: "Caso real: Wemaker, cómo creé una marca de personalización de cero",
     description:
-      "Wemaker no es solo una tienda: es una marca entera creada de cero —naming, identidad, web y Shopify— para clubes, empresas y eventos. Te lo enseño por dentro.",
+      "Wemaker no es solo una tienda: es una marca entera creada de cero —naming, identidad y web a medida— para clubes, empresas y eventos. Te lo enseño por dentro.",
     date: "2026-06-24",
     readingMin: 5,
     tags: ["Branding", "Caso real"],

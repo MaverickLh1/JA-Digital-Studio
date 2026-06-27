@@ -111,13 +111,13 @@ export const projects: Project[] = [
   {
     id: "wemaker",
     name: "Wemaker",
-    type: "E-commerce + Marca",
+    type: "Marca + Web a medida",
     description:
-      "Personalización creativa para clubes, empresas y eventos. Proyecto propio construido de cero: marca, web y catálogo.",
+      "Personalización creativa para clubes, empresas y eventos. Proyecto propio construido de cero: marca, web a medida y catálogo.",
     image: "/work/wemaker.png",
     url: "https://wemaker.es",
     status: "live",
-    services: ["Branding", "Diseño web", "Shopify"],
+    services: ["Branding", "Diseño web", "Desarrollo a medida"],
   },
   {
     id: "kodrux",
