@@ -124,10 +124,11 @@ export const projects: Project[] = [
     name: "Kodrux",
     type: "Tienda Shopify",
     description:
-      "Ropa geek con drops limitados para Europa, Estados Unidos y Latinoamérica. Marca, catálogo y tienda en construcción.",
+      "Ropa para quienes construyen con IA —vibecoders, indie hackers y makers— con drops limitados en Europa, EE. UU. y Latinoamérica. Marca, tienda Shopify e imágenes de producto.",
     image: "/work/kodrux.png",
     url: "https://kodrux.com",
-    status: "soon",
+    cta: "Visitar tienda",
+    status: "live",
     services: ["Shopify", "Branding", "Catálogo"],
   },
   {
