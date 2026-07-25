@@ -31,7 +31,7 @@ export default function About() {
               className="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border-2 border-coral"
             />
             <Image
-              src="/foto-perfil.webp"
+              src="/foto-perfil-2026.webp"
               alt="José Antonio, freelance digital"
               width={1200}
               height={1200}

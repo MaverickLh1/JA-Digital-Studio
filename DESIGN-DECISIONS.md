@@ -157,7 +157,8 @@ Todos los recursos en `/recursos/` (raster optimizado a WebP; originales pesados
 - `logo-naranja.svg` — versión original en naranja `#F95A25` (respaldo, no se usa)
 
 **Foto:**
-- `foto-perfil.webp` — 1200×1200, 68KB (estudio, camisa azul marino, cartel "AUTOMATIZA·OPTIMIZA·ESCALA·CRECE")
+- `foto-perfil-2026.webp` — 1200×1200, 57KB (camisa azul marino, fondo con círculo coral y paneles carbón/crema que recogen la paleta de la marca). Recorte 1:1 desde un original 4:5, arrancando en y=250 para dejar los ojos en el tercio superior.
+- El nombre lleva año a propósito: el optimizador de imágenes cachea por URL, así que reemplazar la foto conservando la ruta serviría la versión antigua hasta que expire el TTL. Al cambiar la foto, cambia el nombre.
 
 **Iconos de plataformas:**
 - `plataforma-fiverr.svg`, `plataforma-malt.svg`, `plataforma-upwork.svg`, `plataforma-freelancer.svg`, `plataforma-workana.svg`, `plataforma-soyfreelancer.svg`
